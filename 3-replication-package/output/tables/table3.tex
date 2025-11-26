@@ -1,0 +1,18 @@
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+            &\multicolumn{1}{c}{Luck (Vary-Probability)}&\multicolumn{1}{c}{Random-Education (Vary module)}&\multicolumn{1}{c}{Random-Employment (Vary module)}\\
+            &\multicolumn{1}{c}{Share redistributed}&\multicolumn{1}{c}{Share redistributed}&\multicolumn{1}{c}{Share redistributed}\\
+\midrule
+alpha       &       2.523\sym{***}&       3.534\sym{***}&       2.095\sym{***}\\
+            &     (0.060)         &     (0.143)         &     (0.078)         \\
+\midrule
+/Residual   &                     &                     &                     \\
+lnsigma     &      -2.019\sym{***}&      -2.051\sym{***}&      -1.791\sym{***}\\
+            &     (0.020)         &     (0.030)         &     (0.036)         \\
+\midrule
+\(N\)       &        1190         &         574         &         392         \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}

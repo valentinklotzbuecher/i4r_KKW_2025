@@ -1,0 +1,21 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+            &\multicolumn{1}{c}{temp1}&\multicolumn{1}{c}{temp1}&\multicolumn{1}{c}{temp1}\\
+\midrule
+/           &                     &                     &                     \\
+alpha       &       2.532\sym{***}&       3.410\sym{***}&       2.182\sym{***}\\
+            &     (0.058)         &     (0.131)         &     (0.082)         \\
+\midrule
+/Residual   &                     &                     &                     \\
+lnsigma     &      -2.026\sym{***}&      -2.053\sym{***}&      -1.792\sym{***}\\
+            &     (0.020)         &     (0.029)         &     (0.035)         \\
+\midrule
+\(N\)       &        1274         &         602         &         406         \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}

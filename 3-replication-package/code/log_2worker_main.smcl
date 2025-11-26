@@ -1,0 +1,276 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/code/log_2worker_main.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}16 Nov 2025, 19:08:56
+{txt}
+{com}.                 
+.                 
+.                 
+.                 
+. *---------------------------------------------------------------                
+. *-> Figure 4: Rating of factors contributing to socio-economic inequality
+. *---------------------------------------------------------------                
+.         use $folder/data/processed/worker_main.dta, clear
+{txt}
+{com}.         
+.         keep q171*
+{txt}
+{com}.         gen i = _n 
+{txt}
+{com}.         reshape long q171_, i(i) j(j)
+{txt}(j = 1 2 3 4 5)
+
+Data{col 36}Wide{col 43}->{col 48}Long
+{hline 77}
+Number of observations     {res}         842   {txt}->   {res}4,210       
+{txt}Number of variables        {res}           6   {txt}->   {res}3           
+{txt}j variable (5 values)                     ->   {res}j
+{txt}xij variables:
+               {res}q171_1 q171_2 ... q171_5   {txt}->   {res}q171_
+{txt}{hline 77}
+
+{com}.         destring q171_, replace
+{txt}q171_: all characters numeric; {res}replaced {txt}as {res}byte
+{txt}
+{com}.         
+. 
+.         collapse (mean) y = q171_ (semean) b = q171_, by(j)     
+{res}{txt}
+{com}.                 gen x = 2*j - 1
+{txt}
+{com}.                 gen y_u = y + b
+{txt}
+{com}.                 gen y_l = y - b
+{txt}
+{com}.                 gen mean_string = string(y, "%3.2f")
+{txt}
+{com}. 
+.         twoway (bar y x) ///
+>                         (rcap y_u y_l x,lcolor("black") ) ///
+>                         (scatter y x, msym(none) mlab(mean_string) mlabsize(mediumlarge) mlabpos(1) mlabcolor(black)), ///
+>                         ytitle("Rating",margin(small) size(large)) ///
+>                         ylabel(0(2)10, labsize(large) ang(0)) ///
+>                         xlabel(1 "Education" 3 "Job" 5 "Effort" 7 "Luck" 9 "Inherit", labsize(large) notick ang(0)) ///
+>                         xtitle("") scheme(s1mono) legend(off) ///
+>                         xsize(4.5) ysize(3)
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{res}{txt}
+{com}.         
+.         graph export $folder/output/figures/figure4.pdf, replace        
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/figures/figure4.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+
+{com}. 
+. *------------------------------------   
+. *-> Table C1
+. *   Note: "IE": Info-Department
+. *             "IO": Info-Training
+. *             "ME": Merit-Department
+. *             "MO": Merit-Training
+. *             "RE": Random-Department
+. *             "RO": Random-Training
+. *------------------------------------   
+.                 use $folder/data/processed/worker_main.dta, clear
+{txt}
+{com}.         
+.         matrix drop _all
+{txt}
+{com}.                 foreach treatment in IE IO ME MO RE RO {c -(}
+{txt}  2{com}.                 quietly {c -(}
+{txt}  3{com}.                         summarize female1 if treatment == "`treatment'"
+{txt}  4{com}.                          scalar female1 = r(mean)
+{txt}  5{com}.                          summarize age1 if treatment == "`treatment'"
+{txt}  6{com}.                          scalar age1 = r(mean) 
+{txt}  7{com}.                          summarize highEdu if treatment == "`treatment'"
+{txt}  8{com}.                          scalar highEdu = r(mean)
+{txt}  9{com}.                          summarize income1 if treatment == "`treatment'"
+{txt} 10{com}.                          scalar income1 = r(mean)
+{txt} 11{com}.                          summarize conservative if treatment == "`treatment'"
+{txt} 12{com}.                          scalar conservative = r(mean)
+{txt} 13{com}.                          matrix results`treatment' = female1, age1, highEdu, income1, conservative,r(N)
+{txt} 14{com}.                 {c )-}
+{txt} 15{com}.                 {c )-}
+{txt}
+{com}.                 
+.                 
+.                 matrix result_table = resultsMO', resultsRO',  resultsME', resultsRE', resultsIO', resultsIE'
+{txt}
+{com}.                 matrix colnames result_table = Merit-Training Random-Training Merit-Department Random-Department Info-Training Info-Department
+{txt}
+{com}.                 matrix rownames result_table = female age_years high_education individual_yearly_income conservative obs
+{txt}
+{com}.         
+.                 matrix list result_table, format(%9.3f)
+{res}
+{txt}result_table[6,6]
+              Merit-Trai~g  Random-Tra~g  Merit-Depa~t  Random-Dep~t  Info-Train~g  Info-Depar~t
+      female {res}        0.528         0.529         0.556         0.583         0.496         0.592
+{txt}   age_years {res}       40.718        40.093        40.904        38.910        41.432        40.958
+{txt}high_educa~n {res}        0.528         0.536         0.511         0.486         0.619         0.570
+{txt}individual~e {res}    57659.574     50000.000     58825.758     61482.143     55638.686     49708.029
+{txt}conservative {res}        0.246         0.243         0.267         0.208         0.223         0.261
+{txt}         obs {res}      142.000       140.000       135.000       144.000       139.000       142.000
+{reset}
+{com}.                 esttab matrix(result_table) using $folder/output/tables/tableC1.tex , replace b(%9.3f)
+{res}{txt}(output written to {browse  `"C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/tables/tableC1.tex"'})
+
+{com}. *------------------------------------   
+. *-> Figure C1: Share redistributed 
+. *------------------------------------           
+.                 
+.                 use $folder/data/processed/worker_main.dta, clear
+{txt}
+{com}.                 gen no = _n
+{txt}
+{com}.                 
+.                 *keep if age == "18 to 22" |age == "23 to 29" |age == "30 to 39" 
+.                 
+.                 gen temp0 = redistribution/6
+{txt}(281 missing values generated)
+
+{com}.                 collapse y = temp0 (semean) b = temp0, by(treatment)
+{res}{txt}
+{com}.                 gen temp1 = 1 if treatment == "MO"
+{txt}(5 missing values generated)
+
+{com}.                 replace temp1 = 2 if treatment == "RO"
+{txt}(1 real change made)
+
+{com}.                 replace temp1 = 3 if treatment == "ME"
+{txt}(1 real change made)
+
+{com}.                 replace temp1 = 4 if treatment == "RE"
+{txt}(1 real change made)
+
+{com}.                 gen x = 2*temp1 -1
+{txt}(2 missing values generated)
+
+{com}.                 gen y_u = y + b
+{txt}(2 missing values generated)
+
+{com}.                 gen y_l = y - b
+{txt}(2 missing values generated)
+
+{com}.                 gen mean_string = string(y, "%3.2f")
+{txt}
+{com}.         
+.                 twoway (bar y x) ///
+>                         (rcap y_u y_l x,lcolor("black")) ///
+>                         (scatter y x, msym(none) mlab(mean_string) mlabsize(mediumlarge) mlabpos(1) mlabcolor(black)), ///
+>                         ytitle("Share Redistributed",margin(small)) ///
+>                         ylabel(0(0.1)0.5) ///
+>                         xlabel(1 "Merit-Training" 3 "Random-Traininig" 5 "Merit-Department" 7"Random-Department") ///
+>                         xtitle("") scheme(s1mono) legend(off) scale(0.9)
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{res}{txt}
+{com}.                 
+.                 graph export $folder/output/figures/figureC1.pdf, replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/figures/figureC1.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+
+{com}.                 
+.                 
+. *------------------------------------   
+. *-> Figure C2: Distribution of share (labels manually added)
+. *------------------------------------   
+.         use $folder/data/processed/worker_main.dta, clear
+{txt}
+{com}.         gen no = _n
+{txt}
+{com}.         gen temp0 = redistribution
+{txt}(281 missing values generated)
+
+{com}.         gen temp1 = 1 if treatment == "MO"
+{txt}(700 missing values generated)
+
+{com}.         replace temp1 = 2 if treatment == "RO"
+{txt}(140 real changes made)
+
+{com}.         replace temp1 = 3 if treatment == "ME"
+{txt}(135 real changes made)
+
+{com}.         replace temp1 = 4 if treatment == "RE"
+{txt}(144 real changes made)
+
+{com}.         hist temp0, ///
+>                 discrete frac xlabel(0(1)6) ///
+>                 by(temp1,col(2) note("")) scheme(s1mono) ///
+>                 ytitle(Fraction) ylabel(0(0.2)0.8) ///
+>                 xtitle(Distribution) ///
+>                 xlabel(0 "(0,6)" 1 "(1,5)" 2 "(2,4)" 3"(3,3)" 4"(4,2)" 5"(5,1)" 6"(6,0)", ang(90)) ///
+>                 xsize(2) ysize(2)
+{res}{txt}
+{com}.         
+.         graph export $folder/output/figures/figureC2.pdf, replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/figures/figureC2.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+
+{com}.         
+.         
+. *---------------------------------------------------------------                
+. *-> Figure C3: Distribution of information-seeking rate (labels manually added)
+. *---------------------------------------------------------------                
+.         use $folder/data/processed/worker_main.dta, clear
+{txt}
+{com}.         gen no = _n
+{txt}
+{com}.         gen temp0 = rate
+{txt}(561 missing values generated)
+
+{com}.         gen temp1 = 1 if treatment == "IO"
+{txt}(703 missing values generated)
+
+{com}.         replace temp1 = 2 if treatment == "IE"
+{txt}(142 real changes made)
+
+{com}.         hist temp0, ///
+>                 discrete frac xlabel(0(1)6) ///
+>                 by(temp1,col(2) note("")) scheme(s1mono) ///
+>                 ytitle(Fraction) ylabel(0(0.1)0.4) ///
+>                 xtitle(Distribution) ///
+>                 xlabel(0 "0%" 20 "0-20%" 40 "20-40%" 60 "40-60%" 80 "60-80%" 100 "80-100%", ang(90)) 
+{res}{txt}
+{com}.         
+.         graph export $folder/output/figures/figureC3.pdf, replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/figures/figureC3.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+
+{com}. 
+.         log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/code/log_2worker_main.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}16 Nov 2025, 19:09:05
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

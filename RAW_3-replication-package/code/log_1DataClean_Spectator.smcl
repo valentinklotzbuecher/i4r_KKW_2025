@@ -1,0 +1,971 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:/Users/lingbo/Desktop/3-replication-package/code/log_1DataClean_Spectator.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}22 Jul 2025, 18:48:09
+{txt}
+{com}. *===========================
+.                 * clean clean clean 
+. *===========================
+. 
+.                 use $folder/data/raw/spectator_main_raw.dta, clear
+{txt}
+{com}.                 
+.         *-> Quiz
+.                 drop startdate enddate progress
+{txt}
+{com}.                 drop finished recordeddate responseid recipient* external*
+{txt}
+{com}.                 drop q_recaptchascore passQuiz
+{txt}
+{com}.                 drop consent ready* distributionchannel userlanguage 
+{txt}
+{com}.                 
+.                 gen passQuiz = 1 if quiz1_1 == "True" & quiz1_2 == "True" & quiz1_3 == "True"
+{txt}(1,497 missing values generated)
+
+{com}.                 replace passQuiz = 1 if quiz2_1 == "True" & quiz2_2 == "True" & quiz2_3 == "True"
+{txt}(211 real changes made)
+
+{com}.                 replace passQuiz = 1 if quiz3_1 == "True" & quiz3_2 == "True" & quiz3_3 == "True"
+{txt}(212 real changes made)
+
+{com}.                 replace passQuiz = 1 if quiz4_1 == "True" & quiz4_2 == "True" & quiz4_3 == "True"
+{txt}(213 real changes made)
+
+{com}.                 replace passQuiz = 1 if quiz5_1 == "True" & quiz5_2 == "True" & quiz5_3 == "True"
+{txt}(210 real changes made)
+
+{com}.                 replace passQuiz = 1 if quiz6_1 == "True" & quiz6_2 == "True" & quiz6_3 == "True"
+{txt}(214 real changes made)
+
+{com}.                 
+.                 drop quiz*
+{txt}
+{com}.                 
+.                 
+.         *-> Amount of Allocation
+.                 local var1 luck
+{txt}
+{com}.                 local var2 allocation_luck
+{txt}
+{com}.                 gen `var1' = 0 if `var2' == "Worker A is paid 6 USD and worker B is paid 0 USD."
+{txt}(1,689 missing values generated)
+
+{com}.                 replace `var1' = 1 if `var2' == "Worker A is paid 5 USD and worker B is paid 1 USD."
+{txt}(10 real changes made)
+
+{com}.                 replace `var1' = 2 if `var2' == "Worker A is paid 4 USD and worker B is paid 2 USD."
+{txt}(29 real changes made)
+
+{com}.                 replace `var1' = 3 if `var2' == "Worker A is paid 3 USD and worker B is paid 3 USD."
+{txt}(148 real changes made)
+
+{com}.                 replace `var1' = 4 if `var2' == "Worker A is paid 2 USD and worker B is paid 4 USD."
+{txt}(2 real changes made)
+
+{com}.                 replace `var1' = 5 if `var2' == "Worker A is paid 1 USD and worker B is paid 5 USD."
+{txt}(1 real change made)
+
+{com}.                 replace `var1' = 6 if `var2' == "Worker A is paid 0 USD and worker B is paid 6 USD."
+{txt}(2 real changes made)
+
+{com}.                 
+.                 local var1 merit
+{txt}
+{com}.                 local var2 allocation_merit
+{txt}
+{com}.                 gen `var1' = 0 if `var2' == "Worker A is paid 6 USD and worker B is paid 0 USD."
+{txt}(1,638 missing values generated)
+
+{com}.                 replace `var1' = 1 if `var2' == "Worker A is paid 5 USD and worker B is paid 1 USD."
+{txt}(32 real changes made)
+
+{com}.                 replace `var1' = 2 if `var2' == "Worker A is paid 4 USD and worker B is paid 2 USD."
+{txt}(81 real changes made)
+
+{com}.                 replace `var1' = 3 if `var2' == "Worker A is paid 3 USD and worker B is paid 3 USD."
+{txt}(24 real changes made)
+
+{com}.                 replace `var1' = 4 if `var2' == "Worker A is paid 2 USD and worker B is paid 4 USD."
+{txt}(2 real changes made)
+
+{com}.                 replace `var1' = 5 if `var2' == "Worker A is paid 1 USD and worker B is paid 5 USD."
+{txt}(0 real changes made)
+
+{com}.                 replace `var1' = 6 if `var2' == "Worker A is paid 0 USD and worker B is paid 6 USD."
+{txt}(1 real change made)
+
+{com}.                 
+.         
+.                 local var1 educ
+{txt}
+{com}.                 local var2 allocation_educ
+{txt}
+{com}.                 gen `var1' = 0 if `var2' == "Worker A is paid 6 USD and worker B is paid 0 USD."
+{txt}(1,669 missing values generated)
+
+{com}.                 replace `var1' = 1 if `var2' == "Worker A is paid 5 USD and worker B is paid 1 USD."
+{txt}(16 real changes made)
+
+{com}.                 replace `var1' = 2 if `var2' == "Worker A is paid 4 USD and worker B is paid 2 USD."
+{txt}(57 real changes made)
+
+{com}.                 replace `var1' = 3 if `var2' == "Worker A is paid 3 USD and worker B is paid 3 USD."
+{txt}(98 real changes made)
+
+{com}.                 replace `var1' = 4 if `var2' == "Worker A is paid 2 USD and worker B is paid 4 USD."
+{txt}(0 real changes made)
+
+{com}.                 replace `var1' = 5 if `var2' == "Worker A is paid 1 USD and worker B is paid 5 USD."
+{txt}(0 real changes made)
+
+{com}.                 replace `var1' = 6 if `var2' == "Worker A is paid 0 USD and worker B is paid 6 USD."
+{txt}(1 real change made)
+
+{com}.                 
+.                 local var1 employ
+{txt}
+{com}.                 local var2 allocation_employ
+{txt}
+{com}.                 gen `var1' = 0 if `var2' == "Worker A is paid 6 USD and worker B is paid 0 USD."
+{txt}(1,658 missing values generated)
+
+{com}.                 replace `var1' = 1 if `var2' == "Worker A is paid 5 USD and worker B is paid 1 USD."
+{txt}(22 real changes made)
+
+{com}.                 replace `var1' = 2 if `var2' == "Worker A is paid 4 USD and worker B is paid 2 USD."
+{txt}(74 real changes made)
+
+{com}.                 replace `var1' = 3 if `var2' == "Worker A is paid 3 USD and worker B is paid 3 USD."
+{txt}(63 real changes made)
+
+{com}.                 replace `var1' = 4 if `var2' == "Worker A is paid 2 USD and worker B is paid 4 USD."
+{txt}(0 real changes made)
+
+{com}.                 replace `var1' = 5 if `var2' == "Worker A is paid 1 USD and worker B is paid 5 USD."
+{txt}(0 real changes made)
+
+{com}.                 replace `var1' = 6 if `var2' == "Worker A is paid 0 USD and worker B is paid 6 USD."            
+{txt}(1 real change made)
+
+{com}. 
+.                 
+.                 local var1 info_educ
+{txt}
+{com}.                 local var2 allocation_info_educ_NoTick 
+{txt}
+{com}.                 local var3 allocation_info_educ_YesTick 
+{txt}
+{com}.                 gen `var1' = 0 if `var2' == "Worker A is paid 6 USD and worker B is paid 0 USD."|`var3' == "Worker A is paid 6 USD and worker B is paid 0 USD."
+{txt}(1,680 missing values generated)
+
+{com}.                 replace `var1' = 1 if `var2' == "Worker A is paid 5 USD and worker B is paid 1 USD."|`var3' == "Worker A is paid 5 USD and worker B is paid 1 USD."
+{txt}(12 real changes made)
+
+{com}.                 replace `var1' = 2 if `var2' == "Worker A is paid 4 USD and worker B is paid 2 USD."|`var3' == "Worker A is paid 4 USD and worker B is paid 2 USD."
+{txt}(59 real changes made)
+
+{com}.                 replace `var1' = 3 if `var2' == "Worker A is paid 3 USD and worker B is paid 3 USD."|`var3' == "Worker A is paid 3 USD and worker B is paid 3 USD."
+{txt}(108 real changes made)
+
+{com}.                 replace `var1' = 4 if `var2' == "Worker A is paid 2 USD and worker B is paid 4 USD."|`var3' == "Worker A is paid 2 USD and worker B is paid 4 USD."
+{txt}(2 real changes made)
+
+{com}.                 replace `var1' = 5 if `var2' == "Worker A is paid 1 USD and worker B is paid 5 USD."|`var3' == "Worker A is paid 1 USD and worker B is paid 5 USD."
+{txt}(1 real change made)
+
+{com}.                 replace `var1' = 6 if `var2' == "Worker A is paid 0 USD and worker B is paid 6 USD."|`var3' == "Worker A is paid 0 USD and worker B is paid 6 USD."
+{txt}(0 real changes made)
+
+{com}.                 
+.                 
+.                 local var1 info_employ
+{txt}
+{com}.                 local var2 allocation_info_employ_NoTick
+{txt}
+{com}.                 local var3 allocation_info_employ_YesTick
+{txt}
+{com}.                 gen `var1' = 0 if `var2' == "Worker A is paid 6 USD and worker B is paid 0 USD."|`var3' == "Worker A is paid 6 USD and worker B is paid 0 USD."
+{txt}(1,671 missing values generated)
+
+{com}.                 replace `var1' = 1 if `var2' == "Worker A is paid 5 USD and worker B is paid 1 USD."|`var3' == "Worker A is paid 5 USD and worker B is paid 1 USD."
+{txt}(23 real changes made)
+
+{com}.                 replace `var1' = 2 if `var2' == "Worker A is paid 4 USD and worker B is paid 2 USD."|`var3' == "Worker A is paid 4 USD and worker B is paid 2 USD."
+{txt}(79 real changes made)
+
+{com}.                 replace `var1' = 3 if `var2' == "Worker A is paid 3 USD and worker B is paid 3 USD."|`var3' == "Worker A is paid 3 USD and worker B is paid 3 USD."
+{txt}(72 real changes made)
+
+{com}.                 replace `var1' = 4 if `var2' == "Worker A is paid 2 USD and worker B is paid 4 USD."|`var3' == "Worker A is paid 2 USD and worker B is paid 4 USD."
+{txt}(1 real change made)
+
+{com}.                 replace `var1' = 5 if `var2' == "Worker A is paid 1 USD and worker B is paid 5 USD."|`var3' == "Worker A is paid 1 USD and worker B is paid 5 USD."
+{txt}(0 real changes made)
+
+{com}.                 replace `var1' = 6 if `var2' == "Worker A is paid 0 USD and worker B is paid 6 USD."|`var3' == "Worker A is paid 0 USD and worker B is paid 6 USD."
+{txt}(1 real change made)
+
+{com}.                 
+.         *-> Treatments
+.                 gen treatment = "1luck" if luck !=.
+{txt}(1,497 missing values generated)
+
+{com}.                 replace treatment = "2merit" if merit !=.
+{txt}variable {bf}treatment{sf} was {bf}{res}str5{sf}{txt} now {bf}{res}str6{sf}
+{txt}(210 real changes made)
+
+{com}.                 replace treatment = "3edu" if educ !=.
+{txt}(211 real changes made)
+
+{com}.                 replace treatment = "4emp" if employ !=.
+{txt}(210 real changes made)
+
+{com}.                 replace treatment = "5info_educ" if info_educ !=.
+{txt}variable {bf}treatment{sf} was {bf}{res}str6{sf}{txt} now {bf}{res}str10{sf}
+{txt}(210 real changes made)
+
+{com}.                 replace treatment = "6info_emp" if info_employ !=.
+{txt}(213 real changes made)
+
+{com}.                 
+.                 
+.         *-> Survey 
+.                 gen survey_fair = 2 if survey_fair1 == "Very fair"
+{txt}(1,574 missing values generated)
+
+{com}.                 replace survey_fair = 1 if survey_fair1 == "Fair"
+{txt}(254 real changes made)
+
+{com}.                 replace survey_fair = 0 if survey_fair1 == "Neutral"
+{txt}(126 real changes made)
+
+{com}.                 replace survey_fair = -1 if survey_fair1 == "Unfair"
+{txt}(481 real changes made)
+
+{com}.                 replace survey_fair = -2 if survey_fair1 == "Very unfair"       
+{txt}(266 real changes made)
+
+{com}.                 
+.                 gen survey_redistr = 1 if survey_reason_text == "I did not redistribute because I believe the original rules of the reward scheme between the two workers was fair."
+{txt}(1,604 missing values generated)
+
+{com}.                 replace survey_redistr = 2 if survey_reason_text == "I did not redistribute because I believe the original rules of the reward scheme between the two workers should be followed."
+{txt}(118 real changes made)
+
+{com}.                 replace survey_redistr = 3 if survey_reason_text == "I did not redistribute because I believe it is not my place to change the allocation of payments between the two workers."
+{txt}(14 real changes made)
+
+{com}.                 replace survey_redistr = 4 if survey_reason_text == "I redistributed the money based on what I believe is fair between the two workers."
+{txt}(899 real changes made)
+
+{com}.                 replace survey_redistr = 5 if survey_reason_text == "I redistributed the money based on what I believe is fair between the two workers as well as myself."
+{txt}(65 real changes made)
+
+{com}.                 replace survey_redistr = 6 if survey_reason_text == "I redistributed the money because of another motive (please specify)"
+{txt}(47 real changes made)
+
+{com}.                 
+.         *-> Ticking Task
+.                 destring scoreopportunity, gen(tickNum_edu)
+{txt}scoreopportunity: all characters numeric; tickNum_edu {res}generated {txt}as {res}byte
+{txt}(1498 missing values generated)
+{res}{txt}
+{com}.                 destring scoreemploy, gen(tickNum_employ)
+{txt}scoreemployment: all characters numeric; tickNum_employ {res}generated {txt}as {res}byte
+{txt}(1495 missing values generated)
+{res}{txt}
+{com}.                 
+.                 
+.                 gen tickNum = tickNum_edu if tickNum_edu != .
+{txt}(1,498 missing values generated)
+
+{com}.                 replace tickNum = tickNum_employ if tickNum_employ != .
+{txt}(213 real changes made)
+
+{com}.                 
+.         
+.         *-> Demographics
+.                 
+.                 gen female1 = (male == "Female")
+{txt}
+{com}. 
+.                 gen age1 = 20 if age == "18 to 22"
+{txt}(1,637 missing values generated)
+
+{com}.                 replace age1 = 26 if age == "23 to 29"
+{txt}(186 real changes made)
+
+{com}.                 replace age1 = 35 if age == "30 to 39"
+{txt}(325 real changes made)
+
+{com}.                 replace age1 = 45 if age == "40 to 49"
+{txt}(227 real changes made)
+
+{com}.                 replace age1 = 55 if age == "50 to 59"
+{txt}(209 real changes made)
+
+{com}.                 replace age1 = 65 if age == "60 to 69"
+{txt}(178 real changes made)
+
+{com}.                 replace age1 = 75 if age == "70 or above"
+{txt}(65 real changes made)
+
+{com}.                 
+.                 gen edu1 = 2 if edu == "completed high school"
+{txt}(1,572 missing values generated)
+
+{com}.                 replace edu1 = 4 if edu == "graduated from a 4 year college"
+{txt}(458 real changes made)
+
+{com}.                 replace edu1 = 1 if edu == "have not completed high school"
+{txt}(5 real changes made)
+
+{com}.                 replace edu1 = 3 if edu == "some college education, or 2 year college degree"
+{txt}(428 real changes made)
+
+{com}.                 replace edu1 = 5 if edu == "some graduate school attended or higher"
+{txt}(234 real changes made)
+
+{com}.                 
+.                 gen income1 = 7500 if income == "$0 to $15,000"
+{txt}(1,554 missing values generated)
+
+{com}.                 replace income1 = 22500 if income == "$15,001 to $30,000"
+{txt}(190 real changes made)
+
+{com}.                 replace income1 = 40000 if income == "$30,001 to $50,000"
+{txt}(266 real changes made)
+
+{com}.                 replace income1 = 60000 if income == "$50,001 to $70,000"
+{txt}(251 real changes made)
+
+{com}.                 replace income1 = 85000 if income == "$70,001 to $100,000"
+{txt}(195 real changes made)
+
+{com}.                 replace income1 = 115000 if income == "$100,001 to $130,000"
+{txt}(95 real changes made)
+
+{com}.                 replace income1 = 150000 if income == "$130,001 to $170,000"
+{txt}(45 real changes made)
+
+{com}.                 replace income1 = 200000 if income == "$170,001 or above"
+{txt}(31 real changes made)
+
+{com}.                 replace income1 = . if income == "I prefer not to answer"
+{txt}(0 real changes made)
+
+{com}.                 
+.                 gen attitude1 = 1 if attitude == "The amount of inequality in society is very unacceptable."
+{txt}(1,154 missing values generated)
+
+{com}.                 replace attitude1 = 2 if attitude == "The amount of inequality in society is somewhat unacceptable."
+{txt}(384 real changes made)
+
+{com}.                 replace attitude1 = 3 if attitude == "I feel neutral about the current degree of inequality in society."
+{txt}(166 real changes made)
+
+{com}.                 replace attitude1 = 4 if attitude == "The amount of inequality in society is moderately reasonable."
+{txt}(115 real changes made)
+
+{com}.                 replace attitude1 = 5 if attitude == "The amount of inequality in society is very reasonable."
+{txt}(42 real changes made)
+
+{com}.                 
+.                 gen highEdu = (edu1 > 3)
+{txt}
+{com}.                 gen highIncome = (income1 > 50000)
+{txt}
+{com}.                 gen conservative = (party == "Republican")
+{txt}
+{com}.         
+.         *-> Destrings
+.                 
+.                 destring durationinseconds, replace
+{txt}durationinseconds: all characters numeric; {res}replaced {txt}as {res}int
+{txt}
+{com}.                 sum durationinseconds, detail
+
+                    {txt}Duration (in seconds)
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}       23              3
+{txt} 5%    {res}       63              4
+{txt}10%    {res}       98              8       {txt}Obs         {res}      1,708
+{txt}25%    {res}      178             12       {txt}Sum of Wgt. {res}      1,708
+
+{txt}50%    {res}      268                      {txt}Mean          {res} 310.6048
+                        {txt}Largest       Std. Dev.     {res} 212.3337
+{txt}75%    {res}      402           1457
+{txt}90%    {res}      565           2389       {txt}Variance      {res} 45085.61
+{txt}95%    {res}      666           2526       {txt}Skewness      {res} 3.001735
+{txt}99%    {res}      955           2807       {txt}Kurtosis      {res}  26.8293
+{txt}
+{com}.                 destring tickNum, replace
+{txt}tickNum already numeric; no {res}replace
+{txt}
+{com}. 
+.         *-> Drop
+.                 drop status allocation* 
+{txt}
+{com}.                 drop q91* tick241* q151* q182_4_text
+{txt}
+{com}.                 drop englishNative followup
+{txt}
+{com}.                 
+.                 //drop if treatment=="3edu" & survey_fair1=="Fair" & durationinseconds==265
+.                 
+.                                 
+.         *--- Drop inattention
+. 
+.         
+.                 
+.                 *-> Keep passQuiz
+.                 tab passQuiz 
+
+   {txt}passQuiz {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}      1,271      100.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      1,271      100.00
+{txt}
+{com}.                 keep if passQuiz == 1 //drop those who do not pass the quiz
+{txt}(437 observations deleted)
+
+{com}.                 
+.                 *-> Drop too fast
+.                 destring durationinseconds, replace
+{txt}durationinseconds already numeric; no {res}replace
+{txt}
+{com}.                 sum durationinseconds, detail   
+
+                    {txt}Duration (in seconds)
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}       87             20
+{txt} 5%    {res}      142             55
+{txt}10%    {res}      177             59       {txt}Obs         {res}      1,271
+{txt}25%    {res}      233             70       {txt}Sum of Wgt. {res}      1,271
+
+{txt}50%    {res}      317                      {txt}Mean          {res} 357.4862
+                        {txt}Largest       Std. Dev.     {res} 178.2105
+{txt}75%    {res}      441           1027
+{txt}90%    {res}      602           1093       {txt}Variance      {res}    31759
+{txt}95%    {res}      702           1131       {txt}Skewness      {res}  1.23124
+{txt}99%    {res}      955           1190       {txt}Kurtosis      {res} 4.825835
+{txt}
+{com}.                 gen tooFast = (durationinseconds < 120)
+{txt}
+{com}.                 tab tooFast
+
+    {txt}tooFast {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}      1,229       96.70       96.70
+{txt}          1 {c |}{res}         42        3.30      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      1,271      100.00
+{txt}
+{com}.                 
+.                 drop if tooFast == 1    
+{txt}(42 observations deleted)
+
+{com}.                 
+.                 
+.                 
+.                 
+.         *-> Generation
+.                 gen redistribution = luck if treatment == "1luck"
+{txt}(1,027 missing values generated)
+
+{com}.                 replace redistribution = merit if treatment == "2merit"
+{txt}(201 real changes made)
+
+{com}.                 replace redistribution = educ if treatment == "3edu"
+{txt}(201 real changes made)
+
+{com}.                 replace redistribution = employ if treatment == "4emp"
+{txt}(203 real changes made)
+
+{com}.                 replace redistribution = info_educ if treatment == "5info_educ"
+{txt}(207 real changes made)
+
+{com}.                 replace redistribution = info_employ if treatment == "6info_emp"                
+{txt}(210 real changes made)
+
+{com}.                 
+.                 drop if redistribution == .
+{txt}(5 observations deleted)
+
+{com}.                 drop if age == ""
+{txt}(4 observations deleted)
+
+{com}.                 
+.                 
+.         *-> Save Data
+.                 
+.                 save $folder/data/processed/spectator_main.dta, replace
+{txt}file /Users/lingbo/Desktop/3-replication-package/data/processed/spectator_main.dta saved
+
+{com}.                 
+. 
+.                 
+. *==============================================         
+.         *-> Load the data
+.         
+.                 global mydata $folder/data/raw/spectator_vary_raw.dta
+{txt}
+{com}.                 
+.                 
+.                 use $mydata, clear
+{txt}
+{com}. 
+.                 
+. *============================
+.                 * clean clean clean
+. *===========================    
+. 
+.                 
+.         *-> Quiz
+.                 drop startdate enddate ipaddress progress
+{err}variable {bf}ipaddress{sf} not found
+{txt}{search r(111), local:r(111);}
+
+end of do-file
+
+{search r(111), local:r(111);}
+
+{com}. do "C:\Users\Lingbo\AppData\Local\Temp\STD33c4_000000.tmp"
+{txt}
+{com}.         *-> Quiz
+.                 drop startdate enddate progress
+{txt}
+{com}.                 drop finished recordeddate responseid recipient* external*
+{txt}
+{com}.                 drop q_recaptchascore 
+{txt}
+{com}.                 drop consent ready* distributionchannel userlanguage 
+{txt}
+{com}.                 
+.                 gen passQuiz = 1 if quiz7_1 == "True" & quiz7_2 == "True" & quiz7_3 == "True"
+{txt}(759 missing values generated)
+
+{com}.                 replace passQuiz = 1 if quiz8_1 == "True" & quiz8_2 == "True" & quiz8_3 == "True"
+{txt}(213 real changes made)
+
+{com}.                 replace passQuiz = 1 if quiz9_1 == "True" & quiz9_2 == "True" & quiz9_3 == "True"
+{txt}(217 real changes made)
+
+{com}.                 
+.                 drop quiz*
+{txt}
+{com}.                 
+.                 
+.         *-> Amount of Allocation
+.                 
+.                 foreach i in "00" "01" "10" "50" "90" "99" "100"{c -(}
+{txt}  2{com}.                 gen luck`i' = 0 if allocation_luck`i' == "Worker A is paid $6 USD and Worker B is paid $0 USD."
+{txt}  3{com}.                 replace luck`i' = 1 if allocation_luck`i' == "Worker A is paid $5 USD and Worker B is paid $1 USD."
+{txt}  4{com}.                 replace luck`i' = 2 if allocation_luck`i' == "Worker A is paid $4 USD and Worker B is paid $2 USD."
+{txt}  5{com}.                 replace luck`i' = 3 if allocation_luck`i' == "Worker A is paid $3 USD and Worker B is paid $3 USD."
+{txt}  6{com}.                 replace luck`i' = 4 if allocation_luck`i' == "Worker A is paid $2 USD and Worker B is paid $4 USD."
+{txt}  7{com}.                 replace luck`i' = 5 if allocation_luck`i' == "Worker A is paid $1 USD and Worker B is paid $5 USD."
+{txt}  8{com}.                 replace luck`i' = 6 if allocation_luck`i' == "Worker A is paid $0 USD and Worker B is paid $6 USD."
+{txt}  9{com}.                 {c )-}
+{txt}(856 missing values generated)
+(41 real changes made)
+(34 real changes made)
+(19 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(871 missing values generated)
+(55 real changes made)
+(30 real changes made)
+(22 real changes made)
+(1 real change made)
+(1 real change made)
+(0 real changes made)
+(913 missing values generated)
+(62 real changes made)
+(51 real changes made)
+(39 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(977 missing values generated)
+(11 real changes made)
+(38 real changes made)
+(163 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+(970 missing values generated)
+(20 real changes made)
+(20 real changes made)
+(151 real changes made)
+(9 real changes made)
+(8 real changes made)
+(0 real changes made)
+(968 missing values generated)
+(13 real changes made)
+(12 real changes made)
+(159 real changes made)
+(7 real changes made)
+(7 real changes made)
+(8 real changes made)
+(963 missing values generated)
+(9 real changes made)
+(8 real changes made)
+(172 real changes made)
+(3 real changes made)
+(3 real changes made)
+(6 real changes made)
+
+{com}.         
+.                 
+.                 foreach i in "0" "1" "4" "7" "11" "14" "15"{c -(}
+{txt}  2{com}.                 gen edu15v`i' = 0 if edu_15v`i'_decision == "Worker A is paid $6 USD and Worker B is paid $0 USD."
+{txt}  3{com}.                 replace edu15v`i' = 1 if edu_15v`i'_decision == "Worker A is paid $5 USD and Worker B is paid $1 USD."
+{txt}  4{com}.                 replace edu15v`i' = 2 if edu_15v`i'_decision == "Worker A is paid $4 USD and Worker B is paid $2 USD."
+{txt}  5{com}.                 replace edu15v`i' = 3 if edu_15v`i'_decision == "Worker A is paid $3 USD and Worker B is paid $3 USD."
+{txt}  6{com}.                 replace edu15v`i' = 4 if edu_15v`i'_decision == "Worker A is paid $2 USD and Worker B is paid $4 USD."
+{txt}  7{com}.                 replace edu15v`i' = 5 if edu_15v`i'_decision == "Worker A is paid $1 USD and Worker B is paid $5 USD."
+{txt}  8{com}.                 replace edu15v`i' = 6 if edu_15v`i'_decision == "Worker A is paid $0 USD and Worker B is paid $6 USD."
+{txt}  9{com}.                 {c )-}
+{txt}(958 missing values generated)
+(19 real changes made)
+(30 real changes made)
+(116 real changes made)
+(9 real changes made)
+(1 real change made)
+(2 real changes made)
+(959 missing values generated)
+(21 real changes made)
+(33 real changes made)
+(112 real changes made)
+(9 real changes made)
+(1 real change made)
+(2 real changes made)
+(967 missing values generated)
+(20 real changes made)
+(60 real changes made)
+(102 real changes made)
+(1 real change made)
+(3 real changes made)
+(1 real change made)
+(971 missing values generated)
+(22 real changes made)
+(48 real changes made)
+(117 real changes made)
+(2 real changes made)
+(0 real changes made)
+(1 real change made)
+(972 missing values generated)
+(26 real changes made)
+(49 real changes made)
+(107 real changes made)
+(5 real changes made)
+(0 real changes made)
+(4 real changes made)
+(958 missing values generated)
+(29 real changes made)
+(37 real changes made)
+(102 real changes made)
+(4 real changes made)
+(1 real change made)
+(4 real changes made)
+(912 missing values generated)
+(7 real changes made)
+(19 real changes made)
+(103 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+
+{com}.                 
+.                 foreach i in "0" "1" "4" "7" "11" "14" "15"{c -(}
+{txt}  2{com}.                 destring edu_15v`i'_belief, gen(eduB15v`i')
+{txt}  3{com}.                 {c )-}
+{txt}edu_15v0_belief: all characters numeric; eduB15v0 {res}generated {txt}as {res}byte
+{txt}(784 missing values generated)
+{res}{txt}edu_15v1_belief: all characters numeric; eduB15v1 {res}generated {txt}as {res}byte
+{txt}(783 missing values generated)
+{res}{txt}edu_15v4_belief: all characters numeric; eduB15v4 {res}generated {txt}as {res}byte
+{txt}(782 missing values generated)
+{res}{txt}edu_15v7_belief: all characters numeric; eduB15v7 {res}generated {txt}as {res}byte
+{txt}(783 missing values generated)
+{res}{txt}edu_15v11_belief: all characters numeric; eduB15v11 {res}generated {txt}as {res}byte
+{txt}(784 missing values generated)
+{res}{txt}edu_15v14_belief: all characters numeric; eduB15v14 {res}generated {txt}as {res}byte
+{txt}(781 missing values generated)
+{res}{txt}edu_15v15_belief: all characters numeric; eduB15v15 {res}generated {txt}as {res}byte
+{txt}(781 missing values generated)
+{res}{txt}
+{com}.                 
+.                 foreach i in "0" "1" "4" "7" "11" "14" "15"{c -(}
+{txt}  2{com}.                 gen emp15v`i' = 0 if emp_15v`i'_decision == "Worker A is paid $6 USD and Worker B is paid $0 USD."
+{txt}  3{com}.                 replace emp15v`i' = 1 if emp_15v`i'_decision == "Worker A is paid $5 USD and Worker B is paid $1 USD."
+{txt}  4{com}.                 replace emp15v`i' = 2 if emp_15v`i'_decision == "Worker A is paid $4 USD and Worker B is paid $2 USD."
+{txt}  5{com}.                 replace emp15v`i' = 3 if emp_15v`i'_decision == "Worker A is paid $3 USD and Worker B is paid $3 USD."
+{txt}  6{com}.                 replace emp15v`i' = 4 if emp_15v`i'_decision == "Worker A is paid $2 USD and Worker B is paid $4 USD."
+{txt}  7{com}.                 replace emp15v`i' = 5 if emp_15v`i'_decision == "Worker A is paid $1 USD and Worker B is paid $5 USD."
+{txt}  8{com}.                 replace emp15v`i' = 6 if emp_15v`i'_decision == "Worker A is paid $0 USD and Worker B is paid $6 USD."
+{txt}  9{com}.                 {c )-}
+{txt}(888 missing values generated)
+(36 real changes made)
+(23 real changes made)
+(47 real changes made)
+(3 real changes made)
+(0 real changes made)
+(1 real change made)
+(914 missing values generated)
+(65 real changes made)
+(27 real changes made)
+(40 real changes made)
+(1 real change made)
+(1 real change made)
+(2 real changes made)
+(951 missing values generated)
+(57 real changes made)
+(70 real changes made)
+(45 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(964 missing values generated)
+(39 real changes made)
+(90 real changes made)
+(52 real changes made)
+(4 real changes made)
+(0 real changes made)
+(1 real change made)
+(961 missing values generated)
+(28 real changes made)
+(78 real changes made)
+(73 real changes made)
+(3 real changes made)
+(0 real changes made)
+(1 real change made)
+(949 missing values generated)
+(29 real changes made)
+(42 real changes made)
+(93 real changes made)
+(5 real changes made)
+(1 real change made)
+(1 real change made)
+(930 missing values generated)
+(18 real changes made)
+(28 real changes made)
+(100 real changes made)
+(2 real changes made)
+(2 real changes made)
+(2 real changes made)
+
+{com}.                 
+.                 foreach i in "0" "1" "4" "7" "11" "14" "15"{c -(}
+{txt}  2{com}.                 destring emp_15v`i'_belief, gen(empB15v`i')
+{txt}  3{com}.                 {c )-}
+{txt}emp_15v0_belief: all characters numeric; empB15v0 {res}generated {txt}as {res}byte
+{txt}(783 missing values generated)
+{res}{txt}emp_15v1_belief: all characters numeric; empB15v1 {res}generated {txt}as {res}byte
+{txt}(779 missing values generated)
+{res}{txt}emp_15v4_belief: all characters numeric; empB15v4 {res}generated {txt}as {res}byte
+{txt}(780 missing values generated)
+{res}{txt}emp_15v7_belief: all characters numeric; empB15v7 {res}generated {txt}as {res}byte
+{txt}(780 missing values generated)
+{res}{txt}emp_15v11_belief: all characters numeric; empB15v11 {res}generated {txt}as {res}byte
+{txt}(778 missing values generated)
+{res}{txt}emp_15v14_belief: all characters numeric; empB15v14 {res}generated {txt}as {res}byte
+{txt}(779 missing values generated)
+{res}{txt}emp_15v15_belief: all characters numeric; empB15v15 {res}generated {txt}as {res}byte
+{txt}(779 missing values generated)
+{res}{txt}
+{com}.                 
+.                 
+.                 
+.                 
+.         *-> Treatments
+.                 gen treatment = "luckXX" if luck00 !=.
+{txt}(762 missing values generated)
+
+{com}.                 replace treatment = "eduXX" if edu15v1 !=.
+{txt}(211 real changes made)
+
+{com}.                 replace treatment = "empXX" if emp15v1 !=.
+{txt}(214 real changes made)
+
+{com}.                 
+.         
+.         
+.         *-> Demographics
+.                 
+.                 gen female1 = (male == "Female")
+{txt}
+{com}. 
+.                 gen age1 = 20 if age == "18 to 22"
+{txt}(961 missing values generated)
+
+{com}.                 replace age1 = 26 if age == "23 to 29"
+{txt}(140 real changes made)
+
+{com}.                 replace age1 = 35 if age == "30 to 39"
+{txt}(238 real changes made)
+
+{com}.                 replace age1 = 45 if age == "40 to 49"
+{txt}(120 real changes made)
+
+{com}.                 replace age1 = 55 if age == "50 to 59"
+{txt}(73 real changes made)
+
+{com}.                 replace age1 = 65 if age == "60 to 69"
+{txt}(42 real changes made)
+
+{com}.                 replace age1 = 75 if age == "70 or above"
+{txt}(9 real changes made)
+
+{com}.                 
+.                 gen edu1 = 2 if edu == "completed high school"
+{txt}(917 missing values generated)
+
+{com}.                 replace edu1 = 4 if edu == "graduated from a 4 year college"
+{txt}(284 real changes made)
+
+{com}.                 replace edu1 = 1 if edu == "have not completed high school"
+{txt}(5 real changes made)
+
+{com}.                 replace edu1 = 3 if edu == "some college education, or 2 year college degree"
+{txt}(190 real changes made)
+
+{com}.                 replace edu1 = 5 if edu == "some graduate school attended or higher"
+{txt}(99 real changes made)
+
+{com}.                 
+.                 gen income1 = 7500 if income == "$0 to $15,000"
+{txt}(898 missing values generated)
+
+{com}.                 replace income1 = 22500 if income == "$15,001 to $30,000"
+{txt}(100 real changes made)
+
+{com}.                 replace income1 = 40000 if income == "$30,001 to $50,000"
+{txt}(126 real changes made)
+
+{com}.                 replace income1 = 60000 if income == "$50,001 to $70,000"
+{txt}(122 real changes made)
+
+{com}.                 replace income1 = 85000 if income == "$70,001 to $100,000"
+{txt}(104 real changes made)
+
+{com}.                 replace income1 = 115000 if income == "$100,001 to $130,000"
+{txt}(47 real changes made)
+
+{com}.                 replace income1 = 150000 if income == "$130,001 to $170,000"
+{txt}(16 real changes made)
+
+{com}.                 replace income1 = 200000 if income == "$170,001 or above"
+{txt}(24 real changes made)
+
+{com}.                 replace income1 = . if income == "I prefer not to answer"
+{txt}(0 real changes made)
+
+{com}.                 
+.                 gen attitude1 = 1 if attitude == "The amount of inequality in society is very unacceptable."
+{txt}(683 missing values generated)
+
+{com}.                 replace attitude1 = 2 if attitude == "The amount of inequality in society is somewhat unacceptable."
+{txt}(190 real changes made)
+
+{com}.                 replace attitude1 = 3 if attitude == "I feel neutral about the current degree of inequality in society."
+{txt}(87 real changes made)
+
+{com}.                 replace attitude1 = 4 if attitude == "The amount of inequality in society is moderately reasonable."
+{txt}(46 real changes made)
+
+{com}.                 replace attitude1 = 5 if attitude == "The amount of inequality in society is very reasonable."
+{txt}(21 real changes made)
+
+{com}.                 
+.                 gen highEdu = (edu1 > 3)
+{txt}
+{com}.                 gen highIncome = (income1 > 50000)
+{txt}
+{com}.                 gen conservative = (party == "Republican")
+{txt}
+{com}.         
+.         *--- Drop inattention
+.         
+.                 
+.                 *-> Keep passQuiz
+.                 tab passQuiz 
+
+   {txt}passQuiz {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}        663      100.00      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        663      100.00
+{txt}
+{com}.                 keep if passQuiz == 1 //drop those who do not pass the quiz
+{txt}(329 observations deleted)
+
+{com}.                 
+.                 *-> Drop too fast
+.                 destring durationinseconds, replace
+{txt}durationinseconds: all characters numeric; {res}replaced {txt}as {res}int
+{txt}
+{com}.                 sum durationinseconds, detail   
+
+                    {txt}Duration (in seconds)
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}      135             25
+{txt} 5%    {res}      267             44
+{txt}10%    {res}      311             48       {txt}Obs         {res}        663
+{txt}25%    {res}      400            119       {txt}Sum of Wgt. {res}        663
+
+{txt}50%    {res}      545                      {txt}Mean          {res} 613.7376
+                        {txt}Largest       Std. Dev.     {res} 320.0839
+{txt}75%    {res}      738           2075
+{txt}90%    {res}     1021           2217       {txt}Variance      {res} 102453.7
+{txt}95%    {res}     1213           2230       {txt}Skewness      {res} 1.945254
+{txt}99%    {res}     1705           2958       {txt}Kurtosis      {res} 10.14087
+{txt}
+{com}.                 gen tooFast = (durationinseconds < 180)
+{txt}
+{com}.                 tab tooFast
+
+    {txt}tooFast {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        652       98.34       98.34
+{txt}          1 {c |}{res}         11        1.66      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        663      100.00
+{txt}
+{com}.                 
+.                 drop if tooFast == 1    
+{txt}(11 observations deleted)
+
+{com}.                 
+.                 
+.                 drop if treatment == ""
+{txt}(4 observations deleted)
+
+{com}.                 drop if age == ""
+{txt}(2 observations deleted)
+
+{com}.                 
+.                 
+.         *-> Save Data
+.                 
+.                 save $folder/data/processed/spectator_vary.dta, replace
+{txt}file /Users/lingbo/Desktop/3-replication-package/data/processed/spectator_vary.dta saved
+
+{com}.                 
+.                 log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:/Users/lingbo/Desktop/3-replication-package/code/log_1DataClean_Spectator.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}22 Jul 2025, 18:48:48
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

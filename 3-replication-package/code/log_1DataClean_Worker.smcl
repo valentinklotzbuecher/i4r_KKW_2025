@@ -1,0 +1,395 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/code/log_1DataClean_Worker.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}16 Nov 2025, 19:02:54
+{txt}
+{com}.                 use $folder/data/raw/worker_main_raw.dta, clear
+{txt}
+{com}.                 
+. *===========================
+.                 * clean clean clean 
+. *===========================
+.                 
+.                 keep if finished == "TRUE"
+{txt}(0 observations deleted)
+
+{com}.                 drop startdate enddate status progress recordeddate responseid ///
+>                 recipientlastname recipientfirstname recipientemail externalreference ///
+>                 distributionchannel userlanguage q11 
+{txt}
+{com}. ////////////////////////////////////////////////////////////VK
+> drop finished
+{txt}
+{com}. ////////////////////////////////////////////////////////////VK
+>   
+.                 
+.                 destring durationinseconds, replace
+{txt}durationinseconds: all characters numeric; {res}replaced {txt}as {res}int
+{txt}
+{com}.                 
+.                 gen treatment = "IE" if fl_39_do == "Vignette-InfoEmployment"
+{txt}(700 missing values generated)
+
+{com}.                 replace treatment = "IO" if fl_39_do == "Vignette-InfoOpportunity"
+{txt}(139 real changes made)
+
+{com}.                 replace treatment = "ME" if fl_39_do == "Vignette-MeritEmployment"
+{txt}(135 real changes made)
+
+{com}.                 replace treatment = "MO" if fl_39_do == "Vignette-MeritOpportunity"
+{txt}(142 real changes made)
+
+{com}.                 replace treatment = "RE" if fl_39_do == "Vignette-RandomEmployment"
+{txt}(144 real changes made)
+
+{com}.                 replace treatment = "RO" if fl_39_do == "Vignette-RandomOpportunity"
+{txt}(140 real changes made)
+
+{com}.                 
+.         
+.                 local var1 MO
+{txt}
+{com}.                 local var2 q41
+{txt}
+{com}.                 gen `var1' = 0 if `var2' == "Jim is awarded a bonus of $600 and Bill is awarded a bonus of $0"
+{txt}(799 missing values generated)
+
+{com}.                 replace `var1' = 1 if `var2' == "Jim is awarded a bonus of $500 and Bill is awarded a bonus of $100"
+{txt}(43 real changes made)
+
+{com}.                 replace `var1' = 2 if `var2' == "Jim is awarded a bonus of $400 and Bill is awarded a bonus of $200"
+{txt}(36 real changes made)
+
+{com}.                 replace `var1' = 3 if `var2' == "Jim is awarded a bonus of $300 and Bill is awarded a bonus of $300"
+{txt}(19 real changes made)
+
+{com}.                 replace `var1' = 4 if `var2' == "Jim is awarded a bonus of $200 and Bill is awarded a bonus of $400"
+{txt}(0 real changes made)
+
+{com}.                 replace `var1' = 5 if `var2' == "Jim is awarded a bonus of $100 and Bill is awarded a bonus of $500"
+{txt}(0 real changes made)
+
+{com}.                 replace `var1' = 6 if `var2' == "Jim is awarded a bonus of $0 and Bill is awarded a bonus of $600"
+{txt}(1 real change made)
+
+{com}.                 
+.                 local var1 RO
+{txt}
+{com}.                 local var2 q51
+{txt}
+{com}.                 gen `var1' = 0 if `var2' == "Jim is awarded a bonus of $600 and Bill is awarded a bonus of $0"
+{txt}(815 missing values generated)
+
+{com}.                 replace `var1' = 1 if `var2' == "Jim is awarded a bonus of $500 and Bill is awarded a bonus of $100"
+{txt}(11 real changes made)
+
+{com}.                 replace `var1' = 2 if `var2' == "Jim is awarded a bonus of $400 and Bill is awarded a bonus of $200"
+{txt}(32 real changes made)
+
+{com}.                 replace `var1' = 3 if `var2' == "Jim is awarded a bonus of $300 and Bill is awarded a bonus of $300"
+{txt}(67 real changes made)
+
+{com}.                 replace `var1' = 4 if `var2' == "Jim is awarded a bonus of $200 and Bill is awarded a bonus of $400"
+{txt}(0 real changes made)
+
+{com}.                 replace `var1' = 5 if `var2' == "Jim is awarded a bonus of $100 and Bill is awarded a bonus of $500"
+{txt}(1 real change made)
+
+{com}.                 replace `var1' = 6 if `var2' == "Jim is awarded a bonus of $0 and Bill is awarded a bonus of $600"
+{txt}(2 real changes made)
+
+{com}.                 
+.                 
+.                 
+.                 local var1 ME
+{txt}
+{com}.                 local var2 q61
+{txt}
+{com}.                 gen `var1' = 0 if `var2' == "Jim is awarded a bonus of $600 and Bill is awarded a bonus of $0"
+{txt}(806 missing values generated)
+
+{com}.                 replace `var1' = 1 if `var2' == "Jim is awarded a bonus of $500 and Bill is awarded a bonus of $100"
+{txt}(57 real changes made)
+
+{com}.                 replace `var1' = 2 if `var2' == "Jim is awarded a bonus of $400 and Bill is awarded a bonus of $200"
+{txt}(32 real changes made)
+
+{com}.                 replace `var1' = 3 if `var2' == "Jim is awarded a bonus of $300 and Bill is awarded a bonus of $300"
+{txt}(9 real changes made)
+
+{com}.                 replace `var1' = 4 if `var2' == "Jim is awarded a bonus of $200 and Bill is awarded a bonus of $400"
+{txt}(1 real change made)
+
+{com}.                 replace `var1' = 5 if `var2' == "Jim is awarded a bonus of $100 and Bill is awarded a bonus of $500"
+{txt}(0 real changes made)
+
+{com}.                 replace `var1' = 6 if `var2' == "Jim is awarded a bonus of $0 and Bill is awarded a bonus of $600"
+{txt}(0 real changes made)
+
+{com}.                 
+.                 local var1 RE
+{txt}
+{com}.                 local var2 q71
+{txt}
+{com}.                 gen `var1' = 0 if `var2' == "Jim is awarded a bonus of $600 and Bill is awarded a bonus of $0"
+{txt}(826 missing values generated)
+
+{com}.                 replace `var1' = 1 if `var2' == "Jim is awarded a bonus of $500 and Bill is awarded a bonus of $100"
+{txt}(13 real changes made)
+
+{com}.                 replace `var1' = 2 if `var2' == "Jim is awarded a bonus of $400 and Bill is awarded a bonus of $200"
+{txt}(60 real changes made)
+
+{com}.                 replace `var1' = 3 if `var2' == "Jim is awarded a bonus of $300 and Bill is awarded a bonus of $300"
+{txt}(51 real changes made)
+
+{com}.                 replace `var1' = 4 if `var2' == "Jim is awarded a bonus of $200 and Bill is awarded a bonus of $400"
+{txt}(4 real changes made)
+
+{com}.                 replace `var1' = 5 if `var2' == "Jim is awarded a bonus of $100 and Bill is awarded a bonus of $500"
+{txt}(0 real changes made)
+
+{com}.                 replace `var1' = 6 if `var2' == "Jim is awarded a bonus of $0 and Bill is awarded a bonus of $600"
+{txt}(0 real changes made)
+
+{com}.                 
+.                 gen redistribution = MO if treatment == "MO"
+{txt}(700 missing values generated)
+
+{com}.                 replace redistribution = RO if treatment == "RO"
+{txt}(140 real changes made)
+
+{com}.                 replace redistribution = ME if treatment == "ME"
+{txt}(135 real changes made)
+
+{com}.                 replace redistribution = RE if treatment == "RE"
+{txt}(144 real changes made)
+
+{com}.                 
+.                 
+.                 
+.                 gen rate = 0 if q81 == "0 percent of managers" |q91 == "0 percent of managers" 
+{txt}(835 missing values generated)
+
+{com}.                 replace rate = 20 if q81 == "Above 0 percent but below 20% of managers"|q91 == "Above 0 percent but below 20% of managers"
+{txt}(33 real changes made)
+
+{com}.                 replace rate = 40 if q81 == "At least 20% but below 40% of managers"|q91 == "At least 20% but below 40% of managers"
+{txt}(40 real changes made)
+
+{com}.                 replace rate = 60 if q81 == "At least 40% but below 60% of managers"|q91 == "At least 40% but below 60% of managers"
+{txt}(60 real changes made)
+
+{com}.                 replace rate = 80 if q81 == "At least 60% but below 80% of managers"|q91 == "At least 60% but below 80% of managers"
+{txt}(64 real changes made)
+
+{com}.                 replace rate = 100 if q81 == "At least 80% of managers"|q91 == "At least 80% of managers"
+{txt}(77 real changes made)
+
+{com}.                 
+.                 
+.                 drop q41 q51 q61 q71 q81 q91
+{txt}
+{com}.                 drop q16*
+{txt}
+{com}.                 drop q12*
+{txt}
+{com}.                 
+.         *-DEMOGRAPHICS
+.                 rename q172 male
+{res}{txt}
+{com}.                 rename q173 age
+{res}{txt}
+{com}.                 rename q174 edu
+{res}{txt}
+{com}.                 rename q175 income
+{res}{txt}
+{com}.                 rename q176 party
+{res}{txt}
+{com}.                 rename q177 attitude
+{res}{txt}
+{com}.                 
+.                 gen female1 = (male == "Female")
+{txt}
+{com}. 
+. 
+.                 gen age1 = 20 if age == "18 to 22"
+{txt}(811 missing values generated)
+
+{com}.                 replace age1 = 26 if age == "23 to 29"
+{txt}(160 real changes made)
+
+{com}.                 replace age1 = 35 if age == "30 to 39"
+{txt}(288 real changes made)
+
+{com}.                 replace age1 = 45 if age == "40 to 49"
+{txt}(158 real changes made)
+
+{com}.                 replace age1 = 55 if age == "50 to 59"
+{txt}(129 real changes made)
+
+{com}.                 replace age1 = 65 if age == "60 to 69"
+{txt}(67 real changes made)
+
+{com}.                 replace age1 = 75 if age == "70 or above"
+{txt}(9 real changes made)
+
+{com}.                 
+.                 gen edu1 = 2 if edu == "completed high school"
+{txt}(752 missing values generated)
+
+{com}.                 replace edu1 = 4 if edu == "graduated from a 4 year college"
+{txt}(295 real changes made)
+
+{com}.                 replace edu1 = 1 if edu == "have not completed high school"
+{txt}(5 real changes made)
+
+{com}.                 replace edu1 = 3 if edu == "some college education, or 2 year college degree"
+{txt}(291 real changes made)
+
+{com}.                 replace edu1 = 5 if edu == "some graduate school attended or higher"
+{txt}(161 real changes made)
+
+{com}.                 
+.                 gen income1 = 7500 if income == "$0 to $15,000"
+{txt}(704 missing values generated)
+
+{com}.                 replace income1 = 22500 if income == "$15,001 to $30,000"
+{txt}(126 real changes made)
+
+{com}.                 replace income1 = 40000 if income == "$30,001 to $50,000"
+{txt}(187 real changes made)
+
+{com}.                 replace income1 = 60000 if income == "$50,001 to $70,000"
+{txt}(140 real changes made)
+
+{com}.                 replace income1 = 85000 if income == "$70,001 to $100,000"
+{txt}(122 real changes made)
+
+{com}.                 replace income1 = 115000 if income == "$100,001 to $130,000"
+{txt}(61 real changes made)
+
+{com}.                 replace income1 = 150000 if income == "$130,001 to $170,000"
+{txt}(27 real changes made)
+
+{com}.                 replace income1 = 200000 if income == "$170,001 or above"
+{txt}(23 real changes made)
+
+{com}.                 replace income1 = . if income == "I prefer not to answer"
+{txt}(0 real changes made)
+
+{com}.                 
+.                 gen attitude1 = 1 if attitude == "The amount of inequality in society is very unacceptable."
+{txt}(488 missing values generated)
+
+{com}.                 replace attitude1 = 2 if attitude == "The amount of inequality in society is somewhat unacceptable."
+{txt}(252 real changes made)
+
+{com}.                 replace attitude1 = 3 if attitude == "I feel neutral about the current degree of inequality in society."
+{txt}(145 real changes made)
+
+{com}.                 replace attitude1 = 4 if attitude == "The amount of inequality in society is moderately reasonable."
+{txt}(56 real changes made)
+
+{com}.                 replace attitude1 = 5 if attitude == "The amount of inequality in society is very reasonable."
+{txt}(35 real changes made)
+
+{com}.                 
+.                 
+.                 //tab party, gen(party_)
+.                 
+.                 gen highEdu = (edu1 > 3)
+{txt}
+{com}.                 gen highIncome = (income1 > 50000)
+{txt}
+{com}.                 gen conservative = (party == "Republican")
+{txt}
+{com}.                 
+. ////////////////////////////////////////////////////////////VK
+> 
+. replace female1 = . if male == ""
+{txt}(0 real changes made)
+
+{com}. 
+. tab party conservative, m
+
+                      {txt}{c |}     conservative
+                Q17.6 {c |}         0          1 {c |}     Total
+{hline 22}{c +}{hline 22}{c +}{hline 10}
+             Democrat {c |}{res}       365          0 {txt}{c |}{res}       365 
+{txt}          Green Party {c |}{res}         6          0 {txt}{c |}{res}         6 
+{txt}        I do not vote {c |}{res}        23          0 {txt}{c |}{res}        23 
+{txt}          Independent {c |}{res}       224          0 {txt}{c |}{res}       224 
+{txt}          Libertarian {c |}{res}        15          0 {txt}{c |}{res}        15 
+{txt}Other (please speci.. {c |}{res}         6          0 {txt}{c |}{res}         6 
+{txt}           Republican {c |}{res}         0        203 {txt}{c |}{res}       203 
+{txt}{hline 22}{c +}{hline 22}{c +}{hline 10}
+                Total {c |}{res}       639        203 {txt}{c |}{res}       842 
+{txt}
+{com}. 
+. tab edu1 highEdu, m
+
+           {txt}{c |}        highEdu
+      edu1 {c |}         0          1 {c |}     Total
+{hline 11}{c +}{hline 22}{c +}{hline 10}
+         1 {c |}{res}         5          0 {txt}{c |}{res}         5 
+{txt}         2 {c |}{res}        90          0 {txt}{c |}{res}        90 
+{txt}         3 {c |}{res}       291          0 {txt}{c |}{res}       291 
+{txt}         4 {c |}{res}         0        295 {txt}{c |}{res}       295 
+{txt}         5 {c |}{res}         0        161 {txt}{c |}{res}       161 
+{txt}{hline 11}{c +}{hline 22}{c +}{hline 10}
+     Total {c |}{res}       386        456 {txt}{c |}{res}       842 
+{txt}
+{com}. replace highEdu = .   if edu1 == .      
+{txt}(0 real changes made)
+
+{com}. 
+. tab income1 highIncome, m
+
+           {txt}{c |}      highIncome
+   income1 {c |}         0          1 {c |}     Total
+{hline 11}{c +}{hline 22}{c +}{hline 10}
+      7500 {c |}{res}       138          0 {txt}{c |}{res}       138 
+{txt}     22500 {c |}{res}       126          0 {txt}{c |}{res}       126 
+{txt}     40000 {c |}{res}       187          0 {txt}{c |}{res}       187 
+{txt}     60000 {c |}{res}         0        140 {txt}{c |}{res}       140 
+{txt}     85000 {c |}{res}         0        122 {txt}{c |}{res}       122 
+{txt}    115000 {c |}{res}         0         61 {txt}{c |}{res}        61 
+{txt}    150000 {c |}{res}         0         27 {txt}{c |}{res}        27 
+{txt}    200000 {c |}{res}         0         23 {txt}{c |}{res}        23 
+{txt}         . {c |}{res}         0         18 {txt}{c |}{res}        18 
+{txt}{hline 11}{c +}{hline 22}{c +}{hline 10}
+     Total {c |}{res}       451        391 {txt}{c |}{res}       842 
+{txt}
+{com}. replace highIncome = .   if income1 ==  .   // 18 missings
+{txt}(18 real changes made, 18 to missing)
+
+{com}. 
+. 
+. replace conservative = . if party == ""          
+{txt}(0 real changes made)
+
+{com}. ////////////////////////////////////////////////////////////VK          
+>                         
+.                 order treatment redistribution rate durationinseconds male* age* edu* party* attitude*
+{txt}
+{com}.         
+.                 save $folder/data/processed/worker_main.dta, replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/data/processed/worker_main.dta{rm}
+saved
+{p_end}
+
+{com}.                 
+.                 
+.                 log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/code/log_1DataClean_Worker.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}16 Nov 2025, 19:02:54
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

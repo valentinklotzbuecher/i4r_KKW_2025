@@ -1,0 +1,1545 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/code/log_2spectator_main.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}16 Nov 2025, 19:02:54
+{txt}
+{com}. *------------------------------------   
+. *-> Table 2: Balance table 
+. *------------------------------------                   
+.                 
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}.                 keep if inlist(treatment, "1luck", "2merit", "3edu", "4emp")
+{txt}(395 observations deleted)
+
+{com}.                                 
+.                 matrix drop _all
+{txt}
+{com}.                 foreach treatment in 1luck 2merit 3edu 4emp {c -(}
+{txt}  2{com}.                         summarize female1 if treatment == "`treatment'"
+{txt}  3{com}.                          scalar female1 = r(mean)
+{txt}  4{com}.                          summarize age1 if treatment == "`treatment'"
+{txt}  5{com}.                          scalar age1 = r(mean) 
+{txt}  6{com}.                          summarize highEdu if treatment == "`treatment'"
+{txt}  7{com}.                          scalar highEdu = r(mean)
+{txt}  8{com}.                          summarize income1 if treatment == "`treatment'"
+{txt}  9{com}.                          scalar income1 = r(mean)
+{txt} 10{com}.                          summarize conservative if treatment == "`treatment'"
+{txt} 11{com}.                          scalar conservative = r(mean)
+{txt} 12{com}.                          matrix results`treatment' = female1, age1, highEdu, income1, conservative, r(N)
+{txt} 13{com}.                 {c )-}
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}female1 {c |}{res}        154    .5974026     .492021          0          1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}age1 {c |}{res}        156    46.97436    15.59981         20         75
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}highEdu {c |}{res}        156    .8910256    .3126106          0          1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}income1 {c |}{res}        152    57648.03    43131.97       7500     200000
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+conservative {c |}{res}        156    .2435897    .4306304          0          1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}female1 {c |}{res}        168    .5952381    .4923133          0          1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}age1 {c |}{res}        169    47.14201    14.66625         20         75
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}highEdu {c |}{res}        169    .8816568     .323974          0          1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}income1 {c |}{res}        164    58185.98    42356.15       7500     200000
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+conservative {c |}{res}        169    .2485207    .4334395          0          1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}female1 {c |}{res}        170    .5294118    .5006087          0          1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}age1 {c |}{res}        170    45.74118    14.85883         20         75
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}highEdu {c |}{res}        170    .8823529    .3231416          0          1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}income1 {c |}{res}        163    57730.06    41885.36       7500     200000
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+conservative {c |}{res}        170    .2764706    .4485736          0          1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}female1 {c |}{res}        170    .5352941    .5002262          0          1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}age1 {c |}{res}        171    45.59064    14.94526         20         75
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}highEdu {c |}{res}        171    .8830409    .3223153          0          1
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}income1 {c |}{res}        164    58597.56    44414.39       7500     200000
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+conservative {c |}{res}        171    .1929825    .3957984          0          1
+{txt}
+{com}.                 
+.                 
+.                 matrix result_table = results1luck', results2merit', results3edu', results4emp'
+{txt}
+{com}.                 matrix colnames result_table = luck merit random-education random-employment
+{txt}
+{com}.                 matrix rownames result_table = female1 age_years high_education individual_yearly_income conservative obs
+{txt}
+{com}. ////////////////////////////////////////////////////////////VK : female vs. female1
+> 
+.                 matrix list result_table, format(%9.3f)
+{res}
+{txt}result_table[6,4]
+                      luck         merit  random-edu~n  random-emp~t
+     female1 {res}        0.597         0.595         0.529         0.535
+{txt}   age_years {res}       46.974        47.142        45.741        45.591
+{txt}high_educa~n {res}        0.891         0.882         0.882         0.883
+{txt}individual~e {res}    57648.026     58185.976     57730.061     58597.561
+{txt}conservative {res}        0.244         0.249         0.276         0.193
+{txt}         obs {res}      156.000       169.000       170.000       171.000
+{reset}
+{com}.                 
+.                 esttab matrix(result_table) using $folder/output/tables/table2.tex , replace b(%9.3f)
+{res}{txt}(output written to {browse  `"C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/tables/table2.tex"'})
+
+{com}.                 
+.                 
+.         
+.                 
+. 
+. *------------------------------------   
+. *-> Figure 1: Share redistributed 
+. *------------------------------------           
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}.                 gen no = _n
+{txt}
+{com}.                 
+.                 gen temp0 = redistribution/6
+{txt}
+{com}.                 collapse y = temp0 (semean) b = temp0, by(treatment)
+{res}{txt}
+{com}.                 gen temp1 = 1 if treatment == "1luck"
+{txt}(5 missing values generated)
+
+{com}.                 replace temp1 = 2 if treatment == "2merit"
+{txt}(1 real change made)
+
+{com}.                 replace temp1 = 3 if treatment == "3edu"
+{txt}(1 real change made)
+
+{com}.                 replace temp1 = 4 if treatment == "4emp"
+{txt}(1 real change made)
+
+{com}.                 gen x = 2*temp1 -1
+{txt}(2 missing values generated)
+
+{com}.                 gen y_u = y + b
+{txt}
+{com}.                 gen y_l = y - b
+{txt}
+{com}.                 gen mean_string = string(y, "%3.2f")
+{txt}
+{com}.         
+.                 twoway (bar y x) ///
+>                         (rcap y_u y_l x,lcolor("black")) ///
+>                         (scatter y x, msym(none) mlab(mean_string) mlabsize(mediumlarge) mlabpos(1) mlabcolor(black)), ///
+>                         ytitle("Share Redistributed",margin(small)) ///
+>                         ylabel(0(0.1)0.5) ///
+>                         xlabel(1 "Luck" 3 "Merit" 5 "Random-Education" 7"Random-Employment" 8 ".", notick) ///
+>                         xtitle("") scheme(s1mono) legend(off) scale(0.9)
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{res}{txt}
+{com}.                 
+.                 graph export $folder/output/figures/figure1.pdf, replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/figures/figure1.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+
+{com}.                 
+. *------------------------------------   
+. *-> Figure A1: Distribution of share (labels manually added)
+. *------------------------------------   
+. 
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}.                 gen no = _n
+{txt}
+{com}.                 gen temp0 = redistribution
+{txt}
+{com}.                 gen temp1 = 1 if treatment == "1luck"
+{txt}(905 missing values generated)
+
+{com}.                 replace temp1 = 4 if treatment == "2merit"
+{txt}(169 real changes made)
+
+{com}.                 replace temp1 = 2 if treatment == "3edu"
+{txt}(170 real changes made)
+
+{com}.                 replace temp1 = 5 if treatment == "4emp"
+{txt}(171 real changes made)
+
+{com}.                 hist temp0, ///
+>                         discrete frac xlabel(0(1)6) ///
+>                         by(temp1,col(2) note("")) scheme(s1mono) ///
+>                         ytitle(Fraction) ylabel(0(0.2)0.8) ///
+>                         xtitle(Distribution) ///
+>                         xlabel(0 "(0,6)" 1 "(1,5)" 2 "(2,4)" 3"(3,3)" 4"(4,2)" 5"(5,1)" 6"(6,0)", ang(90)) ///
+>                         xsize(3) ysize(3)
+{res}{txt}
+{com}.                 
+.                 graph export $folder/output/figures/figureA1.pdf, replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/figures/figureA1.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+
+{com}. 
+.         
+. 
+. *------------------------------------   
+. *-> Figure A2: Share redistributed for subgroups
+. *------------------------------------           
+.                 
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}.                 gen no = _n
+{txt}
+{com}.                                 
+.                 gen temp0 = redistribution/6
+{txt}
+{com}.                 
+. ////////////////////////////////////////////////////////////VK : female vs. female1
+>                 collapse y = temp0 (semean) b = temp0, by(treatment female1)
+{res}{txt}
+{com}.                 gen temp1 = 1 if treatment == "1luck"
+{txt}(14 missing values generated)
+
+{com}.                 replace temp1 = 2 if treatment == "2merit"
+{txt}(3 real changes made)
+
+{com}.                 replace temp1 = 3 if treatment == "3edu"
+{txt}(2 real changes made)
+
+{com}.                 replace temp1 = 4 if treatment == "4emp"
+{txt}(3 real changes made)
+
+{com}.                 gen x1 = 3*temp1 - 0.6
+{txt}(6 missing values generated)
+
+{com}.                 gen x2 = 3*temp1 + 0.6
+{txt}(6 missing values generated)
+
+{com}.                 gen y_u = y + b
+{txt}(3 missing values generated)
+
+{com}.                 gen y_l = y - b
+{txt}(3 missing values generated)
+
+{com}.                 
+. ////////////////////////////////////////////////////////////VK : female vs. female1
+>         
+.                         gen mean_string = string(y, "%3.2f")
+{txt}
+{com}. 
+.         twoway (bar y x1 if female1==0, bcol(gs2)) ///
+>                     (bar y x2 if female1==1, bcol(gs12)) ///
+>                         (rcap y_u y_l x1 if female1==0,lcolor("black")) ///
+>                         (rcap y_u y_l x2 if female1==1,lcolor("black")) ///
+>                         (scatter y x1 if female1==0, msym(none) mlab(mean_string) mlabsize(mediumlarge) mlabpos(1) mlabcolor(black)) ///
+>                         (scatter y x2 if female1==1, msym(none) mlab(mean_string) mlabsize(mediumlarge) mlabpos(1) mlabcolor(black)), ///
+>                         ytitle("Share Redistributed",margin(small)) ///
+>                         ylabel(0(0.1)0.5) ///
+>                         xlabel(3 "Luck" 6 "Merit" 9 "Random-Education" 12 "Random-Employment") ///
+>                         xtitle("") scheme(s1mono) legend(order(1 "Male" 2 "Female") ring(0) pos(12)) xsize(2.5) ysize(1) title("Gender") scale(1.3)
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{res}{txt}
+{com}.                 
+.                 Graph save Graph "$folder/data/temp/1.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/data/temp/1.gph} saved
+
+{com}.                         
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}.                 gen no = _n
+{txt}
+{com}.                 
+.                 gen temp0 = redistribution/6
+{txt}
+{com}.                 collapse y = temp0 (semean) b = temp0, by(treatment highEdu)
+{res}{txt}
+{com}.                 gen temp1 = 1 if treatment == "1luck"
+{txt}(10 missing values generated)
+
+{com}.                 replace temp1 = 2 if treatment == "2merit"
+{txt}(2 real changes made)
+
+{com}.                 replace temp1 = 3 if treatment == "3edu"
+{txt}(2 real changes made)
+
+{com}.                 replace temp1 = 4 if treatment == "4emp"
+{txt}(2 real changes made)
+
+{com}.                 gen x1 = 3*temp1 - 0.6
+{txt}(4 missing values generated)
+
+{com}.                 gen x2 = 3*temp1 + 0.6
+{txt}(4 missing values generated)
+
+{com}.                 gen y_u = y + b
+{txt}
+{com}.                 gen y_l = y - b
+{txt}
+{com}.                         gen mean_string = string(y, "%3.2f")
+{txt}
+{com}. 
+.                 twoway (bar y x1 if highEdu==0, bcol(gs2)) ///
+>                     (bar y x2 if highEdu==1, bcol(gs12)) ///
+>                         (rcap y_u y_l x1 if highEdu==0,lcolor("black")) ///
+>                         (rcap y_u y_l x2 if highEdu==1,lcolor("black")) ///
+>                         (scatter y x1 if highEdu==0, msym(none) mlab(mean_string) mlabsize(mediumlarge) mlabpos(1) mlabcolor(black)) ///
+>                         (scatter y x2 if highEdu==1, msym(none) mlab(mean_string) mlabsize(mediumlarge) mlabpos(1) mlabcolor(black)), ///
+>                         ytitle("Share Redistributed",margin(small)) ///
+>                         ylabel(0(0.1)0.5) ///
+>                         xlabel(3 "Luck" 6 "Merit" 9 "Random-Education" 12 "Random-Employment" ) ///
+>                         xtitle("") scheme(s1mono) legend(order(1 "Low education" 2 "High education") ring(0) pos(12)) xsize(2.5) ysize(1) title("Education") scale(1.3)
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{res}{txt}
+{com}.                 
+.                 Graph save Graph "$folder/data/temp/2.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/data/temp/2.gph} saved
+
+{com}. 
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}.                 gen no = _n
+{txt}
+{com}.                 gen temp0 = redistribution/6
+{txt}
+{com}.                 collapse y = temp0 (semean) b = temp0, by(treatment highIncome)
+{res}{txt}
+{com}.                 gen temp1 = 1 if treatment == "1luck"
+{txt}(15 missing values generated)
+
+{com}.                 replace temp1 = 2 if treatment == "2merit"
+{txt}(3 real changes made)
+
+{com}.                 replace temp1 = 3 if treatment == "3edu"
+{txt}(3 real changes made)
+
+{com}.                 replace temp1 = 4 if treatment == "4emp"
+{txt}(3 real changes made)
+
+{com}.                 gen x1 = 3*temp1 - 0.6
+{txt}(6 missing values generated)
+
+{com}.                 gen x2 = 3*temp1 + 0.6
+{txt}(6 missing values generated)
+
+{com}.                 gen y_u = y + b
+{txt}
+{com}.                 gen y_l = y - b
+{txt}
+{com}.                         gen mean_string = string(y, "%3.2f")
+{txt}
+{com}. 
+.                 twoway (bar y x1 if highIncome==0, bcol(gs2)) ///
+>                     (bar y x2 if highIncome==1, bcol(gs12)) ///
+>                         (rcap y_u y_l x1 if highIncome==0,lcolor("black")) ///
+>                         (rcap y_u y_l x2 if highIncome==1,lcolor("black")) ///
+>                         (scatter y x1 if highIncome==0, msym(none) mlab(mean_string) mlabsize(mediumlarge) mlabpos(1) mlabcolor(black)) ///
+>                         (scatter y x2 if highIncome==1, msym(none) mlab(mean_string) mlabsize(mediumlarge) mlabpos(1) mlabcolor(black)), ///
+>                         ytitle("Share Redistributed",margin(small)) ///
+>                         ylabel(0(0.1)0.5) ///
+>                         xlabel(3 "Luck" 6 "Merit" 9 "Random-Education" 12 "Random-Employment" ) ///
+>                         xtitle("") scheme(s1mono) legend(order(1 "Low income" 2 "High income") ring(0) pos(12)) xsize(2.5) ysize(1) title("Income") scale(1.3)
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{res}{txt}
+{com}.                 
+.                 Graph save Graph "$folder/data/temp/3.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/data/temp/3.gph} saved
+
+{com}.                 
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}.                 gen no = _n
+{txt}
+{com}.                 gen temp0 = redistribution/6
+{txt}
+{com}.                 collapse y = temp0 (semean) b = temp0, by(treatment conservative)
+{res}{txt}
+{com}.                 gen temp1 = 1 if treatment == "1luck"
+{txt}(10 missing values generated)
+
+{com}.                 replace temp1 = 2 if treatment == "2merit"
+{txt}(2 real changes made)
+
+{com}.                 replace temp1 = 3 if treatment == "3edu"
+{txt}(2 real changes made)
+
+{com}.                 replace temp1 = 4 if treatment == "4emp"
+{txt}(2 real changes made)
+
+{com}.                 gen x1 = 3*temp1 - 0.6
+{txt}(4 missing values generated)
+
+{com}.                 gen x2 = 3*temp1 + 0.6
+{txt}(4 missing values generated)
+
+{com}.                 gen y_u = y + b
+{txt}
+{com}.                 gen y_l = y - b
+{txt}
+{com}.         
+. 
+.                 gen mean_string = string(y, "%3.2f")
+{txt}
+{com}.                 
+.                 twoway (bar y x1 if conservative==0, bcol(gs2)) ///
+>                     (bar y x2 if conservative==1, bcol(gs12)) ///
+>                         (rcap y_u y_l x1 if conservative==0,lcolor("black")) ///
+>                         (rcap y_u y_l x2 if conservative==1,lcolor("black")) ///
+>                         (scatter y x1 if conservative==0, msym(none) mlab(mean_string) mlabsize(mediumlarge) mlabpos(1) mlabcolor(black)) ///
+>                         (scatter y x2 if conservative==1, msym(none) mlab(mean_string) mlabsize(mediumlarge) mlabpos(1) mlabcolor(black)), ///
+>                         ytitle("Share Redistributed",margin(small)) ///
+>                         ylabel(0(0.1)0.5) ///
+>                         xlabel(3 "Luck" 6 "Merit" 9 "Random-Education" 12 "Random-Employment" ) ///
+>                         xtitle("") scheme(s1mono) legend(order(1 "Non-conservative" 2 "Conservative") ring(0) pos(12)) xsize(2.5) ysize(1) title("Political") scale(1.3)
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{res}{txt}
+{com}.                 
+.                 Graph save Graph "$folder/data/temp/4.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/data/temp/4.gph} saved
+
+{com}.                 
+.                 graph combine "$folder/data/temp/1.gph""$folder/data/temp/2.gph""$folder/data/temp/3.gph""$folder/data/temp/4.gph", ///
+>                 scheme(s1mono) cols(1) xsize(1) ysize(2) scale(0.6)
+{res}{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{res}{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{res}{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{res}{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{p 0 4 2}
+{txt}(note:  named style
+mediumlarge not found in class
+gsize,  default attributes used)
+{p_end}
+{res}{txt}
+{com}.                 
+.                 graph export $folder/output/figures/figureA2.pdf, replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/figures/figureA2.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+
+{com}. 
+. 
+. 
+.                 
+. *------------------------------------   
+. *-> Table A1: regression analysis
+. *------------------------------------                   
+. 
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}. 
+.                 egen temp1 = group(treatment)
+{txt}
+{com}.                 gen luck2 = (temp1==1)
+{txt}
+{com}.                 gen merit2 = (temp1==2)
+{txt}
+{com}.                 gen rEdu = (temp1==3)
+{txt}
+{com}.                 gen rEm = (temp1==4)
+{txt}
+{com}. 
+.                 gen temp0 = redistribution/6
+{txt}
+{com}.                 
+.                 keep if temp1 <= 4
+{txt}(395 observations deleted)
+
+{com}. 
+.                 eststo: reg temp0 merit2 rEdu rEm, vce(robust)
+
+{txt}Linear regression                               Number of obs     = {res}       666
+                                                {txt}F(3, 662)         =  {res}    40.69
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.1422
+                                                {txt}Root MSE          =    {res} .18353
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}merit2 {c |}{col 14}{res}{space 2}-.2051282{col 26}{space 2} .0192048{col 37}{space 1}  -10.68{col 46}{space 3}0.000{col 54}{space 4}-.2428378{col 67}{space 3}-.1674186
+{txt}{space 8}rEdu {c |}{col 14}{res}{space 2}-.0760181{col 26}{space 2} .0197624{col 37}{space 1}   -3.85{col 46}{space 3}0.000{col 54}{space 4}-.1148227{col 67}{space 3}-.0372135
+{txt}{space 9}rEm {c |}{col 14}{res}{space 2}-.1336032{col 26}{space 2} .0197542{col 37}{space 1}   -6.76{col 46}{space 3}0.000{col 54}{space 4}-.1723916{col 67}{space 3}-.0948149
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .4230769{col 26}{space 2}  .013158{col 37}{space 1}   32.15{col 46}{space 3}0.000{col 54}{space 4} .3972406{col 67}{space 3} .4489133
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est1{txt} stored)
+
+{com}.                 test merit2 = rEdu
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}merit2 - rEdu = 0{p_end}
+
+{txt}       F(  1,   662) ={res}   40.35
+{txt}{col 13}Prob > F ={res}    0.0000
+{txt}
+{com}.                 test merit2 = rEm
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}merit2 - rEm = 0{p_end}
+
+{txt}       F(  1,   662) ={res}   12.39
+{txt}{col 13}Prob > F ={res}    0.0005
+{txt}
+{com}.                 test rEdu = rEm
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}rEdu - rEm = 0{p_end}
+
+{txt}       F(  1,   662) ={res}    7.63
+{txt}{col 13}Prob > F ={res}    0.0059
+{txt}
+{com}.                 eststo: reg temp0 merit2 rEdu rEm female1 age1 highEdu highIncome conservative, vce(robust)
+
+{txt}Linear regression                               Number of obs     = {res}       641
+                                                {txt}F(8, 632)         =  {res}    19.21
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.1618
+                                                {txt}Root MSE          =    {res} .18179
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}merit2 {c |}{col 14}{res}{space 2}-.2014132{col 26}{space 2} .0194808{col 37}{space 1}  -10.34{col 46}{space 3}0.000{col 54}{space 4}-.2396681{col 67}{space 3}-.1631584
+{txt}{space 8}rEdu {c |}{col 14}{res}{space 2}-.0662624{col 26}{space 2} .0199542{col 37}{space 1}   -3.32{col 46}{space 3}0.001{col 54}{space 4} -.105447{col 67}{space 3}-.0270778
+{txt}{space 9}rEm {c |}{col 14}{res}{space 2}-.1273507{col 26}{space 2} .0199675{col 37}{space 1}   -6.38{col 46}{space 3}0.000{col 54}{space 4}-.1665614{col 67}{space 3}-.0881401
+{txt}{space 5}female1 {c |}{col 14}{res}{space 2} .0177271{col 26}{space 2} .0145549{col 37}{space 1}    1.22{col 46}{space 3}0.224{col 54}{space 4}-.0108548{col 67}{space 3}  .046309
+{txt}{space 8}age1 {c |}{col 14}{res}{space 2}  .000791{col 26}{space 2} .0004806{col 37}{space 1}    1.65{col 46}{space 3}0.100{col 54}{space 4}-.0001528{col 67}{space 3} .0017349
+{txt}{space 5}highEdu {c |}{col 14}{res}{space 2} .0403669{col 26}{space 2}  .023721{col 37}{space 1}    1.70{col 46}{space 3}0.089{col 54}{space 4}-.0062146{col 67}{space 3} .0869484
+{txt}{space 2}highIncome {c |}{col 14}{res}{space 2} -.021661{col 26}{space 2} .0164008{col 37}{space 1}   -1.32{col 46}{space 3}0.187{col 54}{space 4}-.0538677{col 67}{space 3} .0105458
+{txt}conservative {c |}{col 14}{res}{space 2}-.0490577{col 26}{space 2} .0183434{col 37}{space 1}   -2.67{col 46}{space 3}0.008{col 54}{space 4} -.085079{col 67}{space 3}-.0130364
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .3553151{col 26}{space 2} .0346389{col 37}{space 1}   10.26{col 46}{space 3}0.000{col 54}{space 4} .2872939{col 67}{space 3} .4233363
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est2{txt} stored)
+
+{com}.                 test merit2 = rEdu
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}merit2 - rEdu = 0{p_end}
+
+{txt}       F(  1,   632) ={res}   43.94
+{txt}{col 13}Prob > F ={res}    0.0000
+{txt}
+{com}.                 test merit2 = rEm
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}merit2 - rEm = 0{p_end}
+
+{txt}       F(  1,   632) ={res}   12.83
+{txt}{col 13}Prob > F ={res}    0.0004
+{txt}
+{com}.                 test rEdu = rEm
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}rEdu - rEm = 0{p_end}
+
+{txt}       F(  1,   632) ={res}    8.59
+{txt}{col 13}Prob > F ={res}    0.0035
+{txt}
+{com}.                 esttab, b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) brackets
+{res}
+{txt}{hline 44}
+{txt}                      (1)             (2)   
+{txt}                    temp0           temp0   
+{txt}{hline 44}
+{txt}merit2      {res}       -0.205***       -0.201***{txt}
+            {res} {ralign 12:{txt:[}0.019{txt:]}}    {ralign 12:{txt:[}0.019{txt:]}}   {txt}
+
+{txt}rEdu        {res}       -0.076***       -0.066***{txt}
+            {res} {ralign 12:{txt:[}0.020{txt:]}}    {ralign 12:{txt:[}0.020{txt:]}}   {txt}
+
+{txt}rEm         {res}       -0.134***       -0.127***{txt}
+            {res} {ralign 12:{txt:[}0.020{txt:]}}    {ralign 12:{txt:[}0.020{txt:]}}   {txt}
+
+{txt}female1     {res}                        0.018   {txt}
+            {res}                 {ralign 12:{txt:[}0.015{txt:]}}   {txt}
+
+{txt}age1        {res}                        0.001   {txt}
+            {res}                 {ralign 12:{txt:[}0.000{txt:]}}   {txt}
+
+{txt}highEdu     {res}                        0.040*  {txt}
+            {res}                 {ralign 12:{txt:[}0.024{txt:]}}   {txt}
+
+{txt}highIncome  {res}                       -0.022   {txt}
+            {res}                 {ralign 12:{txt:[}0.016{txt:]}}   {txt}
+
+{txt}conservative{res}                       -0.049***{txt}
+            {res}                 {ralign 12:{txt:[}0.018{txt:]}}   {txt}
+
+{txt}_cons       {res}        0.423***        0.355***{txt}
+            {res} {ralign 12:{txt:[}0.013{txt:]}}    {ralign 12:{txt:[}0.035{txt:]}}   {txt}
+{txt}{hline 44}
+{txt}N           {res}          666             641   {txt}
+{txt}{hline 44}
+{txt}Standard errors in brackets
+{txt}* p<0.10, ** p<0.05, *** p<0.01
+
+{com}.                 esttab using $folder/output/tables/tableA1.tex, replace b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) booktabs
+{res}{txt}(output written to {browse  `"C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/tables/tableA1.tex"'})
+
+{com}.                 eststo clear 
+{txt}
+{com}. 
+.                 
+. *------------------------------------   
+. *-> Table A2: regression analysis, multiple hypothesis test
+. *------------------------------------                   
+. 
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}. 
+.                 egen temp1 = group(treatment)
+{txt}
+{com}.                 gen luck2 = (temp1==1)
+{txt}
+{com}.                 gen merit2 = (temp1==2)
+{txt}
+{com}.                 gen rEdu = (temp1==3)
+{txt}
+{com}.                 gen rEm = (temp1==4)
+{txt}
+{com}. 
+.                 gen temp0 = redistribution/6
+{txt}
+{com}.                 
+.                 keep if temp1 <= 4
+{txt}(395 observations deleted)
+
+{com}. 
+.                 gen no = _n
+{txt}
+{com}.                 
+.                 //ssc install mhtreg
+.                 //ssc install moremata
+.                 
+.                 mhtreg (temp0 merit2 rEdu rEm) ///
+>                                 (temp0 rEdu merit2 rEm ) ///
+>                                 (temp0 rEm merit2 rEdu ) ///
+>                                 (temp0 rEdu luck2 rEm ) ///
+>                                 (temp0 rEm luck2 rEdu ) ///
+>                                 (temp0 rEdu merit2 luck2 ) ///
+>                                 , cluster(no) robust seed($seed)                
+{res}
+{txt}{space 0}{space 0}{ralign 12:}{space 1}{c |}{space 1}{ralign 9:hyp}{space 1}{space 1}{ralign 9:coef}{space 1}{space 1}{ralign 9:p}{space 1}{space 1}{ralign 9:pthm3_1}{space 1}{space 1}{ralign 9:pbonf}{space 1}{space 1}{ralign 9:pholm}{space 1}
+{space 0}{hline 13}{c   +}{hline 11}{hline 11}{hline 11}{hline 11}{hline 11}{hline 11}
+{space 0}{space 0}{ralign 12:r1}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf:-.2051282}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .002}}}{space 1}{space 1}{ralign 9:{res:{sf:     .002}}}{space 1}
+{space 0}{space 0}{ralign 12:r2}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        2}}}{space 1}{space 1}{ralign 9:{res:{sf:-.0760181}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .002}}}{space 1}{space 1}{ralign 9:{res:{sf:     .001}}}{space 1}
+{space 0}{space 0}{ralign 12:r3}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        3}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1336032}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .002}}}{space 1}{space 1}{ralign 9:{res:{sf: .0016667}}}{space 1}
+{space 0}{space 0}{ralign 12:r4}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        4}}}{space 1}{space 1}{ralign 9:{res:{sf: .1291101}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .002}}}{space 1}{space 1}{ralign 9:{res:{sf: .0013333}}}{space 1}
+{space 0}{space 0}{ralign 12:r5}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        5}}}{space 1}{space 1}{ralign 9:{res:{sf:  .071525}}}{space 1}{space 1}{ralign 9:{res:{sf:     .001}}}{space 1}{space 1}{ralign 9:{res:{sf: .0016667}}}{space 1}{space 1}{ralign 9:{res:{sf:     .006}}}{space 1}{space 1}{ralign 9:{res:{sf:     .002}}}{space 1}
+{space 0}{space 0}{ralign 12:r6}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        6}}}{space 1}{space 1}{ralign 9:{res:{sf: .0575851}}}{space 1}{space 1}{ralign 9:{res:{sf:     .006}}}{space 1}{space 1}{ralign 9:{res:{sf:     .006}}}{space 1}{space 1}{ralign 9:{res:{sf:     .036}}}{space 1}{space 1}{ralign 9:{res:{sf:     .006}}}{space 1}
+
+{com}.                 
+.                                 
+. *------------------------------------   
+. *-> Table A3: heterogeneity analysis, multiple hypothesis test
+. *------------------------------------                   
+.                 
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}. 
+.                 egen temp1 = group(treatment)
+{txt}
+{com}.                 gen luck2 = (temp1==1)
+{txt}
+{com}.                 gen merit2 = (temp1==2)
+{txt}
+{com}.                 gen rEdu = (temp1==3)
+{txt}
+{com}.                 gen rEm = (temp1==4)
+{txt}
+{com}. 
+.                 gen temp0 = redistribution/6
+{txt}
+{com}.                 
+.                 keep if temp1 <= 4
+{txt}(395 observations deleted)
+
+{com}. 
+.                 gen no = _n
+{txt}
+{com}.                 mhtreg (temp0 female1 merit2 rEdu rEm  age1 highEdu highIncome conservative) ///
+>                                 (temp0 highEdu merit2 rEdu rEm female1 age1  highIncome conservative) ///
+>                                 (temp0 highIncome merit2 rEdu rEm female1 age1 highEdu  conservative) ///
+>                                 (temp0 conservative merit2 rEdu rEm female1 age1 highEdu highIncome ) ///
+>                                 , cluster(no) robust seed($seed)
+{res}
+{txt}{space 0}{space 0}{ralign 12:}{space 1}{c |}{space 1}{ralign 9:hyp}{space 1}{space 1}{ralign 9:coef}{space 1}{space 1}{ralign 9:p}{space 1}{space 1}{ralign 9:pthm3_1}{space 1}{space 1}{ralign 9:pbonf}{space 1}{space 1}{ralign 9:pholm}{space 1}
+{space 0}{hline 13}{c   +}{hline 11}{hline 11}{hline 11}{hline 11}{hline 11}{hline 11}
+{space 0}{space 0}{ralign 12:r1}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf: .0177271}}}{space 1}{space 1}{ralign 9:{res:{sf:     .231}}}{space 1}{space 1}{ralign 9:{res:{sf:     .231}}}{space 1}{space 1}{ralign 9:{res:{sf:     .924}}}{space 1}{space 1}{ralign 9:{res:{sf:     .231}}}{space 1}
+{space 0}{space 0}{ralign 12:r2}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        2}}}{space 1}{space 1}{ralign 9:{res:{sf: .0403669}}}{space 1}{space 1}{ralign 9:{res:{sf: .1043333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .281}}}{space 1}{space 1}{ralign 9:{res:{sf: .4173333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .313}}}{space 1}
+{space 0}{space 0}{ralign 12:r3}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        3}}}{space 1}{space 1}{ralign 9:{res:{sf: -.021661}}}{space 1}{space 1}{ralign 9:{res:{sf:      .17}}}{space 1}{space 1}{ralign 9:{res:{sf: .3086667}}}{space 1}{space 1}{ralign 9:{res:{sf:      .68}}}{space 1}{space 1}{ralign 9:{res:{sf:      .34}}}{space 1}
+{space 0}{space 0}{ralign 12:r4}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        4}}}{space 1}{space 1}{ralign 9:{res:{sf:-.0490577}}}{space 1}{space 1}{ralign 9:{res:{sf:     .015}}}{space 1}{space 1}{ralign 9:{res:{sf: .0573333}}}{space 1}{space 1}{ralign 9:{res:{sf:      .06}}}{space 1}{space 1}{ralign 9:{res:{sf:      .06}}}{space 1}
+
+{com}. 
+. *------------------------------------   
+. *-> Table A4: Heterogeneity analysis 
+. *------------------------------------           
+. 
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}. 
+.                 gen temp0 = redistribution/6
+{txt}
+{com}.                 egen temp1 = group(treatment)
+{txt}
+{com}.                 gen luck2 = (temp1==1)
+{txt}
+{com}.                 gen merit2 = (temp1==2)
+{txt}
+{com}.                 gen rEdu = (temp1==3)
+{txt}
+{com}.                 gen rEm = (temp1==4)
+{txt}
+{com}.                 
+.                 keep if temp1 <= 4
+{txt}(395 observations deleted)
+
+{com}. 
+.                 gen merit_female = merit2 * female1
+{txt}(4 missing values generated)
+
+{com}.                 gen rEdu_female = rEdu * female1
+{txt}(4 missing values generated)
+
+{com}.                 gen rEm_female = rEm * female1
+{txt}(4 missing values generated)
+
+{com}. 
+.                 gen merit_highEdu = merit2 * highEdu
+{txt}
+{com}.                 gen rEdu_highEdu = rEdu * highEdu
+{txt}
+{com}.                 gen rEm_highEdu = rEm * highEdu
+{txt}
+{com}. 
+.                 gen merit_highIncome = merit2 * highIncome
+{txt}(23 missing values generated)
+
+{com}.                 gen rEdu_highIncome = rEdu * highIncome
+{txt}(23 missing values generated)
+
+{com}.                 gen rEm_highIncome = rEm * highIncome
+{txt}(23 missing values generated)
+
+{com}.                 
+.                 gen merit_conservative = merit2 * conservative
+{txt}
+{com}.                 gen rEdu_conservative = rEdu * conservative
+{txt}
+{com}.                 gen rEm_conservative = rEm * conservative
+{txt}
+{com}. 
+.                 eststo: reg temp0 merit2 rEdu rEm merit_female rEdu_female rEm_female female1, vce(robust)
+
+{txt}Linear regression                               Number of obs     = {res}       662
+                                                {txt}F(7, 654)         =  {res}    18.43
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.1450
+                                                {txt}Root MSE          =    {res} .18404
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}merit2 {c |}{col 14}{res}{space 2}-.1767868{col 26}{space 2} .0312458{col 37}{space 1}   -5.66{col 46}{space 3}0.000{col 54}{space 4} -.238141{col 67}{space 3}-.1154327
+{txt}{space 8}rEdu {c |}{col 14}{res}{space 2}-.0528898{col 26}{space 2} .0302117{col 37}{space 1}   -1.75{col 46}{space 3}0.080{col 54}{space 4}-.1122133{col 67}{space 3} .0064338
+{txt}{space 9}rEm {c |}{col 14}{res}{space 2}-.1097727{col 26}{space 2} .0320973{col 37}{space 1}   -3.42{col 46}{space 3}0.001{col 54}{space 4} -.172799{col 67}{space 3}-.0467464
+{txt}merit_female {c |}{col 14}{res}{space 2}-.0469088{col 26}{space 2} .0397316{col 37}{space 1}   -1.18{col 46}{space 3}0.238{col 54}{space 4}-.1249258{col 67}{space 3} .0311081
+{txt}{space 1}rEdu_female {c |}{col 14}{res}{space 2}-.0354355{col 26}{space 2} .0403988{col 37}{space 1}   -0.88{col 46}{space 3}0.381{col 54}{space 4}-.1147626{col 67}{space 3} .0438916
+{txt}{space 2}rEm_female {c |}{col 14}{res}{space 2} -.035553{col 26}{space 2} .0407989{col 37}{space 1}   -0.87{col 46}{space 3}0.384{col 54}{space 4}-.1156656{col 67}{space 3} .0445596
+{txt}{space 5}female1 {c |}{col 14}{res}{space 2} .0495559{col 26}{space 2} .0277273{col 37}{space 1}    1.79{col 46}{space 3}0.074{col 54}{space 4}-.0048894{col 67}{space 3} .1040012
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .3924731{col 26}{space 2} .0226593{col 37}{space 1}   17.32{col 46}{space 3}0.000{col 54}{space 4} .3479794{col 67}{space 3} .4369668
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est1{txt} stored)
+
+{com}.                 lincom merit2 + merit_female
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}merit2 + merit_female = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2}-.2236956{col 26}{space 2} .0245419{col 37}{space 1}   -9.11{col 46}{space 3}0.000{col 54}{space 4}-.2718861{col 67}{space 3}-.1755052
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.                 lincom rEdu + rEdu_female
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}rEdu + rEdu_female = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2}-.0883253{col 26}{space 2} .0268202{col 37}{space 1}   -3.29{col 46}{space 3}0.001{col 54}{space 4}-.1409893{col 67}{space 3}-.0356613
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.                 lincom rEm + rEm_female
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}rEm + rEm_female = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2}-.1453257{col 26}{space 2} .0251855{col 37}{space 1}   -5.77{col 46}{space 3}0.000{col 54}{space 4}-.1947798{col 67}{space 3}-.0958716
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+.                 eststo: reg temp0 merit2 rEdu rEm merit_highEdu rEdu_highEdu rEm_highEdu highEdu, vce(robust)
+
+{txt}Linear regression                               Number of obs     = {res}       666
+                                                {txt}F(7, 658)         =  {res}    19.09
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.1487
+                                                {txt}Root MSE          =    {res}  .1834
+
+{txt}{hline 14}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 15}{c |}{col 27}    Robust
+{col 1}        temp0{col 15}{c |} Coefficient{col 27}  std. err.{col 39}      t{col 47}   P>|t|{col 55}     [95% con{col 68}f. interval]
+{hline 14}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}merit2 {c |}{col 15}{res}{space 2}-.2088235{col 27}{space 2} .0602374{col 38}{space 1}   -3.47{col 47}{space 3}0.001{col 55}{space 4}-.3271041{col 68}{space 3}-.0905429
+{txt}{space 9}rEdu {c |}{col 15}{res}{space 2}-.1171569{col 27}{space 2}  .068303{col 38}{space 1}   -1.72{col 47}{space 3}0.087{col 55}{space 4} -.251275{col 68}{space 3} .0169612
+{txt}{space 10}rEm {c |}{col 15}{res}{space 2}-.1171569{col 27}{space 2}  .068303{col 38}{space 1}   -1.72{col 47}{space 3}0.087{col 55}{space 4} -.251275{col 68}{space 3} .0169612
+{txt}merit_highEdu {c |}{col 15}{res}{space 2} .0045601{col 27}{space 2} .0635716{col 38}{space 1}    0.07{col 47}{space 3}0.943{col 55}{space 4}-.1202676{col 68}{space 3} .1293878
+{txt}{space 1}rEdu_highEdu {c |}{col 15}{res}{space 2}  .046965{col 27}{space 2} .0712992{col 38}{space 1}    0.66{col 47}{space 3}0.510{col 55}{space 4}-.0930363{col 68}{space 3} .1869663
+{txt}{space 2}rEm_highEdu {c |}{col 15}{res}{space 2}-.0183109{col 27}{space 2} .0713323{col 38}{space 1}   -0.26{col 47}{space 3}0.797{col 55}{space 4}-.1583773{col 68}{space 3} .1217555
+{txt}{space 6}highEdu {c |}{col 15}{res}{space 2} .0347017{col 27}{space 2} .0519495{col 38}{space 1}    0.67{col 47}{space 3}0.504{col 55}{space 4}-.0673052{col 68}{space 3} .1367085
+{txt}{space 8}_cons {c |}{col 15}{res}{space 2} .3921569{col 27}{space 2} .0501794{col 38}{space 1}    7.82{col 47}{space 3}0.000{col 55}{space 4} .2936257{col 68}{space 3}  .490688
+{txt}{hline 14}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est2{txt} stored)
+
+{com}.                 lincom merit2 + merit_highEdu
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}merit2 + merit_highEdu = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2}-.2042634{col 26}{space 2} .0203177{col 37}{space 1}  -10.05{col 46}{space 3}0.000{col 54}{space 4}-.2441588{col 67}{space 3} -.164368
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.                 lincom rEdu + rEdu_highEdu
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}rEdu + rEdu_highEdu = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2}-.0701918{col 26}{space 2} .0204517{col 37}{space 1}   -3.43{col 46}{space 3}0.001{col 54}{space 4}-.1103503{col 67}{space 3}-.0300334
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.                 lincom rEm + rEm_highEdu
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}rEm + rEm_highEdu = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2}-.1354678{col 26}{space 2}  .020567{col 37}{space 1}   -6.59{col 46}{space 3}0.000{col 54}{space 4}-.1758526{col 67}{space 3} -.095083
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+.                 eststo: reg temp0 merit2 rEdu rEm merit_highIncome rEdu_highIncome rEm_highIncome highIncome, vce(robust)
+
+{txt}Linear regression                               Number of obs     = {res}       643
+                                                {txt}F(7, 635)         =  {res}    16.99
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.1422
+                                                {txt}Root MSE          =    {res} .18359
+
+{txt}{hline 17}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 18}{c |}{col 30}    Robust
+{col 1}           temp0{col 18}{c |} Coefficient{col 30}  std. err.{col 42}      t{col 50}   P>|t|{col 58}     [95% con{col 71}f. interval]
+{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}merit2 {c |}{col 18}{res}{space 2}-.2063831{col 30}{space 2} .0223591{col 41}{space 1}   -9.23{col 50}{space 3}0.000{col 58}{space 4}-.2502898{col 71}{space 3}-.1624765
+{txt}{space 12}rEdu {c |}{col 18}{res}{space 2}-.0655615{col 30}{space 2} .0223261{col 41}{space 1}   -2.94{col 50}{space 3}0.003{col 58}{space 4}-.1094034{col 71}{space 3}-.0217196
+{txt}{space 13}rEm {c |}{col 18}{res}{space 2}-.1347461{col 30}{space 2} .0238972{col 41}{space 1}   -5.64{col 50}{space 3}0.000{col 58}{space 4}-.1816732{col 71}{space 3}-.0878191
+{txt}merit_highIncome {c |}{col 18}{res}{space 2} .0170505{col 30}{space 2}   .04568{col 41}{space 1}    0.37{col 50}{space 3}0.709{col 58}{space 4}-.0726517{col 71}{space 3} .1067526
+{txt}{space 1}rEdu_highIncome {c |}{col 18}{res}{space 2}-.0178114{col 30}{space 2} .0482045{col 41}{space 1}   -0.37{col 50}{space 3}0.712{col 58}{space 4}-.1124709{col 71}{space 3}  .076848
+{txt}{space 2}rEm_highIncome {c |}{col 18}{res}{space 2}  .026219{col 30}{space 2} .0440717{col 41}{space 1}    0.59{col 50}{space 3}0.552{col 58}{space 4}-.0603249{col 71}{space 3} .1127629
+{txt}{space 6}highIncome {c |}{col 18}{res}{space 2}-.0250338{col 30}{space 2} .0320489{col 41}{space 1}   -0.78{col 50}{space 3}0.435{col 58}{space 4}-.0879685{col 71}{space 3} .0379009
+{txt}{space 11}_cons {c |}{col 18}{res}{space 2} .4281346{col 30}{space 2} .0151332{col 41}{space 1}   28.29{col 50}{space 3}0.000{col 58}{space 4} .3984174{col 71}{space 3} .4578517
+{txt}{hline 17}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est3{txt} stored)
+
+{com}.                 lincom merit2 + merit_highIncome
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}merit2 + merit_highIncome = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2}-.1893327{col 26}{space 2} .0398338{col 37}{space 1}   -4.75{col 46}{space 3}0.000{col 54}{space 4}-.2675546{col 67}{space 3}-.1111107
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.                 lincom rEdu + rEdu_highIncome
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}rEdu + rEdu_highIncome = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2}-.0833729{col 26}{space 2} .0427225{col 37}{space 1}   -1.95{col 46}{space 3}0.051{col 54}{space 4}-.1672674{col 67}{space 3} .0005217
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.                 lincom rEm + rEm_highIncome
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}rEm + rEm_highIncome = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2}-.1085271{col 26}{space 2} .0370302{col 37}{space 1}   -2.93{col 46}{space 3}0.004{col 54}{space 4}-.1812437{col 67}{space 3}-.0358106
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+.                 eststo: reg temp0 merit2 rEdu rEm merit_conservative rEdu_conservative rEm_conservative conservative, vce(robust)
+
+{txt}Linear regression                               Number of obs     = {res}       666
+                                                {txt}F(7, 658)         =  {res}    21.69
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.1560
+                                                {txt}Root MSE          =    {res} .18261
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 20}{c |}{col 32}    Robust
+{col 1}             temp0{col 20}{c |} Coefficient{col 32}  std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 12}merit2 {c |}{col 20}{res}{space 2}-.2024445{col 32}{space 2} .0206537{col 43}{space 1}   -9.80{col 52}{space 3}0.000{col 60}{space 4}-.2429997{col 73}{space 3}-.1618893
+{txt}{space 14}rEdu {c |}{col 20}{res}{space 2}-.0608723{col 32}{space 2} .0202444{col 43}{space 1}   -3.01{col 52}{space 3}0.003{col 60}{space 4}-.1006236{col 73}{space 3}-.0211209
+{txt}{space 15}rEm {c |}{col 20}{res}{space 2}-.1336895{col 32}{space 2} .0206577{col 43}{space 1}   -6.47{col 52}{space 3}0.000{col 60}{space 4}-.1742525{col 73}{space 3}-.0931266
+{txt}merit_conservative {c |}{col 20}{res}{space 2}-.0101704{col 32}{space 2} .0501824{col 43}{space 1}   -0.20{col 52}{space 3}0.839{col 60}{space 4}-.1087072{col 73}{space 3} .0883665
+{txt}{space 1}rEdu_conservative {c |}{col 20}{res}{space 2}-.0510165{col 32}{space 2} .0531965{col 43}{space 1}   -0.96{col 52}{space 3}0.338{col 60}{space 4}-.1554719{col 73}{space 3} .0534389
+{txt}{space 2}rEm_conservative {c |}{col 20}{res}{space 2}-.0078575{col 32}{space 2} .0543264{col 43}{space 1}   -0.14{col 52}{space 3}0.885{col 60}{space 4}-.1145316{col 73}{space 3} .0988165
+{txt}{space 6}conservative {c |}{col 20}{res}{space 2}-.0316682{col 32}{space 2}  .039278{col 43}{space 1}   -0.81{col 52}{space 3}0.420{col 60}{space 4}-.1087935{col 73}{space 3} .0454572
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}  .430791{col 32}{space 2} .0126022{col 43}{space 1}   34.18{col 52}{space 3}0.000{col 60}{space 4} .4060455{col 73}{space 3} .4555364
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est4{txt} stored)
+
+{com}.                 lincom merit2 + merit_conservative
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}merit2 + merit_conservative = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2}-.2126149{col 26}{space 2}  .045735{col 37}{space 1}   -4.65{col 46}{space 3}0.000{col 54}{space 4}-.3024191{col 67}{space 3}-.1228107
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.                 lincom rEdu + rEdu_conservative
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}rEdu + rEdu_conservative = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2}-.1118888{col 26}{space 2} .0491939{col 37}{space 1}   -2.27{col 46}{space 3}0.023{col 54}{space 4}-.2084847{col 67}{space 3}-.0152929
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.                 lincom rEm + rEm_conservative
+
+{p 0 7}{space 1}{text:( 1)}{space 1} {res}rEm + rEm_conservative = 0{p_end}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}(1) {c |}{col 14}{res}{space 2} -.141547{col 26}{space 2} .0502456{col 37}{space 1}   -2.82{col 46}{space 3}0.005{col 54}{space 4}-.2402081{col 67}{space 3} -.042886
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+.                 esttab, b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) brackets
+{res}
+{txt}{hline 76}
+{txt}                      (1)             (2)             (3)             (4)   
+{txt}                    temp0           temp0           temp0           temp0   
+{txt}{hline 76}
+{txt}merit2      {res}       -0.177***       -0.209***       -0.206***       -0.202***{txt}
+            {res} {ralign 12:{txt:[}0.031{txt:]}}    {ralign 12:{txt:[}0.060{txt:]}}    {ralign 12:{txt:[}0.022{txt:]}}    {ralign 12:{txt:[}0.021{txt:]}}   {txt}
+
+{txt}rEdu        {res}       -0.053*         -0.117*         -0.066***       -0.061***{txt}
+            {res} {ralign 12:{txt:[}0.030{txt:]}}    {ralign 12:{txt:[}0.068{txt:]}}    {ralign 12:{txt:[}0.022{txt:]}}    {ralign 12:{txt:[}0.020{txt:]}}   {txt}
+
+{txt}rEm         {res}       -0.110***       -0.117*         -0.135***       -0.134***{txt}
+            {res} {ralign 12:{txt:[}0.032{txt:]}}    {ralign 12:{txt:[}0.068{txt:]}}    {ralign 12:{txt:[}0.024{txt:]}}    {ralign 12:{txt:[}0.021{txt:]}}   {txt}
+
+{txt}merit_female{res}       -0.047                                                   {txt}
+            {res} {ralign 12:{txt:[}0.040{txt:]}}                                                   {txt}
+
+{txt}rEdu_female {res}       -0.035                                                   {txt}
+            {res} {ralign 12:{txt:[}0.040{txt:]}}                                                   {txt}
+
+{txt}rEm_female  {res}       -0.036                                                   {txt}
+            {res} {ralign 12:{txt:[}0.041{txt:]}}                                                   {txt}
+
+{txt}female1     {res}        0.050*                                                  {txt}
+            {res} {ralign 12:{txt:[}0.028{txt:]}}                                                   {txt}
+
+{txt}merit_high~u{res}                        0.005                                   {txt}
+            {res}                 {ralign 12:{txt:[}0.064{txt:]}}                                   {txt}
+
+{txt}rEdu_highEdu{res}                        0.047                                   {txt}
+            {res}                 {ralign 12:{txt:[}0.071{txt:]}}                                   {txt}
+
+{txt}rEm_highEdu {res}                       -0.018                                   {txt}
+            {res}                 {ralign 12:{txt:[}0.071{txt:]}}                                   {txt}
+
+{txt}highEdu     {res}                        0.035                                   {txt}
+            {res}                 {ralign 12:{txt:[}0.052{txt:]}}                                   {txt}
+
+{txt}merit_high~e{res}                                        0.017                   {txt}
+            {res}                                 {ralign 12:{txt:[}0.046{txt:]}}                   {txt}
+
+{txt}rEdu_highI~e{res}                                       -0.018                   {txt}
+            {res}                                 {ralign 12:{txt:[}0.048{txt:]}}                   {txt}
+
+{txt}rEm_highIn~e{res}                                        0.026                   {txt}
+            {res}                                 {ralign 12:{txt:[}0.044{txt:]}}                   {txt}
+
+{txt}highIncome  {res}                                       -0.025                   {txt}
+            {res}                                 {ralign 12:{txt:[}0.032{txt:]}}                   {txt}
+
+{txt}merit_cons~e{res}                                                       -0.010   {txt}
+            {res}                                                 {ralign 12:{txt:[}0.050{txt:]}}   {txt}
+
+{txt}rEdu_conse~e{res}                                                       -0.051   {txt}
+            {res}                                                 {ralign 12:{txt:[}0.053{txt:]}}   {txt}
+
+{txt}rEm_conser~e{res}                                                       -0.008   {txt}
+            {res}                                                 {ralign 12:{txt:[}0.054{txt:]}}   {txt}
+
+{txt}conservative{res}                                                       -0.032   {txt}
+            {res}                                                 {ralign 12:{txt:[}0.039{txt:]}}   {txt}
+
+{txt}_cons       {res}        0.392***        0.392***        0.428***        0.431***{txt}
+            {res} {ralign 12:{txt:[}0.023{txt:]}}    {ralign 12:{txt:[}0.050{txt:]}}    {ralign 12:{txt:[}0.015{txt:]}}    {ralign 12:{txt:[}0.013{txt:]}}   {txt}
+{txt}{hline 76}
+{txt}N           {res}          662             666             643             666   {txt}
+{txt}{hline 76}
+{txt}Standard errors in brackets
+{txt}* p<0.10, ** p<0.05, *** p<0.01
+
+{com}.                 esttab using $folder/output/tables/tableA4.tex, replace b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) booktabs
+{res}{txt}(output written to {browse  `"C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/tables/tableA4.tex"'})
+
+{com}.                 eststo clear    
+{txt}
+{com}. *------------------------------------   
+. *-> Table A5: heterogeneity analysis, multiple hypothesis test
+. *------------------------------------                   
+.                 
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}. 
+.                 egen temp1 = group(treatment)
+{txt}
+{com}.                 gen luck2 = (temp1==1)
+{txt}
+{com}.                 gen merit2 = (temp1==2)
+{txt}
+{com}.                 gen rEdu = (temp1==3)
+{txt}
+{com}.                 gen rEm = (temp1==4)
+{txt}
+{com}. 
+.                 gen temp0 = redistribution/6
+{txt}
+{com}.                 
+.                 keep if temp1 <= 4
+{txt}(395 observations deleted)
+
+{com}.         
+.                 gen no = _n
+{txt}
+{com}. 
+.                 mhtreg (temp0 merit2 rEdu rEm if female1==1) ///
+>                 (temp0 rEdu merit2 rEm if female1==1) ///
+>                 (temp0 rEm merit2 rEdu if female1==1) ///
+>                 (temp0 rEdu luck2 rEm if female1==1) ///
+>                 (temp0 rEm luck2 rEdu if female1==1) ///
+>                 (temp0 rEdu merit2 luck2 if female1==1) ///
+>                 (temp0 merit2 rEdu rEm if female1==0) ///
+>                 (temp0 rEdu merit2 rEm if female1==0) ///
+>                 (temp0 rEm merit2 rEdu if female1==0) ///
+>                 (temp0 rEdu luck2 rEm if female1==0) ///
+>                 (temp0 rEm luck2 rEdu if female1==0) ///
+>                 (temp0 rEdu merit2 luck2 if female1==0) ///
+>                 (temp0 merit2 rEdu rEm if highEdu==1) ///
+>                 (temp0 rEdu merit2 rEm if highEdu==1) ///
+>                 (temp0 rEm merit2 rEdu if highEdu==1) ///
+>                 (temp0 rEdu luck2 rEm if highEdu==1) ///
+>                 (temp0 rEm luck2 rEdu if highEdu==1) ///
+>                 (temp0 rEdu merit2 luck2 if highEdu==1) ///
+>                 (temp0 merit2 rEdu rEm if highEdu==0) ///
+>                 (temp0 rEdu merit2 rEm if highEdu==0) ///
+>                 (temp0 rEm merit2 rEdu if highEdu==0) ///
+>                 (temp0 rEdu luck2 rEm  if highEdu==0) ///
+>                 (temp0 rEm luck2 rEdu if highEdu==0) ///
+>                 (temp0 rEdu merit2 luck2 if highEdu==0) ///
+>                 (temp0 merit2 rEdu rEm if highIncome==1) ///
+>                 (temp0 rEdu merit2 rEm if highIncome==1) ///
+>                 (temp0 rEm merit2 rEdu if highIncome==1) ///
+>                 (temp0 rEdu luck2 rEm if highIncome==1) ///
+>                 (temp0 rEm luck2 rEdu if highIncome==1) ///
+>                 (temp0 rEdu merit2 luck2 if highIncome==1) ///
+>                 (temp0 merit2 rEdu rEm if highIncome==0) ///
+>                 (temp0 rEdu merit2 rEm if highIncome==0) ///
+>                 (temp0 rEm merit2 rEdu if highIncome==0) ///
+>                 (temp0 rEdu luck2 rEm if highIncome==0) ///
+>                 (temp0 rEm luck2 rEdu if highIncome==0) ///
+>                 (temp0 rEdu merit2 luck2 if highIncome==0) ///
+>                 (temp0 merit2 rEdu rEm if conservative==1) ///
+>                 (temp0 rEdu merit2 rEm if conservative==1) ///
+>                 (temp0 rEm merit2 rEdu if conservative==1) ///
+>                 (temp0 rEdu luck2 rEm if conservative==1) ///
+>                 (temp0 rEm luck2 rEdu if conservative==1) ///
+>                 (temp0 rEdu merit2 luck2 if conservative==1) ///
+>                 (temp0 merit2 rEdu rEm if conservative==0) ///
+>                 (temp0 rEdu merit2 rEm if conservative==0) ///
+>                 (temp0 rEm merit2 rEdu if conservative==0) ///
+>                 (temp0 rEdu luck2 rEm if conservative==0) ///
+>                 (temp0 rEm luck2 rEdu if conservative==0) ///
+>                 (temp0 rEdu merit2 luck2 if conservative==0) ///
+>                 , cluster(no) robust seed($seed)
+{res}
+{txt}{space 0}{space 0}{ralign 12:}{space 1}{c |}{space 1}{ralign 9:hyp}{space 1}{space 1}{ralign 9:coef}{space 1}{space 1}{ralign 9:p}{space 1}{space 1}{ralign 9:pthm3_1}{space 1}{space 1}{ralign 9:pbonf}{space 1}{space 1}{ralign 9:pholm}{space 1}
+{space 0}{hline 13}{c   +}{hline 11}{hline 11}{hline 11}{hline 11}{hline 11}{hline 11}
+{space 0}{space 0}{ralign 12:r1}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf:-.2236956}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf:     .014}}}{space 1}
+{space 0}{space 0}{ralign 12:r2}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        2}}}{space 1}{space 1}{ralign 9:{res:{sf:-.0883253}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0106667}}}{space 1}
+{space 0}{space 0}{ralign 12:r3}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        3}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1453257}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0126667}}}{space 1}
+{space 0}{space 0}{ralign 12:r4}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        4}}}{space 1}{space 1}{ralign 9:{res:{sf: .1353704}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0156667}}}{space 1}
+{space 0}{space 0}{ralign 12:r5}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        5}}}{space 1}{space 1}{ralign 9:{res:{sf:   .07837}}}{space 1}{space 1}{ralign 9:{res:{sf:     .006}}}{space 1}{space 1}{ralign 9:{res:{sf: .0913333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .288}}}{space 1}{space 1}{ralign 9:{res:{sf:      .12}}}{space 1}
+{space 0}{space 0}{ralign 12:r6}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        6}}}{space 1}{space 1}{ralign 9:{res:{sf: .0570004}}}{space 1}{space 1}{ralign 9:{res:{sf: .0443333}}}{space 1}{space 1}{ralign 9:{res:{sf: .3446667}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf:     .532}}}{space 1}
+{space 0}{space 0}{ralign 12:r7}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        7}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1767868}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0113333}}}{space 1}
+{space 0}{space 0}{ralign 12:r8}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        8}}}{space 1}{space 1}{ralign 9:{res:{sf:-.0528898}}}{space 1}{space 1}{ralign 9:{res:{sf: .0853333}}}{space 1}{space 1}{ralign 9:{res:{sf: .4703333}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf:     .768}}}{space 1}
+{space 0}{space 0}{ralign 12:r9}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        9}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1097727}}}{space 1}{space 1}{ralign 9:{res:{sf: .0013333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0266667}}}{space 1}{space 1}{ralign 9:{res:{sf:     .064}}}{space 1}{space 1}{ralign 9:{res:{sf: .0386667}}}{space 1}
+{space 0}{space 0}{ralign 12:r10}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       10}}}{space 1}{space 1}{ralign 9:{res:{sf: .1238971}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0153333}}}{space 1}
+{space 0}{space 0}{ralign 12:r11}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       11}}}{space 1}{space 1}{ralign 9:{res:{sf: .0670141}}}{space 1}{space 1}{ralign 9:{res:{sf: .0316667}}}{space 1}{space 1}{ralign 9:{res:{sf: .2983333}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf: .4433333}}}{space 1}
+{space 0}{space 0}{ralign 12:r12}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       12}}}{space 1}{space 1}{ralign 9:{res:{sf: .0568829}}}{space 1}{space 1}{ralign 9:{res:{sf: .0623333}}}{space 1}{space 1}{ralign 9:{res:{sf: .4256667}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf: .6856667}}}{space 1}
+{space 0}{space 0}{ralign 12:r13}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       13}}}{space 1}{space 1}{ralign 9:{res:{sf:-.2042634}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf:     .011}}}{space 1}
+{space 0}{space 0}{ralign 12:r14}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       14}}}{space 1}{space 1}{ralign 9:{res:{sf:-.0701918}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0103333}}}{space 1}
+{space 0}{space 0}{ralign 12:r15}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       15}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1354678}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}
+{space 0}{space 0}{ralign 12:r16}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       16}}}{space 1}{space 1}{ralign 9:{res:{sf: .1340716}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf:     .012}}}{space 1}
+{space 0}{space 0}{ralign 12:r17}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       17}}}{space 1}{space 1}{ralign 9:{res:{sf: .0687956}}}{space 1}{space 1}{ralign 9:{res:{sf: .0016667}}}{space 1}{space 1}{ralign 9:{res:{sf: .0336667}}}{space 1}{space 1}{ralign 9:{res:{sf:      .08}}}{space 1}{space 1}{ralign 9:{res:{sf: .0466667}}}{space 1}
+{space 0}{space 0}{ralign 12:r18}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       18}}}{space 1}{space 1}{ralign 9:{res:{sf: .0652759}}}{space 1}{space 1}{ralign 9:{res:{sf: .0023333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .045}}}{space 1}{space 1}{ralign 9:{res:{sf:     .112}}}{space 1}{space 1}{ralign 9:{res:{sf: .0606667}}}{space 1}
+{space 0}{space 0}{ralign 12:r19}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       19}}}{space 1}{space 1}{ralign 9:{res:{sf:-.2088235}}}{space 1}{space 1}{ralign 9:{res:{sf:     .009}}}{space 1}{space 1}{ralign 9:{res:{sf:     .121}}}{space 1}{space 1}{ralign 9:{res:{sf:     .432}}}{space 1}{space 1}{ralign 9:{res:{sf:     .162}}}{space 1}
+{space 0}{space 0}{ralign 12:r20}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       20}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1171569}}}{space 1}{space 1}{ralign 9:{res:{sf: .1083333}}}{space 1}{space 1}{ralign 9:{res:{sf: .5073333}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf: .8666667}}}{space 1}
+{space 0}{space 0}{ralign 12:r21}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       21}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1171569}}}{space 1}{space 1}{ralign 9:{res:{sf: .1086667}}}{space 1}{space 1}{ralign 9:{res:{sf: .4813333}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf: .7606667}}}{space 1}
+{space 0}{space 0}{ralign 12:r22}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       22}}}{space 1}{space 1}{ralign 9:{res:{sf: .0916667}}}{space 1}{space 1}{ralign 9:{res:{sf:     .121}}}{space 1}{space 1}{ralign 9:{res:{sf: .4243333}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf:     .605}}}{space 1}
+{space 0}{space 0}{ralign 12:r23}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       23}}}{space 1}{space 1}{ralign 9:{res:{sf: .0916667}}}{space 1}{space 1}{ralign 9:{res:{sf: .1236667}}}{space 1}{space 1}{ralign 9:{res:{sf: .3806667}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf: .4946667}}}{space 1}
+{space 0}{space 0}{ralign 12:r24}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       24}}}{space 1}{space 1}{ralign 9:{res:{sf:-2.22e-16}}}{space 1}{space 1}{ralign 9:{res:{sf: .9993333}}}{space 1}{space 1}{ralign 9:{res:{sf: .9993333}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf: .9993333}}}{space 1}
+{space 0}{space 0}{ralign 12:r25}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       25}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1893327}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf:     .015}}}{space 1}
+{space 0}{space 0}{ralign 12:r26}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       26}}}{space 1}{space 1}{ralign 9:{res:{sf:-.0833729}}}{space 1}{space 1}{ralign 9:{res:{sf:     .063}}}{space 1}{space 1}{ralign 9:{res:{sf: .4023333}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf:      .63}}}{space 1}
+{space 0}{space 0}{ralign 12:r27}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       27}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1085271}}}{space 1}{space 1}{ralign 9:{res:{sf: .0053333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .085}}}{space 1}{space 1}{ralign 9:{res:{sf:     .256}}}{space 1}{space 1}{ralign 9:{res:{sf:     .112}}}{space 1}
+{space 0}{space 0}{ralign 12:r28}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       28}}}{space 1}{space 1}{ralign 9:{res:{sf: .1059598}}}{space 1}{space 1}{ralign 9:{res:{sf:     .015}}}{space 1}{space 1}{ralign 9:{res:{sf: .1863333}}}{space 1}{space 1}{ralign 9:{res:{sf:      .72}}}{space 1}{space 1}{ralign 9:{res:{sf:     .255}}}{space 1}
+{space 0}{space 0}{ralign 12:r29}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       29}}}{space 1}{space 1}{ralign 9:{res:{sf: .0808055}}}{space 1}{space 1}{ralign 9:{res:{sf:     .033}}}{space 1}{space 1}{ralign 9:{res:{sf: .2923333}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf:     .429}}}{space 1}
+{space 0}{space 0}{ralign 12:r30}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       30}}}{space 1}{space 1}{ralign 9:{res:{sf: .0251542}}}{space 1}{space 1}{ralign 9:{res:{sf: .5336667}}}{space 1}{space 1}{ralign 9:{res:{sf: .7906667}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}
+{space 0}{space 0}{ralign 12:r31}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       31}}}{space 1}{space 1}{ralign 9:{res:{sf:-.2063831}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0123333}}}{space 1}
+{space 0}{space 0}{ralign 12:r32}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       32}}}{space 1}{space 1}{ralign 9:{res:{sf:-.0655615}}}{space 1}{space 1}{ralign 9:{res:{sf: .0033333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .059}}}{space 1}{space 1}{ralign 9:{res:{sf:      .16}}}{space 1}{space 1}{ralign 9:{res:{sf: .0766667}}}{space 1}
+{space 0}{space 0}{ralign 12:r33}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       33}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1347461}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0116667}}}{space 1}
+{space 0}{space 0}{ralign 12:r34}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       34}}}{space 1}{space 1}{ralign 9:{res:{sf: .1408217}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0136667}}}{space 1}
+{space 0}{space 0}{ralign 12:r35}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       35}}}{space 1}{space 1}{ralign 9:{res:{sf:  .071637}}}{space 1}{space 1}{ralign 9:{res:{sf:     .003}}}{space 1}{space 1}{ralign 9:{res:{sf: .0553333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .144}}}{space 1}{space 1}{ralign 9:{res:{sf:     .072}}}{space 1}
+{space 0}{space 0}{ralign 12:r36}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       36}}}{space 1}{space 1}{ralign 9:{res:{sf: .0691847}}}{space 1}{space 1}{ralign 9:{res:{sf: .0043333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0736667}}}{space 1}{space 1}{ralign 9:{res:{sf:     .208}}}{space 1}{space 1}{ralign 9:{res:{sf: .0953333}}}{space 1}
+{space 0}{space 0}{ralign 12:r37}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       37}}}{space 1}{space 1}{ralign 9:{res:{sf:-.2126149}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0133333}}}{space 1}
+{space 0}{space 0}{ralign 12:r38}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       38}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1118888}}}{space 1}{space 1}{ralign 9:{res:{sf:     .023}}}{space 1}{space 1}{ralign 9:{res:{sf: .2426667}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf:     .345}}}{space 1}
+{space 0}{space 0}{ralign 12:r39}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       39}}}{space 1}{space 1}{ralign 9:{res:{sf: -.141547}}}{space 1}{space 1}{ralign 9:{res:{sf: .0066667}}}{space 1}{space 1}{ralign 9:{res:{sf: .0963333}}}{space 1}{space 1}{ralign 9:{res:{sf:      .32}}}{space 1}{space 1}{ralign 9:{res:{sf: .1266667}}}{space 1}
+{space 0}{space 0}{ralign 12:r40}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       40}}}{space 1}{space 1}{ralign 9:{res:{sf: .1007261}}}{space 1}{space 1}{ralign 9:{res:{sf: .0216667}}}{space 1}{space 1}{ralign 9:{res:{sf: .2443333}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf: .3466667}}}{space 1}
+{space 0}{space 0}{ralign 12:r41}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       41}}}{space 1}{space 1}{ralign 9:{res:{sf: .0710678}}}{space 1}{space 1}{ralign 9:{res:{sf: .1116667}}}{space 1}{space 1}{ralign 9:{res:{sf: .4456667}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf:      .67}}}{space 1}
+{space 0}{space 0}{ralign 12:r42}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       42}}}{space 1}{space 1}{ralign 9:{res:{sf: .0296583}}}{space 1}{space 1}{ralign 9:{res:{sf: .5306667}}}{space 1}{space 1}{ralign 9:{res:{sf:       .9}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}
+{space 0}{space 0}{ralign 12:r43}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       43}}}{space 1}{space 1}{ralign 9:{res:{sf:-.2024445}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0143333}}}{space 1}
+{space 0}{space 0}{ralign 12:r44}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       44}}}{space 1}{space 1}{ralign 9:{res:{sf:-.0608723}}}{space 1}{space 1}{ralign 9:{res:{sf:     .002}}}{space 1}{space 1}{ralign 9:{res:{sf: .0396667}}}{space 1}{space 1}{ralign 9:{res:{sf:     .096}}}{space 1}{space 1}{ralign 9:{res:{sf:     .054}}}{space 1}
+{space 0}{space 0}{ralign 12:r45}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       45}}}{space 1}{space 1}{ralign 9:{res:{sf:-.1336895}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf: .0146667}}}{space 1}
+{space 0}{space 0}{ralign 12:r46}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       46}}}{space 1}{space 1}{ralign 9:{res:{sf: .1415722}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf: .0003333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .016}}}{space 1}{space 1}{ralign 9:{res:{sf:     .013}}}{space 1}
+{space 0}{space 0}{ralign 12:r47}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       47}}}{space 1}{space 1}{ralign 9:{res:{sf:  .068755}}}{space 1}{space 1}{ralign 9:{res:{sf: .0026667}}}{space 1}{space 1}{ralign 9:{res:{sf: .0503333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .128}}}{space 1}{space 1}{ralign 9:{res:{sf: .0666667}}}{space 1}
+{space 0}{space 0}{ralign 12:r48}{space 1}{c |}{space 1}{ralign 9:{res:{sf:       48}}}{space 1}{space 1}{ralign 9:{res:{sf: .0728172}}}{space 1}{space 1}{ralign 9:{res:{sf: .0013333}}}{space 1}{space 1}{ralign 9:{res:{sf:     .027}}}{space 1}{space 1}{ralign 9:{res:{sf:     .064}}}{space 1}{space 1}{ralign 9:{res:{sf:      .04}}}{space 1}
+
+{com}.                         
+. 
+. 
+. 
+. *------------------------------------   
+. *-> Table B1: Information effect
+. *------------------------------------   
+. 
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}. 
+.                 egen temp1 = group(treatment)
+{txt}
+{com}.                 gen rEdu = (temp1==3)
+{txt}
+{com}.                 gen rEm = (temp1==4)
+{txt}
+{com}.                 gen infoEdu = (temp1==5)
+{txt}
+{com}.                 gen infoEm = (temp1==6)
+{txt}
+{com}.                 keep if temp1 > 2
+{txt}(325 observations deleted)
+
+{com}.                 gen temp0 = redistribution/6
+{txt}
+{com}. 
+.                 gen isTick = (tickYN_educ == "Go to the 3-digit code task to try to learn the information")
+{txt}
+{com}.                 replace isTick = 1 if tickYN_employ == "Go to the 3-digit code task to try to learn the information"
+{txt}(108 real changes made)
+
+{com}.                 gen uninform = (tickNum < 20 & infoEdu==1) 
+{txt}
+{com}.                 replace uninform = 1 if tickNum < 20 & infoEm==1
+{txt}(104 real changes made)
+
+{com}.                 
+.                 
+. ////////////////////////////////////////////////////////////VK
+> // tab uninform  if tickNum == . & infoEdu==1
+. ////////////////////////////////////////////////////////////VK
+> 
+. 
+.                 bys treatment: sum isTick uninform
+
+{txt}{hline}
+-> treatment = 3edu
+
+    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 6}isTick {c |}{res}        170           0           0          0          0
+{txt}{space 4}uninform {c |}{res}        170           0           0          0          0
+
+{txt}{hline}
+-> treatment = 4emp
+
+    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 6}isTick {c |}{res}        171           0           0          0          0
+{txt}{space 4}uninform {c |}{res}        171           0           0          0          0
+
+{txt}{hline}
+-> treatment = 5info_educ
+
+    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 6}isTick {c |}{res}        194    .5824742     .494427          0          1
+{txt}{space 4}uninform {c |}{res}        194    .4793814    .5008673          0          1
+
+{txt}{hline}
+-> treatment = 6info_emp
+
+    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 6}isTick {c |}{res}        201    .5373134    .4998507          0          1
+{txt}{space 4}uninform {c |}{res}        201    .5174129    .5009444          0          1
+
+{txt}
+{com}. 
+. 
+.                 eststo: reg temp0 infoEdu uninform if rEdu==1 | infoEdu==1, vce(robust)
+
+{txt}Linear regression                               Number of obs     = {res}       364
+                                                {txt}F(2, 361)         =  {res}     1.46
+                                                {txt}Prob > F          = {res}    0.2338
+                                                {txt}R-squared         = {res}    0.0077
+                                                {txt}Root MSE          =    {res} .18426
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}infoEdu {c |}{col 14}{res}{space 2} .0374296{col 26}{space 2}  .023011{col 37}{space 1}    1.63{col 46}{space 3}0.105{col 54}{space 4}-.0078228{col 67}{space 3}  .082682
+{txt}{space 4}uninform {c |}{col 14}{res}{space 2} -.033234{col 26}{space 2} .0253949{col 37}{space 1}   -1.31{col 46}{space 3}0.191{col 54}{space 4}-.0831745{col 67}{space 3} .0167066
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .3470588{col 26}{space 2} .0147618{col 37}{space 1}   23.51{col 46}{space 3}0.000{col 54}{space 4} .3180288{col 67}{space 3} .3760888
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est1{txt} stored)
+
+{com}.                 eststo: reg temp0 infoEdu uninform female1 age1 highEdu highIncome conservative if rEdu==1 | infoEdu==1, vce(robust)
+
+{txt}Linear regression                               Number of obs     = {res}       354
+                                                {txt}F(7, 346)         =  {res}     2.42
+                                                {txt}Prob > F          = {res}    0.0196
+                                                {txt}R-squared         = {res}    0.0485
+                                                {txt}Root MSE          =    {res} .18161
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}infoEdu {c |}{col 14}{res}{space 2} .0339514{col 26}{space 2} .0236138{col 37}{space 1}    1.44{col 46}{space 3}0.151{col 54}{space 4}-.0124932{col 67}{space 3} .0803961
+{txt}{space 4}uninform {c |}{col 14}{res}{space 2}-.0398498{col 26}{space 2} .0254464{col 37}{space 1}   -1.57{col 46}{space 3}0.118{col 54}{space 4} -.089899{col 67}{space 3} .0101993
+{txt}{space 5}female1 {c |}{col 14}{res}{space 2}  .006304{col 26}{space 2} .0198674{col 37}{space 1}    0.32{col 46}{space 3}0.751{col 54}{space 4} -.032772{col 67}{space 3} .0453801
+{txt}{space 8}age1 {c |}{col 14}{res}{space 2} -.000021{col 26}{space 2}  .000607{col 37}{space 1}   -0.03{col 46}{space 3}0.972{col 54}{space 4} -.001215{col 67}{space 3} .0011729
+{txt}{space 5}highEdu {c |}{col 14}{res}{space 2} .0505102{col 26}{space 2} .0330806{col 37}{space 1}    1.53{col 46}{space 3}0.128{col 54}{space 4}-.0145542{col 67}{space 3} .1155745
+{txt}{space 2}highIncome {c |}{col 14}{res}{space 2}-.0269507{col 26}{space 2} .0228091{col 37}{space 1}   -1.18{col 46}{space 3}0.238{col 54}{space 4}-.0718126{col 67}{space 3} .0179111
+{txt}conservative {c |}{col 14}{res}{space 2}-.0656035{col 26}{space 2} .0233887{col 37}{space 1}   -2.80{col 46}{space 3}0.005{col 54}{space 4}-.1116053{col 67}{space 3}-.0196016
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  .330085{col 26}{space 2} .0417171{col 37}{space 1}    7.91{col 46}{space 3}0.000{col 54}{space 4}  .248034{col 67}{space 3}  .412136
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est2{txt} stored)
+
+{com}.                 eststo: reg temp0 infoEm uninform if rEm==1 | infoEm==1, vce(robust)
+
+{txt}Linear regression                               Number of obs     = {res}       372
+                                                {txt}F(2, 369)         =  {res}     1.04
+                                                {txt}Prob > F          = {res}    0.3533
+                                                {txt}R-squared         = {res}    0.0057
+                                                {txt}Root MSE          =    {res} .18895
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}infoEm {c |}{col 14}{res}{space 2} .0318322{col 26}{space 2} .0242502{col 37}{space 1}    1.31{col 46}{space 3}0.190{col 54}{space 4}-.0158538{col 67}{space 3} .0795182
+{txt}{space 4}uninform {c |}{col 14}{res}{space 2}-.0072033{col 26}{space 2} .0262296{col 37}{space 1}   -0.27{col 46}{space 3}0.784{col 54}{space 4}-.0587815{col 67}{space 3} .0443749
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .2894737{col 26}{space 2} .0147494{col 37}{space 1}   19.63{col 46}{space 3}0.000{col 54}{space 4} .2604702{col 67}{space 3} .3184771
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est3{txt} stored)
+
+{com}.                 eststo: reg temp0 infoEm uninform female1 age1 highEdu highIncome conservative if rEm==1 | infoEm==1, vce(robust)
+
+{txt}Linear regression                               Number of obs     = {res}       356
+                                                {txt}F(7, 348)         =  {res}     0.57
+                                                {txt}Prob > F          = {res}    0.7783
+                                                {txt}R-squared         = {res}    0.0102
+                                                {txt}Root MSE          =    {res} .18936
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}       temp0{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}infoEm {c |}{col 14}{res}{space 2} .0283124{col 26}{space 2} .0249135{col 37}{space 1}    1.14{col 46}{space 3}0.257{col 54}{space 4}-.0206876{col 67}{space 3} .0773125
+{txt}{space 4}uninform {c |}{col 14}{res}{space 2}-.0100441{col 26}{space 2} .0273896{col 37}{space 1}   -0.37{col 46}{space 3}0.714{col 54}{space 4}-.0639142{col 67}{space 3}  .043826
+{txt}{space 5}female1 {c |}{col 14}{res}{space 2}  .001642{col 26}{space 2} .0202256{col 37}{space 1}    0.08{col 46}{space 3}0.935{col 54}{space 4}-.0381379{col 67}{space 3} .0414219
+{txt}{space 8}age1 {c |}{col 14}{res}{space 2} .0000212{col 26}{space 2} .0007395{col 37}{space 1}    0.03{col 46}{space 3}0.977{col 54}{space 4}-.0014331{col 67}{space 3} .0014756
+{txt}{space 5}highEdu {c |}{col 14}{res}{space 2} .0309584{col 26}{space 2} .0320856{col 37}{space 1}    0.96{col 46}{space 3}0.335{col 54}{space 4}-.0321476{col 67}{space 3} .0940644
+{txt}{space 2}highIncome {c |}{col 14}{res}{space 2}-.0081809{col 26}{space 2} .0214053{col 37}{space 1}   -0.38{col 46}{space 3}0.703{col 54}{space 4} -.050281{col 67}{space 3} .0339192
+{txt}conservative {c |}{col 14}{res}{space 2}-.0284244{col 26}{space 2} .0262224{col 37}{space 1}   -1.08{col 46}{space 3}0.279{col 54}{space 4}-.0799987{col 67}{space 3} .0231499
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .2723587{col 26}{space 2} .0461165{col 37}{space 1}    5.91{col 46}{space 3}0.000{col 54}{space 4} .1816566{col 67}{space 3} .3630607
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est4{txt} stored)
+
+{com}.                 esttab, b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) brackets
+{res}
+{txt}{hline 76}
+{txt}                      (1)             (2)             (3)             (4)   
+{txt}                    temp0           temp0           temp0           temp0   
+{txt}{hline 76}
+{txt}infoEdu     {res}        0.037           0.034                                   {txt}
+            {res} {ralign 12:{txt:[}0.023{txt:]}}    {ralign 12:{txt:[}0.024{txt:]}}                                   {txt}
+
+{txt}uninform    {res}       -0.033          -0.040          -0.007          -0.010   {txt}
+            {res} {ralign 12:{txt:[}0.025{txt:]}}    {ralign 12:{txt:[}0.025{txt:]}}    {ralign 12:{txt:[}0.026{txt:]}}    {ralign 12:{txt:[}0.027{txt:]}}   {txt}
+
+{txt}female1     {res}                        0.006                           0.002   {txt}
+            {res}                 {ralign 12:{txt:[}0.020{txt:]}}                    {ralign 12:{txt:[}0.020{txt:]}}   {txt}
+
+{txt}age1        {res}                       -0.000                           0.000   {txt}
+            {res}                 {ralign 12:{txt:[}0.001{txt:]}}                    {ralign 12:{txt:[}0.001{txt:]}}   {txt}
+
+{txt}highEdu     {res}                        0.051                           0.031   {txt}
+            {res}                 {ralign 12:{txt:[}0.033{txt:]}}                    {ralign 12:{txt:[}0.032{txt:]}}   {txt}
+
+{txt}highIncome  {res}                       -0.027                          -0.008   {txt}
+            {res}                 {ralign 12:{txt:[}0.023{txt:]}}                    {ralign 12:{txt:[}0.021{txt:]}}   {txt}
+
+{txt}conservative{res}                       -0.066***                       -0.028   {txt}
+            {res}                 {ralign 12:{txt:[}0.023{txt:]}}                    {ralign 12:{txt:[}0.026{txt:]}}   {txt}
+
+{txt}infoEm      {res}                                        0.032           0.028   {txt}
+            {res}                                 {ralign 12:{txt:[}0.024{txt:]}}    {ralign 12:{txt:[}0.025{txt:]}}   {txt}
+
+{txt}_cons       {res}        0.347***        0.330***        0.289***        0.272***{txt}
+            {res} {ralign 12:{txt:[}0.015{txt:]}}    {ralign 12:{txt:[}0.042{txt:]}}    {ralign 12:{txt:[}0.015{txt:]}}    {ralign 12:{txt:[}0.046{txt:]}}   {txt}
+{txt}{hline 76}
+{txt}N           {res}          364             354             372             356   {txt}
+{txt}{hline 76}
+{txt}Standard errors in brackets
+{txt}* p<0.10, ** p<0.05, *** p<0.01
+
+{com}.                 esttab using $folder/output/tables/tableB1.tex, replace b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) booktabs
+{res}{txt}(output written to {browse  `"C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/output/tables/tableB1.tex"'})
+
+{com}.                 eststo clear
+{txt}
+{com}. 
+. *------------------------------------   
+. *-> Table B2: Information effect, multiple hypothesis test
+. *------------------------------------   
+.                 use $folder/data/processed/spectator_main.dta, clear
+{txt}
+{com}. 
+.                 egen temp1 = group(treatment)
+{txt}
+{com}.                 gen rEdu = (temp1==3)
+{txt}
+{com}.                 gen rEm = (temp1==4)
+{txt}
+{com}.                 gen infoEdu = (temp1==5)
+{txt}
+{com}.                 gen infoEm = (temp1==6)
+{txt}
+{com}.                 keep if temp1 > 2
+{txt}(325 observations deleted)
+
+{com}.                 gen temp0 = redistribution/6
+{txt}
+{com}.                 
+.                 gen inform = (tickNum >= 20)
+{txt}
+{com}.                 replace inform = 0 if rEdu==1 | rEm==1
+{txt}(341 real changes made)
+
+{com}.                 
+.                 gen uninform = (tickNum < 20 & infoEdu==1)
+{txt}
+{com}.                 replace uninform = 1 if tickNum < 20 & infoEm==1
+{txt}(104 real changes made)
+
+{com}.                 
+.                 gen no = _n
+{txt}
+{com}. 
+.                 mhtreg (temp0 inform uninform if rEdu==1 | infoEdu==1) ///
+>                 (temp0 uninform inform if rEdu==1 | infoEdu==1) ///
+>                 (temp0 inform uninform if rEm==1 | infoEm==1) ///
+>                 (temp0 uninform inform if rEm==1 | infoEm==1) ///
+>                 , cluster(no) robust seed($seed)
+{res}
+{txt}{space 0}{space 0}{ralign 12:}{space 1}{c |}{space 1}{ralign 9:hyp}{space 1}{space 1}{ralign 9:coef}{space 1}{space 1}{ralign 9:p}{space 1}{space 1}{ralign 9:pthm3_1}{space 1}{space 1}{ralign 9:pbonf}{space 1}{space 1}{ralign 9:pholm}{space 1}
+{space 0}{hline 13}{c   +}{hline 11}{hline 11}{hline 11}{hline 11}{hline 11}{hline 11}
+{space 0}{space 0}{ralign 12:r1}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf: .0374296}}}{space 1}{space 1}{ralign 9:{res:{sf: .1046667}}}{space 1}{space 1}{ralign 9:{res:{sf: .3403333}}}{space 1}{space 1}{ralign 9:{res:{sf: .4186667}}}{space 1}{space 1}{ralign 9:{res:{sf: .4186667}}}{space 1}
+{space 0}{space 0}{ralign 12:r2}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        2}}}{space 1}{space 1}{ralign 9:{res:{sf: .0041957}}}{space 1}{space 1}{ralign 9:{res:{sf: .8506667}}}{space 1}{space 1}{ralign 9:{res:{sf: .8506667}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf: .8506667}}}{space 1}
+{space 0}{space 0}{ralign 12:r3}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        3}}}{space 1}{space 1}{ralign 9:{res:{sf: .0318322}}}{space 1}{space 1}{ralign 9:{res:{sf:       .2}}}{space 1}{space 1}{ralign 9:{res:{sf: .4706667}}}{space 1}{space 1}{ralign 9:{res:{sf:       .8}}}{space 1}{space 1}{ralign 9:{res:{sf:       .6}}}{space 1}
+{space 0}{space 0}{ralign 12:r4}{space 1}{c |}{space 1}{ralign 9:{res:{sf:        4}}}{space 1}{space 1}{ralign 9:{res:{sf: .0246289}}}{space 1}{space 1}{ralign 9:{res:{sf: .2856667}}}{space 1}{space 1}{ralign 9:{res:{sf:     .488}}}{space 1}{space 1}{ralign 9:{res:{sf:        1}}}{space 1}{space 1}{ralign 9:{res:{sf: .5713333}}}{space 1}
+
+{com}. 
+. 
+. 
+.                 log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\VK\Sync\Research\i4r_amsterdam_2025\3-replication-package/code/log_2spectator_main.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}16 Nov 2025, 19:08:09
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

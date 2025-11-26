@@ -1,0 +1,40 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+            &\multicolumn{1}{c}{temp0}&\multicolumn{1}{c}{temp0}&\multicolumn{1}{c}{temp0}&\multicolumn{1}{c}{temp0}\\
+\midrule
+infoEdu     &       0.037\sym{*}  &       0.037\sym{*}  &                     &                     \\
+            &     (0.022)         &     (0.022)         &                     &                     \\
+\addlinespace
+uninform    &      -0.030         &      -0.035         &      -0.008         &      -0.008         \\
+            &     (0.024)         &     (0.024)         &     (0.026)         &     (0.027)         \\
+\addlinespace
+female1     &                     &       0.016         &                     &      -0.007         \\
+            &                     &     (0.018)         &                     &     (0.019)         \\
+\addlinespace
+age1        &                     &       0.000         &                     &       0.000         \\
+            &                     &     (0.001)         &                     &     (0.001)         \\
+\addlinespace
+highEdu     &                     &       0.005         &                     &       0.020         \\
+            &                     &     (0.019)         &                     &     (0.021)         \\
+\addlinespace
+highIncome  &                     &      -0.019         &                     &      -0.034\sym{*}  \\
+            &                     &     (0.019)         &                     &     (0.020)         \\
+\addlinespace
+conservative&                     &      -0.067\sym{***}&                     &      -0.033         \\
+            &                     &     (0.023)         &                     &     (0.025)         \\
+\addlinespace
+infoEm      &                     &                     &       0.033         &       0.036         \\
+            &                     &                     &     (0.024)         &     (0.024)         \\
+\addlinespace
+\_cons      &       0.347\sym{***}&       0.359\sym{***}&       0.288\sym{***}&       0.299\sym{***}\\
+            &     (0.013)         &     (0.030)         &     (0.014)         &     (0.038)         \\
+\midrule
+\(N\)       &         408         &         408         &         410         &         410         \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}

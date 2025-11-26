@@ -1,0 +1,72 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+\midrule
+Merit      &      -0.177\sym{***}&      -0.209\sym{***}&      -0.206\sym{***}&      -0.202\sym{***}\\
+            &     (0.031)         &     (0.060)         &     (0.022)         &     (0.021)         \\
+\addlinespace
+Random-Education        &      -0.053\sym{*}  &      -0.117\sym{*}  &      -0.066\sym{***}&      -0.061\sym{***}\\
+            &     (0.030)         &     (0.068)         &     (0.022)         &     (0.020)         \\
+\addlinespace
+Random-Employment         &      -0.110\sym{***}&      -0.117\sym{*}  &      -0.135\sym{***}&      -0.134\sym{***}\\
+            &     (0.032)         &     (0.068)         &     (0.024)         &     (0.021)         \\
+\addlinespace
+Merit \\times Female&      -0.047         &                     &                     &                     \\
+            &     (0.040)         &                     &                     &                     \\
+\addlinespace
+Random-Education \\times Female &      -0.035         &                     &                     &                     \\
+            &     (0.040)         &                     &                     &                     \\
+\addlinespace
+Random-Employment \\times Female  &      -0.036         &                     &                     &                     \\
+            &     (0.041)         &                     &                     &                     \\
+\addlinespace
+Female     &       0.050\sym{*}  &                     &                     &                     \\
+            &     (0.028)         &                     &                     &                     \\
+\addlinespace
+Merit \\times High education&                     &       0.005         &                     &                     \\
+            &                     &     (0.064)         &                     &                     \\
+\addlinespace
+Random-Education \\times High education&                     &       0.047         &                     &                     \\
+            &                     &     (0.071)         &                     &                     \\
+\addlinespace
+Random-Employment \\times High education &                     &      -0.018         &                     &                     \\
+            &                     &     (0.071)         &                     &                     \\
+\addlinespace
+High education     &                     &       0.035         &                     &                     \\
+            &                     &     (0.052)         &                     &                     \\
+\addlinespace
+Merit \\times High income&                     &                     &       0.017         &                     \\
+            &                     &                     &     (0.046)         &                     \\
+\addlinespace
+Random-Education \\times High income&                     &                     &      -0.018         &                     \\
+            &                     &                     &     (0.048)         &                     \\
+\addlinespace
+Random-Employment \\times High income&                     &                     &       0.026         &                     \\
+            &                     &                     &     (0.044)         &                     \\
+\addlinespace
+High income  &                     &                     &      -0.025         &                     \\
+            &                     &                     &     (0.032)         &                     \\
+\addlinespace
+Merit \\times Republican&                     &                     &                     &      -0.010         \\
+            &                     &                     &                     &     (0.050)         \\
+\addlinespace
+Random-Education \\times Republican&                     &                     &                     &      -0.051         \\
+            &                     &                     &                     &     (0.053)         \\
+\addlinespace
+Random-Employment \\times Republican&                     &                     &                     &      -0.008         \\
+            &                     &                     &                     &     (0.054)         \\
+\addlinespace
+Republican&                     &                     &                     &      -0.032         \\
+            &                     &                     &                     &     (0.039)         \\
+\addlinespace
+Constant      &       0.392\sym{***}&       0.392\sym{***}&       0.428\sym{***}&       0.431\sym{***}\\
+            &     (0.023)         &     (0.050)         &     (0.015)         &     (0.013)         \\
+\midrule
+\(N\)       &         662         &         666         &         643         &         666         \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}

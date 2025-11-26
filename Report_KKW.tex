@@ -1,0 +1,334 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{tmargin=1in,bmargin=1in,lmargin=1.2in,rmargin=1.2in}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{ae,aecompl}
+\usepackage[multiple]{footmisc}
+\usepackage{MJOARTI}
+\usepackage{setspace}
+\usepackage{rotating}
+\usepackage{bbold}
+\usepackage{lscape}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{ifthen}
+\usepackage{url}
+\usepackage{blkarray}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{enumerate}
+\usepackage{supertabular}
+\usepackage{fancyhdr}
+\usepackage{epstopdf}
+\usepackage{dsfont}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{eurosym}
+\usepackage{arydshln}
+\usepackage{threeparttable} % for notes below a table
+\usepackage{comment}
+\usepackage{array}
+\usepackage{ltcaption}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage{natbib}
+\usepackage[hyperfootnotes=false]{hyperref}
+\usepackage{bookmark}
+\hypersetup{colorlinks=true,citecolor=blue}
+
+\definecolor{dark-red}{rgb}{0.6,0,0}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+
+
+%\setlength{\absleftindent}{-0.25in} % For Restart
+%\setlength{\absrightindent}{-0.25in} % For Restart
+
+%\renewcommand\thesection{\Roman{section}.}
+%\renewcommand\thesubsection{\Alph{subsection}.}
+
+\begin{document}
+
+\date{\today}
+
+\title{
+\textbf{A comment on } \\[0.25cm]
+\textbf{``They Never had a Chance: Unequal Opportunities and Fair Redistributions''}%
+%
+ \thanks{
+Authors: Klotzbücher: University of Freiburg, University of Basel, and University Hospital Basel. E-mail: \href{mailto:valentin.klotzbuecher@usb.ch}{valentin.klotzbuecher@usb.ch};
+ Krieger: University of Freiburg and CESifo. E-mail: \href{mailto:tim.krieger@econ.uni-freiburg.de}{tim.krieger@econ.uni-freiburg.de};
+Wallner: Independent researcher. We received no external funding for this project and report no financial or personal conflicts of interest with the authors of DHL.
+}
+}
+\author{Valentin Klotzbücher \and Tim Krieger \and Marco Wallner}
+
+\maketitle
+
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}
+
+\small{
+
+We reassess \citet{dong2025}, henceforth DHL, on redistribution under unequal opportunities. Using the authors' replication package, we re-run every do-file on the raw Qualtrics exports and reproduce all reported figures and tables to the printed digits. The re-analysis confirms DHL's four descriptive claims: spectators redistribute more when outcomes derive from unequal opportunity, and the ordering Luck $>$ Random-Education $>$ Random-Employment $>$ Merit holds throughout.
+
+We also inspect the preregistered matching protocol versus the realized deterministic pairing, and probe two missing-data conventions (demographics and belief items). None of these perturbations affects the magnitude or statistical significance of the main descriptive pattern.
+}\bigskip
+
+% \textsc{Keywords}:
+% computational reproducibility; fairness; redistribution; unequal opportunity
+
+% \textsc{JEL codes}: C91; C93; D63; D64.
+\end{abstract}
+
+
+\clearpage
+
+
+
+\section{Introduction}
+\begin{spacing}{1.5}
+DHL investigate spectators' fairness preferences when observed performance differences can stem from unequal opportunity. Spectators choose redistributions between a relatively advantaged and a relatively disadvantaged worker across conditions where differences originate from random disparities in education or employment (unequal-opportunity conditions) versus benchmark cases. The main descriptive claim is that spectators shift resources toward the disadvantaged when disparities reflect unequal opportunity. 
+
+This descriptive pattern intersects with a long debate about merit and desert: when outcomes reflect advantage rather than ability or effort, redistribution can be perceived as restoring fairness rather than dulling incentives. As already captured in \citet{young1958}'s classic \emph{The Rise of the Meritocracy}, relabeling advantage as virtue can naturalize unequal starting points. DHL's design lets spectators condition transfers precisely on that boundary between opportunity and effort.
+
+The study relies on a Qualtrics-hosted online experiment fielded between January and April 2022. DHL recruited 842 workers to perform the real-effort tasks that generate redistribution scenarios and, in parallel, English-language spectator cohorts (1,708 respondents for the main redistribution task plus 992 for the Vary modules) who observe the outcomes and choose transfers.
+
+In this report for the Institute for Replication (I4R; \citealp{I4R_MetaPaper}), we (i) carefully evaluate computational reproducibility from raw data using the authors' Stata code, (ii) re-do the data cleaning and analysis in Python as a cross-software check, and (iii) run a robustness exercise where we exclude missing responses that had been coded as zeros and further re-define the cut-off levels for key binary variables.
+Overall, the main results reproduce cleanly and the robustness analyses do not alter the qualitative claims.
+
+
+\end{spacing}
+
+
+%%---------------------------------------------------------------------------------
+
+\section{Computational Reproducibility}
+
+
+\begin{spacing}{1.5}
+For this report, we use the updated replication package available at \url{https://doi.org/10.5281/zenodo.16317200}, Version~3. The archive contains (i) raw worker and spectator data, (ii) processed Stata datasets, (iii) a master script (\texttt{0PathSetup.do}) that sequentially calls the cleaning and analysis routines, and (iv) the graph/table outputs embedded in the published PDF. The README clearly documents the workflow and required Stata version.
+
+We execute the master do-file from the project root after fixing \texttt{version 16.0} and the recommended random seed; every script runs without modification. The cleaning scripts recreate \texttt{spectator-main.dta} and \texttt{spectator-vary.dta} from the raw Qualtrics downloads, and the analysis scripts reproduce DHL's Figures~1--3 and all numbered tables to the printed digits. Table~\ref{tab:reppkg_table} in the Appendix summarizes our inventory of the replication package and confirms that each component required for a raw-data reproduction is present, while the Appendix compiles every replicated table (Tables~\ref{tab:balance_main}--\ref{tab:tableC1}) generated by the Stata pipeline. Our annotated Stata and Python scripts, along with the modified figures and tables, accompany this report in the public Zenodo archive at \url{https://doi.org/10.5281/zenodo.17624272}.
+
+\medskip
+\noindent\textbf{Cross-software reproduction in Python.}
+To assess recreate reproducibility, we import the raw data into Python, rebuild the cleaning steps (re-weighting of redistributive choices, trimming of low-quality responses, and treatment-specific aggregation), and recreate Figures~1--3. Point estimates match their Stata counterparts up to rounding, and the ordering of treatments and confidence intervals is identical.
+
+\section{Discrepancies Between Pre-analysis Plan and Article}
+
+
+The preregistration (\url{https://doi.org/10.1257/rct.8474-2.0}) described “random ex-post” pairing of workers in the unequal-opportunity conditions. In the realized implementation, pairs were matched deterministically so that the higher-opportunity worker also scored higher and earned \$6 in Random-Education and Random-Employment. Consequently, a disadvantaged worker never “won.” Spectators observed the realized scores and opportunity labels, but they were not told that an underdog win was impossible. The published article (Sec.~1.2.2, footnote~9) reports this deviation. While deterministic pairing could, in principle, make observers more confident that low scores stem from luck rather than effort, we classify this choice as a minor deviation from the pre-analysis plan.
+
+\end{spacing}
+
+
+%%---------------------------------------------------------------------------------
+
+\section{Robustness reproduction}
+\label{sec:robustness}
+
+
+\begin{spacing}{1.5}
+
+\medskip
+\noindent\textbf{Variable abbreviations in Stata.}
+With Stata's default settings, all code executes from the master file \texttt{0PathSetup.do} once the replication package is set as current working directory. To ensure compatibility we fix Stata \texttt{version 16.0} and, as a first check, rerun the master script after changing the default to \texttt{set varabbrev off}. We find three abbreviated calls (\texttt{scoreemployment}, \texttt{finish}, \texttt{female1}). Because the abbreviations are unique, results remain identical, yet we strongly recommend turning the option off permanently to avoid silent mis-specification.
+
+\medskip
+\noindent\textbf{Missing demographics.}
+When constructing binary indicators (\texttt{female1}, \texttt{highEdu}, \texttt{highIncome}, \texttt{conservative}), the original scripts implicitly coded all missing responses as zero. This affects the political ideology split (499 spectators left the party question unanswered), as well as the indicators for high income and high educational attainment. We re-code these variables to keep true missings, treating “Other/prefer not to say” as missing for gender, and recompute the splits. The right-hand panel of Figure~\ref{figA2} shows that dropping the implicit zeros collapses the small conservative/liberal difference in the Random-Education treatment; all other treatments remain unchanged. Appendix Table~\ref{tab:figureA2stats} lists the subgroup means and confidence intervals that underlie Figure~\ref{figA2} for ease of reference.
+
+\medskip
+\noindent\textbf{Missing beliefs.}
+For the belief outcomes (perceived role of education or employment in explaining outcomes), missing responses were filled with zeros before computing means. We replicate the graphs while excluding missing responses entirely. As shown in Figures~\ref{fig2} and \ref{fig3}, the means shift only marginally -- most notably a slight attenuation in the Vary-Education panel -- while the ordering of treatments and confidence intervals remains intact. Appendix Tables~\ref{tab:figure2stats} and \ref{tab:figure3stats} tabulate the scenario-level means and 95\% confidence intervals that correspond to Figures~\ref{fig2} and \ref{fig3}.
+
+\medskip
+\noindent\textbf{Further stress-tests.}
+We further investigate whether the exclusion criteria and specific cut-off choices affect the results. In particular, we re-define what qualifies as high education, high income, as well as too-fast responses. High income is set at above \$70,000 (instead of \$50,000) and high education at “some college education or a two-year degree” (instead of DHL's four-year threshold). To guard against low-effort responses, we tighten the duration filters to 200 and 300 seconds when constructing \texttt{spectator-main.dta} and \texttt{spectator-vary.dta}, reducing the sample size slightly. Tables~\ref{tab:balance_main}--\ref{tab:tableC1} report key regression results that correspond to these alternative coding choices and show that the treatment contrasts remain qualitatively unchanged. 
+
+\medskip
+Across these checks, DHL's main descriptive claim---that spectators channel more redistribution toward the disadvantaged in unequal-opportunity conditions---remains intact. The treatment means move by less than 0.02 on the 0--1 redistribution scale in every exercise, and the Luck $>$ Merit and Random-Education $>$ Random-Employment contrasts remain significant at $p<0.01$.
+\end{spacing}
+ 
+ 
+
+
+\section{Conclusion}
+
+\begin{spacing}{1.5}
+Our replication reproduces DHL's main figures and balance table from raw data using the provided Stata code and an independent Python re-implementation. 
+Following I4R's taxonomy, we complete: (i) \emph{computational reproducibility} (rerun authors' code on raw inputs); (ii) \emph{recreate reproducibility} (independent cross-software implementation); and a basic (iii) \emph{robustness reproducibility} (Section~\ref{sec:robustness}). Across the four descriptive claims emphasized by DHL -- Luck $>$ Merit; Random-Education between Luck and Merit; Random-Employment between Luck and Merit; Random-Education $>$ Random-Employment -- we reproduce 4/4 (100\%). All coefficients, standard errors, and p-values match the published tables within rounding tolerance.
+The preregistered claims remain valid after re-coding missing demographic items and stress-testing alternative cutoffs. We therefore conclude that DHL's central descriptive message is robust.
+
+\end{spacing}
+
+
+% \clearpage
+
+
+%%---------------------------------------------------------------------------------
+\bibliographystyle{kluwer}
+\bibliography{biblio}
+
+ \clearpage
+
+
+%%---------------------------------------------------------------------------------
+\section*{Figures}
+
+%
+%\begin{figure}[ht!]
+%\includegraphics[width=\columnwidth]{3-replication-package/output/figures/REPL_FIG_republican.pdf}%
+%\caption{Robustness: Drop missing political ideology}%
+%\label{robustness1}%
+%\end{figure}
+
+
+%\begin{figure}[ht!]
+%\includegraphics[width=.5\columnwidth]{3-replication-package/output/figures/figure2-x.pdf}%
+%\includegraphics[width=.5\columnwidth]{3-replication-package/output/figures/figure2-xx.pdf}%
+%\caption{Robustness: Drop missing-belief observations.}%
+%\label{robustness2}%
+%\end{figure}
+
+\begin{figure}[ht!]
+\includegraphics[width=.5\columnwidth]{RAW_3-replication-package/output/figures/figureA2.pdf}%
+\includegraphics[width=.5\columnwidth]{3-replication-package/output/figures/figureA2.pdf}%
+\caption{Share redistributed to the disadvantaged worker by treatment (Luck, Merit, Random-Education, Random-Employment) and spectator characteristics: gender, education, income, and political affiliation. Bars depict subgroup means with 95\% confidence intervals. The left column reproduces DHL Figure~A2; the right column re-creates it with our adjusted spectator sample.}%
+\label{figA2}%
+\end{figure}
+
+\begin{figure}[ht!]
+\includegraphics[width=.5\columnwidth]{RAW_3-replication-package/output/figures/figure2.pdf}%
+\includegraphics[width=.5\columnwidth]{3-replication-package/output/figures/figure2.pdf}%
+\caption{Average share redistributed to the disadvantaged worker (dark line) and spectators' beliefs about the disadvantaged worker's winning probability (light line) across the Vary-Probability, Vary-Education, and Vary-Employment tasks. The left panels reproduce DHL Figure~2; the right panels re-create the same statistic after our missing-data adjustment.}%
+\label{fig2}%
+\end{figure}
+
+\begin{figure}[ht!]
+\includegraphics[width=.5\columnwidth]{RAW_3-replication-package/output/figures/figure3.pdf}%
+\includegraphics[width=.5\columnwidth]{3-replication-package/output/figures/figure3.pdf}%
+\caption{Subsample of ``meritocratic'' spectators (those who reallocate little when the advantaged worker fully deserves the outcome) in the Vary-Probability, Vary-Education, and Vary-Employment tasks. Each panel plots the mean share redistributed to the disadvantaged worker with 95\% confidence intervals. Left panels replicate DHL Figure~3, while the right panels show the same calculation after excluding missing beliefs.}%
+\label{fig3}%
+\end{figure}
+
+\clearpage 
+
+
+%%---------------------------------------------------------------------------------
+\section{Appendix} \label{sec:apxtables}
+
+
+\begin{table}[ht!]
+\centering
+\caption{Replication Package Contents and Reproducibility}
+\label{tab:reppkg_table}
+\footnotesize 
+	\begin{tabular}{lccc}
+	\hline \hline
+	\\
+	\textbf{Replication Package Item} 	& \textbf{Fully} & \textbf{Partial} & \textbf{No} \\
+	\hline
+	\\
+	Raw data provided                 	& \checkmark &  &  \\ 
+	Analysis data provided				& \checkmark &  &  \\ 
+	\\
+	Cleaning code provided				& \checkmark&  &  \\ 
+	Analysis code provided				& \checkmark &  & \\ 
+	\\
+	Reproducible from raw data			&  \checkmark&  &  \\ 
+	Reproducible from analysis data		& \checkmark &  &  \\ 
+	\\
+	\hline \hline
+	\end{tabular}
+\caption*{
+\footnotesize \emph{Notes}: This table summarizes the replication package contents available at \url{https://doi.org/10.5281/zenodo.16317200}. 
+}
+\end{table}
+
+
+% \clearpage 
+\begin{table}[ht!]\scriptsize\centering
+\input{3-replication-package/output/tables/table2.tex}
+\caption{Spectator demographics and balances by treatment (Luck, Merit, Random-Education, and Random-Employment). This replicates DHL Table~2 using the cleaned replication sample.}
+\label{tab:balance_main}
+\end{table}
+
+\begin{sidewaystable}[ht!]\scriptsize\centering
+\input{3-replication-package/output/tables/table3.tex}
+\caption{Gamma regression of average redistributions on treatment-specific intercepts, following DHL Table~3. Columns (1)--(3) correspond to the baseline, main, and subsample specifications.}
+\label{tab:table3}
+\end{sidewaystable}
+
+\begin{sidewaystable}[ht!]\footnotesize\centering
+\input{3-replication-package/output/tables/table4.tex}
+\caption{Perceived effort differences (mean, standard deviation, and observations) across Vary-Education and Vary-Employment prompts. Each row corresponds to DHL Table~4 belief descriptors.}
+\label{tab:table4}
+\end{sidewaystable}
+
+\begin{table}[ht!]\scriptsize\centering
+%\include{RAW_3-replication-package/output/tables/tableA1.tex}%
+\include{3-replication-package/output/tables/tableA1.tex}
+\caption{DHL table A1: OLS regression results on share redistributed by spectators. The Luck treatment serves as the reference category. “High income” is an indicator variable for having yearly income higher than \$70,000 (instead of DHL's \$50,000 categorization). “High education” is an indicator variable for having at least some college education (instead of DHL's definition as a 4-year college education or higher). “Conservative” is an indicator variable for having selected Republican as their political party/stance most typically supported (cf. DHL table A1).}
+\label{tableA1}
+\end{table}
+
+%\begin{table}\scriptsize\centering
+%\include{RAW_3-replication-package/output/tables/tableA4.tex}
+%\caption{OLS estimates of the share redistributed to the disadvantaged worker on treatment indicators and their interactions with spectator demographics using the raw Qualtrics export. Columns (1)--(4) respectively interact treatments with gender, education, income, and political affiliation; the dependent variable is redistribution (0--1 scale) and the Luck treatment is the omitted category, matching DHL Table~A4.}
+%\label{tableA4raw}
+%\end{table}
+\begin{table}[ht!]\tiny\centering
+\include{3-replication-package/output/tables/tableA4.tex}
+\caption{OLS estimates of redistribution shares on treatment indicators and their interactions with spectator demographics using the cleaned replication sample. Columns (1)--(4) mirror DHL Table~A4 by interacting treatments with gender, education, income, and political affiliation, respectively, with Luck as the reference category.}
+\label{tableA4}
+\end{table}
+
+\begin{table}[ht!]\scriptsize\centering
+\input{3-replication-package/output/tables/tableA6.tex}
+\caption{Spectator demographics (gender, age, education, income, and ideology) for the Vary-Probability, Vary-Education, and Vary-Employment belief modules, replicating DHL Table~A6 on the adjusted sample.}
+\label{tab:tableA6}
+\end{table}
+
+\begin{table}[ht!]\scriptsize\centering
+\input{3-replication-package/output/tables/tableA7.tex}
+\caption{Ordered logit estimates of redistribution shares across Luck, Random-Education, and Random-Employment for the main spectator sample, matching DHL Table~A7. Each column reports treatment-by-scenario coefficients with robust standard errors.}
+\label{tab:tableA7}
+\end{table}
+
+\begin{table}[ht!]\scriptsize\centering
+\input{3-replication-package/output/tables/tableA8.tex}
+\caption{Ordered logit estimates for the Vary modules (Luck, Random-Education, Random-Employment) restricted to the subsamples shown in DHL Table~A8. Coefficients report scenario-specific shifts relative to the Luck benchmark.}
+\label{tab:tableA8}
+\end{table}
+
+\begin{table}[ht!]\scriptsize\centering
+%\include{RAW_3-replication-package/output/tables/tableB1.tex}
+\include{3-replication-package/output/tables/tableB1.tex}
+\caption{Information-treatment regressions for the Random-Education and Random-Employment games. Columns (1) and (2) compare informed versus uninformed spectators in the education condition; Columns (3) and (4) repeat the analysis for the employment condition. The dependent variable is the share redistributed to the disadvantaged worker (0--1 scale), and the specifications match DHL Table~B1 with and without demographic controls.}
+\label{tableB1}
+\end{table}
+
+\begin{sidewaystable}[ht!]\scriptsize\centering
+\input{3-replication-package/output/tables/tableC1.tex}
+\caption{Demographics for the Merit/Random training and department subsamples, along with the information treatments, as in DHL Table~C1. Columns list mean gender, age, education, income, ideology, and the corresponding sample size.}
+\label{tab:tableC1}
+\end{sidewaystable}
+
+\input{3-replication-package/output/tables/figureA2_stats.tex}
+
+\input{3-replication-package/output/tables/figure2_stats.tex}
+
+\input{3-replication-package/output/tables/figure3_stats.tex}
+
+
+
+\end{document}

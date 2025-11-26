@@ -1,0 +1,2211 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/code/log_2spectator_vary.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}16 Nov 2025, 18:59:22
+{txt}
+{com}.                 
+.                 
+. *------------------------------------   
+. *-> Table 3: structural estimation 
+. *------------------------------------   
+.                 use $folder/data/processed/spectator_vary.dta , clear
+{txt}
+{com}.                 drop if (luck00 >= 3 | luck100 == 0) & treatment=="luckXX"
+{txt}(43 observations deleted)
+
+{com}.                 drop if (edu15v15 >= 3 | edu15v0 == 0) & treatment=="eduXX"
+{txt}(124 observations deleted)
+
+{com}.                 drop if (emp15v15 >= 3 | emp15v0 == 0) & treatment=="empXX"
+{txt}(153 observations deleted)
+
+{com}.                 save "$folder/data/temp/temp.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/temp.dta{rm}
+saved
+{p_end}
+
+{com}.                 clear
+{txt}
+{com}.                 set obs 7
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 7.
+{p_end}
+
+{com}.                 gen id=_n
+{txt}
+{com}.                 cross using "$folder/data/temp/temp.dta"
+{txt}
+{com}.                 gen temp1 = luck100 if id==1 & treatment=="luckXX"
+{txt}(2,100 missing values generated)
+
+{com}.                 replace temp1 = luck99 if id==2 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 replace temp1 = luck90 if id==3 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 replace temp1 = luck50 if id==4 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 replace temp1 = luck10 if id==5 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 replace temp1 = luck01 if id==6 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 replace temp1 = luck00 if id==7 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 replace temp1 = edu15v0 if id==1 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp1 = edu15v1 if id==2 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp1 = edu15v4 if id==3 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp1 = edu15v7 if id==4 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp1 = edu15v11 if id==5 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp1 = edu15v14 if id==6 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp1 = edu15v15 if id==7 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp1 = emp15v0 if id==1 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp1 = emp15v1 if id==2 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp1 = emp15v4 if id==3 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp1 = emp15v7 if id==4 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp1 = emp15v11 if id==5 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp1 = emp15v14 if id==6 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp1 = emp15v15 if id==7 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp1 = temp1/6
+{txt}(1,837 real changes made)
+
+{com}.                 
+.                 gen temp2 = luck00 if treatment=="luckXX"
+{txt}(1,008 missing values generated)
+
+{com}.                 replace temp2 = edu15v15 if treatment=="eduXX"
+{txt}(602 real changes made)
+
+{com}.                 replace temp2 = emp15v15 if treatment=="empXX"
+{txt}(406 real changes made)
+
+{com}.                 replace temp2 = temp2/6
+{txt}(861 real changes made)
+
+{com}.                 
+.                 gen temp3 = 0.5 if id==1 & treatment=="luckXX"
+{txt}(2,100 missing values generated)
+
+{com}.                 replace temp3 = 0.505 if id==2 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 replace temp3 = 0.55 if id==3 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 replace temp3 = 0.75 if id==4 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 replace temp3 = 0.90 if id==5 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 replace temp3 = 0.99 if id==6 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 replace temp3 = 1 if id==7 & treatment=="luckXX"
+{txt}(182 real changes made)
+
+{com}.                 egen mean_edu15v0 = mean(eduB15v0/100) if treatment=="eduXX"
+{txt}(1,680 missing values generated)
+
+{com}.                 egen mean_edu15v1 = mean(eduB15v1/100) if treatment=="eduXX"
+{txt}(1,680 missing values generated)
+
+{com}.                 egen mean_edu15v4 = mean(eduB15v4/100) if treatment=="eduXX"
+{txt}(1,680 missing values generated)
+
+{com}.                 egen mean_edu15v7 = mean(eduB15v7/100) if treatment=="eduXX"
+{txt}(1,680 missing values generated)
+
+{com}.                 egen mean_edu15v11 = mean(eduB15v11/100) if treatment=="eduXX"
+{txt}(1,680 missing values generated)
+
+{com}.                 egen mean_edu15v14 = mean(eduB15v14/100) if treatment=="eduXX"
+{txt}(1,680 missing values generated)
+
+{com}.                 egen mean_edu15v15 = mean(eduB15v15/100) if treatment=="eduXX"
+{txt}(1,680 missing values generated)
+
+{com}.                 replace temp3 = 1 - (mean_edu15v15 - mean_edu15v0) if id==1 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp3 = 1 - (mean_edu15v15 - mean_edu15v1) if id==2 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp3 = 1 - (mean_edu15v15 - mean_edu15v4) if id==3 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp3 = 1 - (mean_edu15v15 - mean_edu15v7) if id==4 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp3 = 1 - (mean_edu15v15 - mean_edu15v11) if id==5 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp3 = 1 - (mean_edu15v15 - mean_edu15v14) if id==6 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 replace temp3 = 1 if id==7 & treatment=="eduXX"
+{txt}(86 real changes made)
+
+{com}.                 egen mean_emp15v0 = mean(empB15v0/100) if treatment=="empXX"
+{txt}(1,876 missing values generated)
+
+{com}.                 egen mean_emp15v1 = mean(empB15v1/100) if treatment=="empXX"
+{txt}(1,876 missing values generated)
+
+{com}.                 egen mean_emp15v4 = mean(empB15v4/100) if treatment=="empXX"
+{txt}(1,876 missing values generated)
+
+{com}.                 egen mean_emp15v7 = mean(empB15v7/100) if treatment=="empXX"
+{txt}(1,876 missing values generated)
+
+{com}.                 egen mean_emp15v11 = mean(empB15v11/100) if treatment=="empXX"
+{txt}(1,876 missing values generated)
+
+{com}.                 egen mean_emp15v14 = mean(empB15v14/100) if treatment=="empXX"
+{txt}(1,876 missing values generated)
+
+{com}.                 egen mean_emp15v15 = mean(empB15v15/100) if treatment=="empXX"
+{txt}(1,876 missing values generated)
+
+{com}.                 replace temp3 = 1 - (mean_emp15v15 - mean_emp15v0) if id==1 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp3 = 1 - (mean_emp15v15 - mean_emp15v1) if id==2 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp3 = 1 - (mean_emp15v15 - mean_emp15v4) if id==3 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp3 = 1 - (mean_emp15v15 - mean_emp15v7) if id==4 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp3 = 1 - (mean_emp15v15 - mean_emp15v11) if id==5 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp3 = 1 - (mean_emp15v15 - mean_emp15v14) if id==6 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}.                 replace temp3 = 1 if id==7 & treatment=="empXX"
+{txt}(58 real changes made)
+
+{com}. 
+.                 egen subject= group(connectID)
+{txt}
+{com}.                 xtset subject id 
+{res}
+{col 1}{txt:Panel variable: }{res:subject}{txt: (strongly balanced)}
+{p 1 16 2}{txt:Time variable: }{res:id}{txt:, }{res:{bind:1}}{txt: to }{res:{bind:7}}{p_end}
+{txt}{col 10}Delta: {res}1 unit
+{txt}
+{com}. 
+.                 eststo: menl temp1 = 1 - temp2 + (2*temp2 - 1)/(1 + (1/temp3 - 1)^(1/({c -(}alpha{c )-} - 1))) if treatment=="luckXX"
+{res}
+{col 1}{txt:Panel variable: }{res:subject}{txt: (strongly balanced)}
+{p 1 16 2}{txt:Time variable: }{res:id}{txt:, }{res:{bind:1}}{txt: to }{res:{bind:7}}{p_end}
+{txt}{col 10}Delta: {res}1 unit
+
+{txt}Obtaining starting values:
+
+{res}{txt}NLS algorithm:
+
+Iteration 0:{space 3}residual SS = {res: 22.153601}  
+Iteration 1:{space 3}residual SS = {res: 22.153601}  
+
+{txt}Computing standard errors:
+{res}
+{txt}Mixed-effects ML nonlinear regression{col 49}Number of obs{col 67}={col 69}{res}     1,274
+{txt}Group variable: {res}subject{col 49}{txt}Number of groups{col 67}={col 69}{res}       182
+
+{txt}{col 49}Obs per group:
+{col 63}min{col 67}={col 69}{res}         7
+{txt}{col 63}avg{col 67}={col 69}{res}       7.0
+{txt}{col 63}max{col 67}={col 69}{res}         7
+
+{txt}Log likelihood = {res}  773.3433
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp1{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}/alpha {c |}{col 14}{res}{space 2} 2.532157{col 26}{space 2} .0576839{col 37}{space 1}   43.90{col 46}{space 3}0.000{col 54}{space 4} 2.419098{col 67}{space 3} 2.645215
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{col 1}{col 16}var(Residual){col 30}{c |}{res}{col 33}  .017389{col 44}  .000689{col 58} .0160897{col 70} .0187932
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}({res}est1{txt} stored)
+
+{com}.                 
+.                 eststo: menl temp1 = 1 - temp2 + (2*temp2 - 1)/(1 + (1/temp3 - 1)^(1/({c -(}alpha{c )-} - 1))) if treatment=="eduXX" 
+{res}
+{col 1}{txt:Panel variable: }{res:subject}{txt: (strongly balanced)}
+{p 1 16 2}{txt:Time variable: }{res:id}{txt:, }{res:{bind:1}}{txt: to }{res:{bind:7}}{p_end}
+{txt}{col 10}Delta: {res}1 unit
+
+{txt}Obtaining starting values:
+
+{res}{txt}NLS algorithm:
+
+Iteration 0:{space 3}residual SS = {res: 9.9268066}  
+Iteration 1:{space 3}residual SS = {res: 9.9268066}  
+
+{txt}Computing standard errors:
+{res}
+{txt}Mixed-effects ML nonlinear regression{col 49}Number of obs{col 67}={col 69}{res}       602
+{txt}Group variable: {res}subject{col 49}{txt}Number of groups{col 67}={col 69}{res}        86
+
+{txt}{col 49}Obs per group:
+{col 63}min{col 67}={col 69}{res}         7
+{txt}{col 63}avg{col 67}={col 69}{res}       7.0
+{txt}{col 63}max{col 67}={col 69}{res}         7
+
+{txt}Log likelihood = {res}  381.4096
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp1{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}/alpha {c |}{col 14}{res}{space 2} 3.409779{col 26}{space 2} .1309484{col 37}{space 1}   26.04{col 46}{space 3}0.000{col 54}{space 4} 3.153125{col 67}{space 3} 3.666434
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{col 1}{col 16}var(Residual){col 30}{c |}{res}{col 33} .0164897{col 44} .0009505{col 58} .0147282{col 70} .0184619
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}({res}est2{txt} stored)
+
+{com}.                 
+.                 eststo: menl temp1 = 1 - temp2 + (2*temp2 - 1)/(1 + (1/temp3 - 1)^(1/({c -(}alpha{c )-} - 1))) if treatment=="empXX"
+{res}
+{col 1}{txt:Panel variable: }{res:subject}{txt: (strongly balanced)}
+{p 1 16 2}{txt:Time variable: }{res:id}{txt:, }{res:{bind:1}}{txt: to }{res:{bind:7}}{p_end}
+{txt}{col 10}Delta: {res}1 unit
+
+{txt}Obtaining starting values:
+
+{res}{txt}NLS algorithm:
+
+Iteration 0:{space 3}residual SS = {res: 11.268251}  
+Iteration 1:{space 3}residual SS = {res: 11.268251}  
+
+{txt}Computing standard errors:
+{res}
+{txt}Mixed-effects ML nonlinear regression{col 49}Number of obs{col 67}={col 69}{res}       406
+{txt}Group variable: {res}subject{col 49}{txt}Number of groups{col 67}={col 69}{res}        58
+
+{txt}{col 49}Obs per group:
+{col 63}min{col 67}={col 69}{res}         7
+{txt}{col 63}avg{col 67}={col 69}{res}       7.0
+{txt}{col 63}max{col 67}={col 69}{res}         7
+
+{txt}Log likelihood = {res} 151.53686
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       temp1{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}/alpha {c |}{col 14}{res}{space 2} 2.182463{col 26}{space 2} .0822737{col 37}{space 1}   26.53{col 46}{space 3}0.000{col 54}{space 4} 2.021209{col 67}{space 3} 2.343716
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{col 1}{col 16}var(Residual){col 30}{c |}{res}{col 33} .0277543{col 44}  .001948{col 58} .0241873{col 70} .0318473
+{txt}{hline 29}{c BT}{hline 48}
+{res}{txt}({res}est3{txt} stored)
+
+{com}.                 esttab, b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) brackets
+{res}
+{txt}{hline 60}
+{txt}                      (1)             (2)             (3)   
+{txt}                    temp1           temp1           temp1   
+{txt}{hline 60}
+{res}/                                                           {txt}
+{txt}alpha       {res}        2.532***        3.410***        2.182***{txt}
+            {res} {ralign 12:{txt:[}0.058{txt:]}}    {ralign 12:{txt:[}0.131{txt:]}}    {ralign 12:{txt:[}0.082{txt:]}}   {txt}
+{hline 60}
+{res}/Residual                                                   {txt}
+{txt}lnsigma     {res}       -2.026***       -2.053***       -1.792***{txt}
+            {res} {ralign 12:{txt:[}0.020{txt:]}}    {ralign 12:{txt:[}0.029{txt:]}}    {ralign 12:{txt:[}0.035{txt:]}}   {txt}
+{txt}{hline 60}
+{txt}N           {res}         1274             602             406   {txt}
+{txt}{hline 60}
+{txt}Standard errors in brackets
+{txt}* p<0.10, ** p<0.05, *** p<0.01
+
+{com}.                 esttab using $folder/output/tables/table3.tex, replace b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) booktabs
+{res}{txt}(output written to {browse  `"C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/output/tables/table3.tex"'})
+
+{com}.                 eststo clear 
+{txt}
+{com}.                 
+.                 
+. *------------------------------------   
+. *-> Table 4: Spectators’ opinions about workers’ efforts and their redistributed shares
+. *------------------------------------                   
+. 
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 // first column
+.                 quietly{c -(}
+{txt}
+{com}.                 
+.                 matlist table4
+{res}
+{txt}{space 0}{space 0}{ralign 12:}{space 1}{c |}{space 1}{ralign 9:edu15v4~n}{space 1}{space 1}{ralign 9:edu15v4~d}{space 1}{space 1}{ralign 9:edu15v4_N}{space 1}{space 1}{ralign 9:emp15v4~n}{space 1}{space 1}{ralign 9:emp15v4~d}{space 1}{space 1}{ralign 9:emp15v4_N}{space 1}
+{space 0}{hline 13}{c   +}{hline 11}{hline 11}{hline 11}{hline 11}{hline 11}{hline 11}
+{space 0}{space 0}{ralign 12:SimilarEff~t}{space 1}{c |}{space 1}{ralign 9:{res:{sf: .4264706}}}{space 1}{space 1}{ralign 9:{res:{sf:  .143762}}}{space 1}{space 1}{ralign 9:{res:{sf:      102}}}{space 1}{space 1}{ralign 9:{res:{sf: .2882883}}}{space 1}{space 1}{ralign 9:{res:{sf: .1869535}}}{space 1}{space 1}{ralign 9:{res:{sf:       37}}}{space 1}
+{space 0}{space 0}{ralign 12:DoubtEffor~r}{space 1}{c |}{space 1}{ralign 9:{res:{sf: .3240741}}}{space 1}{space 1}{ralign 9:{res:{sf: .1997316}}}{space 1}{space 1}{ralign 9:{res:{sf:      108}}}{space 1}{space 1}{ralign 9:{res:{sf: .2586207}}}{space 1}{space 1}{ralign 9:{res:{sf: .1714321}}}{space 1}{space 1}{ralign 9:{res:{sf:      174}}}{space 1}
+{space 0}{space 0}{ralign 12:DoubtEffor~g}{space 1}{c |}{space 1}{ralign 9:{res:{sf: .3192771}}}{space 1}{space 1}{ralign 9:{res:{sf: .2052905}}}{space 1}{space 1}{ralign 9:{res:{sf:       83}}}{space 1}{space 1}{ralign 9:{res:{sf: .2413793}}}{space 1}{space 1}{ralign 9:{res:{sf: .1664416}}}{space 1}{space 1}{ralign 9:{res:{sf:      116}}}{space 1}
+{space 0}{space 0}{ralign 12:DoubtEffor~g}{space 1}{c |}{space 1}{ralign 9:{res:{sf: .3267974}}}{space 1}{space 1}{ralign 9:{res:{sf: .2016456}}}{space 1}{space 1}{ralign 9:{res:{sf:      102}}}{space 1}{space 1}{ralign 9:{res:{sf:  .260355}}}{space 1}{space 1}{ralign 9:{res:{sf: .1723235}}}{space 1}{space 1}{ralign 9:{res:{sf:      169}}}{space 1}
+
+{com}.                 esttab matrix(table4) using $folder/output/tables/table4.tex, replace b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) booktabs
+{res}{txt}(output written to {browse  `"C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/output/tables/table4.tex"'})
+
+{com}. *------------------------------------   
+. *-> Figure 2: Share redistributed
+. *------------------------------------           
+.                 
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 
+.                 *sum luck* edu15* emp15*
+.                 
+.                 keep if treatment=="luckXX"
+{txt}(421 observations deleted)
+
+{com}.                                 
+.                 collapse luck* (semean) se_luck100=luck100 (semean) se_luck99=luck99 (semean) se_luck90=luck90 ///
+>                 (semean) se_luck50=luck50 (semean) se_luck10=luck10 (semean) se_luck01=luck01 (semean) se_luck00=luck00
+{res}{txt}
+{com}.                 save "$folder/data/temp/temp.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/temp.dta{rm}
+saved
+{p_end}
+
+{com}.                 clear
+{txt}
+{com}.                 set obs 7
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 7.
+{p_end}
+
+{com}.                 gen id=_n + 1
+{txt}
+{com}.                 cross using "$folder/data/temp/temp.dta"
+{txt}
+{com}.                 gen luck = luck100 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace luck = luck99 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck90 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck50 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck10 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck01 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck00 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck / 6
+{txt}(7 real changes made)
+
+{com}.                 gen c_u = luck100 + se_luck100 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 gen c_l = luck100 - se_luck100 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace c_u = luck99 + se_luck99 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck99 - se_luck99 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_u = luck90 + se_luck90 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck90 - se_luck90 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_u = luck50 + se_luck50 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck50 - se_luck50 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_u = luck10 + se_luck10 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck10 - se_luck10 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_u = luck01 + se_luck01 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck01 - se_luck01 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_u = luck00 + se_luck00 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck00 - se_luck00 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_u = c_u / 6
+{txt}(7 real changes made)
+
+{com}.                 replace c_l = c_l / 6
+{txt}(7 real changes made)
+
+{com}.                 gen mean_string = string(luck, "%3.2f")
+{txt}
+{com}. 
+.                 twoway (connect luck id) ///
+>                        (rcap c_u c_l id, lcolor("black")) ///
+>                            (scatter luck id, msym(none) mlab(mean_string) mlabsize(medium) mlabpos(1) mlabcolor(black)), ///
+>                            xtitle("") xlabel(1.5 "." 2 "100% luck" 3 "99% luck" 4 "90% luck" 5 "50% luck" 6 "10% luck" 7 "1% luck" 8 "0% luck" 8.5 ".", noticks) ///
+>                            scheme(s1mono) ytitle("Share Redistributed") ylabel(0(0.1)0.5, ang(0)) title("Vary-Probability (n=225)") ///
+>                            legend(off)
+{res}{txt}
+{com}. 
+.                 Graph save Graph "$folder/data/temp/1.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/1.gph} saved
+
+{com}.                 
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 
+.                 *sum luck* edu15* emp15*
+.                                 
+.                 keep if treatment=="eduXX"
+{txt}(436 observations deleted)
+
+{com}.                                 
+.                 replace eduB15v0 = 0 if eduB15v0 ==.
+{txt}(3 real changes made)
+
+{com}.                 replace eduB15v1 = 0 if eduB15v1 ==.
+{txt}(2 real changes made)
+
+{com}.                 replace eduB15v4 = 0 if eduB15v4 ==.
+{txt}(2 real changes made)
+
+{com}.                 replace eduB15v7 = 0 if eduB15v7 ==.
+{txt}(2 real changes made)
+
+{com}.                 replace eduB15v11 = 0 if eduB15v11 ==.
+{txt}(3 real changes made)
+
+{com}.                 replace eduB15v14 = 0 if eduB15v14 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace eduB15v15 = 0 if eduB15v15 ==.
+{txt}(0 real changes made)
+
+{com}.                 
+.                 
+.                 collapse edu15* eduB15* (semean) se_edu15v0=edu15v0 (semean) se_edu15v1=edu15v1 (semean) se_edu15v4=edu15v4 ///
+>                 (semean) se_edu15v7=edu15v7 (semean) se_edu15v11=edu15v11 (semean) se_edu15v14=edu15v14 (semean) se_edu15v15=edu15v15 ///
+>                 (semean) se_eduB15v0 = eduB15v0 (semean) se_eduB15v1 = eduB15v1 (semean) se_eduB15v4 = eduB15v4 ///
+>                 (semean) se_eduB15v7 = eduB15v7 (semean) se_eduB15v11 = eduB15v11 (semean) se_eduB15v14 = eduB15v14 ///
+>                 (semean) se_eduB15v15 = eduB15v15
+{res}{txt}
+{com}.                 
+.                 save "$folder/data/temp/temp.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/temp.dta{rm}
+saved
+{p_end}
+
+{com}.                 clear
+{txt}
+{com}.                 set obs 7
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 7.
+{p_end}
+
+{com}.                 gen id=_n + 1
+{txt}
+{com}.                 cross using "$folder/data/temp/temp.dta"
+{txt}
+{com}.                 gen edu = edu15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace edu = edu15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu / 6
+{txt}(7 real changes made)
+
+{com}.                 gen c_u = edu15v0 + se_edu15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 gen c_l = edu15v0 - se_edu15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace c_u = edu15v1 + se_edu15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v1 - se_edu15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_u = edu15v4 + se_edu15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v4 - se_edu15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_u = edu15v7 + se_edu15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v7 - se_edu15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_u = edu15v11 + se_edu15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v11 - se_edu15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_u = edu15v14 + se_edu15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v14 - se_edu15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_u = edu15v15 + se_edu15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v15 - se_edu15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_u = c_u / 6
+{txt}(7 real changes made)
+
+{com}.                 replace c_l = c_l / 6
+{txt}(7 real changes made)
+
+{com}.                 gen mean_string = string(edu, "%3.2f")
+{txt}
+{com}.                 
+.                 gen belief = eduB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace belief = eduB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief = eduB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief = eduB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief = eduB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief = eduB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief = eduB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief = belief / 100
+{txt}(7 real changes made)
+
+{com}.                 gen belief_u = eduB15v0 + se_eduB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 gen belief_l = eduB15v0 - se_eduB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace belief_u = eduB15v1 + se_eduB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v1 - se_eduB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = eduB15v4 + se_eduB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v4 - se_eduB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = eduB15v7 + se_eduB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v7 - se_eduB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = eduB15v11 + se_eduB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v11 - se_eduB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = eduB15v14 + se_eduB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v14 - se_eduB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = eduB15v15 + se_eduB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v15 - se_eduB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = belief_u / 100
+{txt}(7 real changes made)
+
+{com}.                 replace belief_l = belief_l / 100
+{txt}(7 real changes made)
+
+{com}.                 gen mean_string_b = string(belief, "%3.2f")
+{txt}
+{com}. 
+.                 twoway (connect edu id) (connect belief id, mlcolor(gs7)) ///
+>                        (rcap c_u c_l id, lcolor(black)) (rcap belief_u belief_l id, lcolor(gs7)) ///
+>                            (scatter edu id, msym(none) mlab(mean_string) mlabsize(medium) mlabpos(1) mlabcolor(black)) ///
+>                            (scatter belief id, msym(none) mlab(mean_string_b) mlabsize(medium) mlabpos(5) mlabcolor(black)), ///
+>                            xtitle("") xlabel(1.5 "." 2 "15 vs. 0" 3 "15 vs. 1" 4 "15 vs. 4" 5 "15 vs. 7" 6 "15 vs. 11" 7 "15 vs. 14" 8 "15 vs. 15" 8.5 ".", noticks) ///
+>                            scheme(s1mono) ytitle("Share Redistributed / Belief") ylabel(0(0.1)0.5, ang(0)) title("Vary-Education (n=210)") ///
+>                            legend(row(2) pos(4) ring(0) order(1 "Share redistributed to the disadvantaged worker" 2 "Belief about disadvantaged worker's winning probability"))
+{res}{txt}
+{com}. 
+.                 Graph save Graph "$folder/data/temp/2.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/2.gph} saved
+
+{com}.                 
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 
+.                 keep if treatment=="empXX"
+{txt}(435 observations deleted)
+
+{com}.                 
+.                 replace empB15v0 = 0 if empB15v0 ==.
+{txt}(5 real changes made)
+
+{com}.                 replace empB15v1 = 0 if empB15v1 ==.
+{txt}(1 real change made)
+
+{com}.                 replace empB15v4 = 0 if empB15v4 ==.
+{txt}(2 real changes made)
+
+{com}.                 replace empB15v7 = 0 if empB15v7 ==.
+{txt}(2 real changes made)
+
+{com}.                 replace empB15v11 = 0 if empB15v11 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace empB15v14 = 0 if empB15v14 ==.
+{txt}(1 real change made)
+
+{com}.                 replace empB15v15 = 0 if empB15v15 ==.
+{txt}(1 real change made)
+
+{com}. 
+. 
+.                 collapse emp15* empB15* (semean) se_emp15v0=emp15v0 (semean) se_emp15v1=emp15v1 (semean) se_emp15v4=emp15v4 ///
+>                 (semean) se_emp15v7=emp15v7 (semean) se_emp15v11=emp15v11 (semean) se_emp15v14=emp15v14 (semean) se_emp15v15=emp15v15 ///
+>                 (semean) se_empB15v0 = empB15v0 (semean) se_empB15v1 = empB15v1 (semean) se_empB15v4 = empB15v4 ///
+>                 (semean) se_empB15v7 = empB15v7 (semean) se_empB15v11 = empB15v11 (semean) se_empB15v14 = empB15v14 ///
+>                 (semean) se_empB15v15 = empB15v15
+{res}{txt}
+{com}. 
+.                 save "$folder/data/temp/temp.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/temp.dta{rm}
+saved
+{p_end}
+
+{com}.                 clear
+{txt}
+{com}.                 set obs 7
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 7.
+{p_end}
+
+{com}.                 gen id=_n + 1
+{txt}
+{com}.                 cross using "$folder/data/temp/temp.dta"
+{txt}
+{com}.                 gen emp = emp15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace emp = emp15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp / 6
+{txt}(7 real changes made)
+
+{com}.                 gen c_u = emp15v0 + se_emp15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 gen c_l = emp15v0 - se_emp15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace c_u = emp15v1 + se_emp15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v1 - se_emp15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_u = emp15v4 + se_emp15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v4 - se_emp15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_u = emp15v7 + se_emp15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v7 - se_emp15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_u = emp15v11 + se_emp15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v11 - se_emp15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_u = emp15v14 + se_emp15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v14 - se_emp15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_u = emp15v15 + se_emp15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v15 - se_emp15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_u = c_u / 6
+{txt}(7 real changes made)
+
+{com}.                 replace c_l = c_l / 6
+{txt}(7 real changes made)
+
+{com}.                 gen mean_string = string(emp, "%3.2f")
+{txt}
+{com}. 
+.                 gen belief = empB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace belief = empB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief = empB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief = empB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief = empB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief = empB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief = empB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief = belief / 100
+{txt}(7 real changes made)
+
+{com}.                 gen belief_u = empB15v0 + se_empB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 gen belief_l = empB15v0 - se_empB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace belief_u = empB15v1 + se_empB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v1 - se_empB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = empB15v4 + se_empB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v4 - se_empB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = empB15v7 + se_empB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v7 - se_empB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = empB15v11 + se_empB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v11 - se_empB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = empB15v14 + se_empB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v14 - se_empB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = empB15v15 + se_empB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v15 - se_empB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = belief_u / 100
+{txt}(7 real changes made)
+
+{com}.                 replace belief_l = belief_l / 100
+{txt}(7 real changes made)
+
+{com}.                 gen mean_string_b = string(belief, "%3.2f")
+{txt}
+{com}. 
+.                 twoway (connect emp id) (connect belief id, mlcolor(gs7)) ///
+>                            (rcap c_u c_l id, lcolor(black)) (rcap belief_u belief_l id, lcolor(gs7)) ///
+>                            (scatter emp id, msym(none) mlab(mean_string) mlabsize(medium) mlabpos(11) mlabcolor(black)) ///
+>                            (scatter belief id, msym(none) mlab(mean_string_b) mlabsize(medium) mlabpos(5) mlabcolor(black)), ///
+>                            xtitle("") xlabel(1.5 "." 2 "15 vs. 0" 3 "15 vs. 1" 4 "15 vs. 4" 5 "15 vs. 7" 6 "15 vs. 11" 7 "15 vs. 14" 8 "15 vs. 15" 8.5 ".", noticks) ///
+>                            scheme(s1mono) ytitle("Share Redistributed / Belief") ylabel(0(0.1)0.5, ang(0)) title("Vary-Employment (n=211)") ///
+>                            legend(row(2) pos(4) ring(0) order(1 "Share redistributed to the disadvantaged worker" 2 "Belief about disadvantaged worker's winning probability"))
+{res}{txt}
+{com}.         
+.                 Graph save Graph "$folder/data/temp/3.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/3.gph} saved
+
+{com}.                 
+.                 grc1leg2 "$folder/data/temp/1.gph""$folder/data/temp/2.gph""$folder/data/temp/3.gph", legendfrom($folder/data/temp/2.gph) ///
+>                 scheme(s1mono) cols(1) lcols(1) pos(6) labsize(small) ytol1title xsize(1) ysize(2) scale(0.9)
+{txt}-grc1leg2- working...
+{com}{txt}{p 0 8} (note:  gsize smallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize smallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize smallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize smallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  clockdir by_legend_position {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medsmmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medsmmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medsmmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medsmmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  clockdir by_legend_position {com}{txt}not found in scheme, default attributes used){p_end}
+{res}{com}{txt}{p 0 8} (note:  gsize vsmallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize vsmallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize vsmallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize vsmallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{res}
+{txt}Note: To preserve in a saved graphics file the legend's row and column rearrangements
+made with the options -lrows()- and/or -lcols()-, specify the suboption -asis-
+for the {help saving_option:saving()} option or for the {help gr save:graph save} command.
+
+
+{com}.                 
+.                 graph export $folder/output/figures/figure2.pdf, replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/output/figures/figure2.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+
+{com}. 
+.                 
+. *------------------------------------   
+. *-> Figure 3: Share redistributed  by meritocrats
+. *------------------------------------           
+.                 
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 
+.                 *sum luck* edu15* emp15*
+.                 
+.                 keep if treatment=="luckXX"
+{txt}(421 observations deleted)
+
+{com}.                 
+.                 keep if luck00 < 3 & luck100 > 0
+{txt}(43 observations deleted)
+
+{com}.                 
+.                 collapse luck* (semean) se_luck100=luck100 (semean) se_luck99=luck99 (semean) se_luck90=luck90 ///
+>                 (semean) se_luck50=luck50 (semean) se_luck10=luck10 (semean) se_luck01=luck01 (semean) se_luck00=luck00
+{res}{txt}
+{com}.                 save "$folder/data/temp/temp.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/temp.dta{rm}
+saved
+{p_end}
+
+{com}.                 clear
+{txt}
+{com}.                 set obs 7
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 7.
+{p_end}
+
+{com}.                 gen id=_n + 1
+{txt}
+{com}.                 cross using "$folder/data/temp/temp.dta"
+{txt}
+{com}.                 gen luck = luck100 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace luck = luck99 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck90 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck50 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck10 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck01 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck00 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace luck = luck / 6
+{txt}(7 real changes made)
+
+{com}.                 gen c_u = luck100 + se_luck100 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 gen c_l = luck100 - se_luck100 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace c_u = luck99 + se_luck99 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck99 - se_luck99 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_u = luck90 + se_luck90 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck90 - se_luck90 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_u = luck50 + se_luck50 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck50 - se_luck50 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_u = luck10 + se_luck10 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck10 - se_luck10 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_u = luck01 + se_luck01 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck01 - se_luck01 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_u = luck00 + se_luck00 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_l = luck00 - se_luck00 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_u = c_u / 6
+{txt}(7 real changes made)
+
+{com}.                 replace c_l = c_l / 6
+{txt}(7 real changes made)
+
+{com}.                 gen mean_string = string(luck, "%3.2f")
+{txt}
+{com}. 
+.                 twoway (connect luck id)  ///
+>                        (rcap c_u c_l id, lcolor("black")) ///
+>                            (scatter luck id, msym(none) mlab(mean_string) mlabsize(medium) mlabpos(1) mlabcolor(black)), ///
+>                            xtitle("") xlabel(1.5 "." 2 "100% luck" 3 "99% luck" 4 "90% luck" 5 "50% luck" 6 "10% luck" 7 "1% luck" 8 "0% luck" 8.5 ".", noticks) ///
+>                            scheme(s1mono) ytitle("Share Redistributed") ylabel(0(0.1)0.5, ang(0)) title("Vary-Probability (n=182)") ///
+>                            legend(row(2) pos(4) ring(0) order(1 "Share redistributed to the disadvantaged worker" 2 "Belief about disadvantaged worker's winning probability"))
+{res}{txt}
+{com}. 
+.                 Graph save Graph "$folder/data/temp/1.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/1.gph} saved
+
+{com}.                 
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 
+.                 *sum luck* edu15* emp15*
+.                                 
+.                 keep if treatment=="eduXX"
+{txt}(436 observations deleted)
+
+{com}.                 
+.                 keep if edu15v15 < 3 & edu15v0 > 0
+{txt}(124 observations deleted)
+
+{com}.                 
+.                 replace eduB15v0 = 0 if eduB15v0 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace eduB15v1 = 0 if eduB15v1 ==.
+{txt}(1 real change made)
+
+{com}.                 replace eduB15v4 = 0 if eduB15v4 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace eduB15v7 = 0 if eduB15v7 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace eduB15v11 = 0 if eduB15v11 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace eduB15v14 = 0 if eduB15v14 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace eduB15v15 = 0 if eduB15v15 ==.
+{txt}(0 real changes made)
+
+{com}.                 
+.                 
+.                 collapse edu15* eduB15* (semean) se_edu15v0=edu15v0 (semean) se_edu15v1=edu15v1 (semean) se_edu15v4=edu15v4 ///
+>                 (semean) se_edu15v7=edu15v7 (semean) se_edu15v11=edu15v11 (semean) se_edu15v14=edu15v14 (semean) se_edu15v15=edu15v15 ///
+>                 (semean) se_eduB15v0 = eduB15v0 (semean) se_eduB15v1 = eduB15v1 (semean) se_eduB15v4 = eduB15v4 ///
+>                 (semean) se_eduB15v7 = eduB15v7 (semean) se_eduB15v11 = eduB15v11 (semean) se_eduB15v14 = eduB15v14 ///
+>                 (semean) se_eduB15v15 = eduB15v15
+{res}{txt}
+{com}.                 
+.                 save "$folder/data/temp/temp.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/temp.dta{rm}
+saved
+{p_end}
+
+{com}.                 clear
+{txt}
+{com}.                 set obs 7
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 7.
+{p_end}
+
+{com}.                 gen id=_n + 1
+{txt}
+{com}.                 cross using "$folder/data/temp/temp.dta"
+{txt}
+{com}.                 gen edu = edu15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace edu = edu15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace edu = edu / 6
+{txt}(7 real changes made)
+
+{com}.                 gen c_u = edu15v0 + se_edu15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 gen c_l = edu15v0 - se_edu15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace c_u = edu15v1 + se_edu15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v1 - se_edu15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_u = edu15v4 + se_edu15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v4 - se_edu15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_u = edu15v7 + se_edu15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v7 - se_edu15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_u = edu15v11 + se_edu15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v11 - se_edu15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_u = edu15v14 + se_edu15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v14 - se_edu15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_u = edu15v15 + se_edu15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_l = edu15v15 - se_edu15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_u = c_u / 6
+{txt}(7 real changes made)
+
+{com}.                 replace c_l = c_l / 6
+{txt}(7 real changes made)
+
+{com}.                 gen mean_string = string(edu, "%3.2f")
+{txt}
+{com}.                 
+.                 gen belief = eduB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace belief = eduB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief = eduB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief = eduB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief = eduB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief = eduB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief = eduB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief = belief / 100
+{txt}(7 real changes made)
+
+{com}.                 gen belief_u = eduB15v0 + se_eduB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 gen belief_l = eduB15v0 - se_eduB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace belief_u = eduB15v1 + se_eduB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v1 - se_eduB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = eduB15v4 + se_eduB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v4 - se_eduB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = eduB15v7 + se_eduB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v7 - se_eduB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = eduB15v11 + se_eduB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v11 - se_eduB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = eduB15v14 + se_eduB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v14 - se_eduB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = eduB15v15 + se_eduB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = eduB15v15 - se_eduB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = belief_u / 100
+{txt}(7 real changes made)
+
+{com}.                 replace belief_l = belief_l / 100
+{txt}(7 real changes made)
+
+{com}.                 gen mean_string_b = string(belief, "%3.2f")
+{txt}
+{com}. 
+.                 twoway (connect edu id) (connect belief id, mlcolor(gs7)) ///
+>                        (rcap c_u c_l id, lcolor(black)) (rcap belief_u belief_l id, lcolor(gs7)) ///
+>                            (scatter edu id, msym(none) mlab(mean_string) mlabsize(medium) mlabpos(1) mlabcolor(black)) ///
+>                            (scatter belief id, msym(none) mlab(mean_string_b) mlabsize(medium) mlabpos(10) mlabcolor(black)), ///
+>                            xtitle("") xlabel(1.5 "." 2 "15 vs. 0" 3 "15 vs. 1" 4 "15 vs. 4" 5 "15 vs. 7" 6 "15 vs. 11" 7 "15 vs. 14" 8 "15 vs. 15" 8.5 ".", noticks) ///
+>                            scheme(s1mono) ytitle("Share Redistributed / Belief") ylabel(0(0.1)0.5, ang(0)) title("Vary-Education (n=86)") ///
+>                            legend(row(2) pos(4) ring(0) order(1 "Share redistributed to the disadvantaged worker" 2 "Belief about disadvantaged worker's winning probability"))
+{res}{txt}
+{com}. 
+.                 Graph save Graph "$folder/data/temp/2.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/2.gph} saved
+
+{com}.                 
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 
+.                 keep if treatment=="empXX"
+{txt}(435 observations deleted)
+
+{com}.                 
+.                 keep if emp15v15 < 3 & emp15v0 > 0
+{txt}(153 observations deleted)
+
+{com}. 
+.                 replace empB15v0 = 0 if empB15v0 ==.
+{txt}(1 real change made)
+
+{com}.                 replace empB15v1 = 0 if empB15v1 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace empB15v4 = 0 if empB15v4 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace empB15v7 = 0 if empB15v7 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace empB15v11 = 0 if empB15v11 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace empB15v14 = 0 if empB15v14 ==.
+{txt}(0 real changes made)
+
+{com}.                 replace empB15v15 = 0 if empB15v15 ==.
+{txt}(0 real changes made)
+
+{com}. 
+. 
+.                 collapse emp15* empB15* (semean) se_emp15v0=emp15v0 (semean) se_emp15v1=emp15v1 (semean) se_emp15v4=emp15v4 ///
+>                 (semean) se_emp15v7=emp15v7 (semean) se_emp15v11=emp15v11 (semean) se_emp15v14=emp15v14 (semean) se_emp15v15=emp15v15 ///
+>                 (semean) se_empB15v0 = empB15v0 (semean) se_empB15v1 = empB15v1 (semean) se_empB15v4 = empB15v4 ///
+>                 (semean) se_empB15v7 = empB15v7 (semean) se_empB15v11 = empB15v11 (semean) se_empB15v14 = empB15v14 ///
+>                 (semean) se_empB15v15 = empB15v15
+{res}{txt}
+{com}. 
+.                 save "$folder/data/temp/temp.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/temp.dta{rm}
+saved
+{p_end}
+
+{com}.                 clear
+{txt}
+{com}.                 set obs 7
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 7.
+{p_end}
+
+{com}.                 gen id=_n + 1
+{txt}
+{com}.                 cross using "$folder/data/temp/temp.dta"
+{txt}
+{com}.                 gen emp = emp15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace emp = emp15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace emp = emp / 6
+{txt}(7 real changes made)
+
+{com}.                 gen c_u = emp15v0 + se_emp15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 gen c_l = emp15v0 - se_emp15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace c_u = emp15v1 + se_emp15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v1 - se_emp15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace c_u = emp15v4 + se_emp15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v4 - se_emp15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace c_u = emp15v7 + se_emp15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v7 - se_emp15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace c_u = emp15v11 + se_emp15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v11 - se_emp15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace c_u = emp15v14 + se_emp15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v14 - se_emp15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace c_u = emp15v15 + se_emp15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_l = emp15v15 - se_emp15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace c_u = c_u / 6
+{txt}(7 real changes made)
+
+{com}.                 replace c_l = c_l / 6
+{txt}(7 real changes made)
+
+{com}.                 gen mean_string = string(emp, "%3.2f")
+{txt}
+{com}. 
+.                 gen belief = empB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace belief = empB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief = empB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief = empB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief = empB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief = empB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief = empB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief = belief / 100
+{txt}(7 real changes made)
+
+{com}.                 gen belief_u = empB15v0 + se_empB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 gen belief_l = empB15v0 - se_empB15v0 if id==2
+{txt}(6 missing values generated)
+
+{com}.                 replace belief_u = empB15v1 + se_empB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v1 - se_empB15v1 if id==3
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = empB15v4 + se_empB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v4 - se_empB15v4 if id==4
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = empB15v7 + se_empB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v7 - se_empB15v7 if id==5
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = empB15v11 + se_empB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v11 - se_empB15v11 if id==6
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = empB15v14 + se_empB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v14 - se_empB15v14 if id==7
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = empB15v15 + se_empB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief_l = empB15v15 - se_empB15v15 if id==8
+{txt}(1 real change made)
+
+{com}.                 replace belief_u = belief_u / 100
+{txt}(7 real changes made)
+
+{com}.                 replace belief_l = belief_l / 100
+{txt}(7 real changes made)
+
+{com}.                 gen mean_string_b = string(belief, "%3.2f")
+{txt}
+{com}. 
+.                 twoway (connect emp id) (connect belief id, mlcolor(gs7)) ///
+>                            (rcap c_u c_l id, lcolor(black)) (rcap belief_u belief_l id, lcolor(gs7)) ///
+>                            (scatter emp id, msym(none) mlab(mean_string) mlabsize(medium) mlabpos(1) mlabcolor(black)) ///
+>                            (scatter belief id, msym(none) mlab(mean_string_b) mlabsize(medium) mlabpos(5) mlabcolor(black)), ///
+>                            xtitle("") xlabel(1.5 "." 2 "15 vs. 0" 3 "15 vs. 1" 4 "15 vs. 4" 5 "15 vs. 7" 6 "15 vs. 11" 7 "15 vs. 14" 8 "15 vs. 15" 8.5 ".", noticks) ///
+>                            scheme(s1mono) ytitle("Share Redistributed / Belief") ylabel(0(0.1)0.5, ang(0)) title("Vary-Employment (n=58)") ///
+>                            legend(row(2) pos(4) ring(0) order(1 "Share redistributed to the disadvantaged worker" 2 "Belief about disadvantaged worker's winning probability"))
+{res}{txt}
+{com}.         
+.                 Graph save Graph "$folder/data/temp/3.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/3.gph} saved
+
+{com}.                 
+.                 grc1leg2 "$folder/data/temp/1.gph""$folder/data/temp/2.gph""$folder/data/temp/3.gph", legendfrom($folder/data/temp/2.gph) ///
+>                 scheme(s1mono) cols(1) lcols(1) pos(6) labsize(small) ytol1title xsize(1) ysize(2) scale(0.9)
+{txt}-grc1leg2- working...
+{com}{txt}{p 0 8} (note:  gsize smallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize smallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize smallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize smallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  clockdir by_legend_position {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medsmmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medsmmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medsmmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize medsmmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  clockdir by_legend_position {com}{txt}not found in scheme, default attributes used){p_end}
+{res}{com}{txt}{p 0 8} (note:  gsize vsmallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize vsmallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize vsmallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{com}{txt}{p 0 8} (note:  gsize vsmallmargin {com}{txt}not found in scheme, default attributes used){p_end}
+{res}
+{txt}Note: To preserve in a saved graphics file the legend's row and column rearrangements
+made with the options -lrows()- and/or -lcols()-, specify the suboption -asis-
+for the {help saving_option:saving()} option or for the {help gr save:graph save} command.
+
+
+{com}. 
+.                 graph export $folder/output/figures/figure3.pdf, replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/output/figures/figure3.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+
+{com}. 
+.                 
+. *------------------------------------   
+. *-> Figure A3: Distribution of share (labels manually added)
+. *------------------------------------   
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 
+.                 keep if treatment == "luckXX"
+{txt}(421 observations deleted)
+
+{com}.                 
+.                 save "$folder/data/temp/temp.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/temp.dta{rm}
+saved
+{p_end}
+
+{com}.                 
+.                 clear
+{txt}
+{com}.                 set obs 7
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 7.
+{p_end}
+
+{com}.                 gen id=_n
+{txt}
+{com}.                 cross using "$folder/data/temp/temp.dta"
+{txt}
+{com}.                 
+.                 gen temp1 = luck100 if id==1
+{txt}(1,350 missing values generated)
+
+{com}.                 replace temp1 = luck99 if id==2
+{txt}(225 real changes made)
+
+{com}.                 replace temp1 = luck90 if id==3
+{txt}(225 real changes made)
+
+{com}.                 replace temp1 = luck50 if id==4
+{txt}(225 real changes made)
+
+{com}.                 replace temp1 = luck10 if id==5
+{txt}(225 real changes made)
+
+{com}.                 replace temp1 = luck01 if id==6
+{txt}(225 real changes made)
+
+{com}.                 replace temp1 = luck00 if id==7
+{txt}(225 real changes made)
+
+{com}.                                 
+.                 hist temp1, ///
+>                         discrete frac xlabel(0(1)6) ///
+>                         by(id,col(1) title("Vary-Probability") note("")) scheme(s1mono) ///
+>                         ytitle(Fraction) ylabel(0(0.2)0.8) ///
+>                         xtitle(Distribution) ///
+>                         xlabel(0 "(0,6)" 1 "(1,5)" 2 "(2,4)" 3"(3,3)" 4"(4,2)" 5"(5,1)" 6"(6,0)", ang(90)) ///
+>                         xsize(1) ysize(4) 
+{res}{txt}
+{com}.         
+.                 Graph save Graph "$folder/data/temp/1.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/1.gph} saved
+
+{com}.         
+. 
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 
+.                 keep if treatment == "eduXX"
+{txt}(436 observations deleted)
+
+{com}.                 
+.                 save "$folder/data/temp/temp.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/temp.dta{rm}
+saved
+{p_end}
+
+{com}.                 
+.                 clear
+{txt}
+{com}.                 set obs 7
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 7.
+{p_end}
+
+{com}.                 gen id=_n
+{txt}
+{com}.                 cross using "$folder/data/temp/temp.dta"
+{txt}
+{com}.                 
+.                 gen temp1 = edu15v0 if id==1
+{txt}(1,260 missing values generated)
+
+{com}.                 replace temp1 = edu15v1 if id==2
+{txt}(210 real changes made)
+
+{com}.                 replace temp1 = edu15v4 if id==3
+{txt}(210 real changes made)
+
+{com}.                 replace temp1 = edu15v7 if id==4
+{txt}(210 real changes made)
+
+{com}.                 replace temp1 = edu15v11 if id==5
+{txt}(210 real changes made)
+
+{com}.                 replace temp1 = edu15v14 if id==6
+{txt}(210 real changes made)
+
+{com}.                 replace temp1 = edu15v15 if id==7
+{txt}(210 real changes made)
+
+{com}.                 
+.                 hist temp1, ///
+>                         discrete frac xlabel(0(1)6) ///
+>                         by(id,col(1) title("Vary-Education") note("")) scheme(s1mono) ///
+>                         ytitle(Fraction) ylabel(0(0.2)0.8) ///
+>                         xtitle(Distribution) ///
+>                         xlabel(0 "(0,6)" 1 "(1,5)" 2 "(2,4)" 3"(3,3)" 4"(4,2)" 5"(5,1)" 6"(6,0)", ang(90)) ///
+>                         xsize(1) ysize(4) 
+{res}{txt}
+{com}.         
+.                 Graph save Graph "$folder/data/temp/2.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/2.gph} saved
+
+{com}.                 
+.                 
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 
+.                 keep if treatment == "empXX"
+{txt}(435 observations deleted)
+
+{com}.                 
+.                 save "$folder/data/temp/temp.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/temp.dta{rm}
+saved
+{p_end}
+
+{com}.                 
+.                 clear
+{txt}
+{com}.                 set obs 7
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 7.
+{p_end}
+
+{com}.                 gen id=_n
+{txt}
+{com}.                 cross using "$folder/data/temp/temp.dta"
+{txt}
+{com}.                 
+.                 gen temp1 = emp15v0 if id==1
+{txt}(1,266 missing values generated)
+
+{com}.                 replace temp1 = emp15v1 if id==2
+{txt}(211 real changes made)
+
+{com}.                 replace temp1 = emp15v4 if id==3
+{txt}(211 real changes made)
+
+{com}.                 replace temp1 = emp15v7 if id==4
+{txt}(211 real changes made)
+
+{com}.                 replace temp1 = emp15v11 if id==5
+{txt}(211 real changes made)
+
+{com}.                 replace temp1 = emp15v14 if id==6
+{txt}(211 real changes made)
+
+{com}.                 replace temp1 = emp15v15 if id==7
+{txt}(211 real changes made)
+
+{com}.                 
+.                 hist temp1, ///
+>                         discrete frac xlabel(0(1)6) ///
+>                         by(id,col(1) title("Vary-Employment") note("")) scheme(s1mono) ///
+>                         ytitle(Fraction) ylabel(0(0.2)0.8) ///
+>                         xtitle(Distribution) ///
+>                         xlabel(0 "(0,6)" 1 "(1,5)" 2 "(2,4)" 3"(3,3)" 4"(4,2)" 5"(5,1)" 6"(6,0)", ang(90)) ///
+>                         xsize(1) ysize(4) 
+{res}{txt}
+{com}.         
+.                 Graph save Graph "$folder/data/temp/3.gph", replace
+{res}{txt}file {bf:C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/3.gph} saved
+
+{com}.                 
+.                 graph combine "$folder/data/temp/1.gph""$folder/data/temp/2.gph""$folder/data/temp/3.gph", ///
+>                 scheme(s1mono) cols(3) xsize(3) ysize(4)
+{res}{txt}
+{com}. 
+.                 graph export $folder/output/figures/figureA3.pdf, replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/output/figures/figureA3.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+
+{com}. 
+.                 
+. *------------------------------------   
+. *-> Table A6: Balance table 
+. *------------------------------------                   
+.                 
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 matrix drop _all
+{txt}
+{com}.                 foreach treatment in eduXX empXX luckXX {c -(}
+{txt}  2{com}.                 quietly {c -(}
+{txt}  3{com}.                         summarize female1 if treatment == "`treatment'"
+{txt}  4{com}.                          scalar female1 = r(mean)
+{txt}  5{com}.                          summarize age1 if treatment == "`treatment'"
+{txt}  6{com}.                          scalar age1 = r(mean) 
+{txt}  7{com}.                          summarize highEdu if treatment == "`treatment'"
+{txt}  8{com}.                          scalar highEdu = r(mean)
+{txt}  9{com}.                          summarize income1 if treatment == "`treatment'"
+{txt} 10{com}.                          scalar income1 = r(mean)
+{txt} 11{com}.                          summarize conservative if treatment == "`treatment'"
+{txt} 12{com}.                          scalar conservative = r(mean)
+{txt} 13{com}.                          matrix results`treatment' = female1, age1, highEdu, income1, conservative,r(N)
+{txt} 14{com}.                 {c )-}
+{txt} 15{com}.                 {c )-}
+{txt}
+{com}.                 
+.                 
+.                 matrix result_table = resultsluckXX', resultseduXX', resultsempXX'
+{txt}
+{com}.                 matrix colnames result_table = v-prob v-educ v-emp
+{txt}
+{com}.                 matrix rownames result_table = female age_years high_education individual_yearly_income conservative obs
+{txt}
+{com}.         
+.                 matrix list result_table, format(%9.3f)
+{res}
+{txt}result_table[6,3]
+                 v-prob     v-educ      v-emp
+      female {res}     0.427      0.410      0.393
+{txt}   age_years {res}    38.133     39.905     38.995
+{txt}high_educa~n {res}     0.569      0.643      0.545
+{txt}individual~e {res} 59208.716  60714.286  54146.341
+{txt}conservative {res}     0.173      0.224      0.199
+{txt}         obs {res}   225.000    210.000    211.000
+{reset}
+{com}.                 esttab matrix(result_table) using $folder/output/tables/tableA6.tex, replace b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) booktabs
+{res}{txt}(output written to {browse  `"C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/output/tables/tableA6.tex"'})
+
+{com}. 
+. *------------------------------------   
+. *-> Table A7 & A8: regression analysis
+. *------------------------------------                   
+. 
+.                 use $folder/data/processed/spectator_vary.dta, clear
+{txt}
+{com}.                 save "$folder/data/temp/temp.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/data/temp/temp.dta{rm}
+saved
+{p_end}
+
+{com}. 
+.                 clear
+{txt}
+{com}.                 set obs 7
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 7.
+{p_end}
+
+{com}.                 gen id=_n
+{txt}
+{com}.                 cross using "$folder/data/temp/temp.dta"
+{txt}
+{com}.                 gen luck = luck100 if id==1
+{txt}(4,297 missing values generated)
+
+{com}.                 replace luck = luck99 if id==2
+{txt}(225 real changes made)
+
+{com}.                 replace luck = luck90 if id==3
+{txt}(225 real changes made)
+
+{com}.                 replace luck = luck50 if id==4
+{txt}(225 real changes made)
+
+{com}.                 replace luck = luck10 if id==5
+{txt}(225 real changes made)
+
+{com}.                 replace luck = luck01 if id==6
+{txt}(225 real changes made)
+
+{com}.                 replace luck = luck00 if id==7
+{txt}(225 real changes made)
+
+{com}.                 replace luck = luck / 6
+{txt}(1,152 real changes made)
+
+{com}.                 gen edu2 = edu15v0 if id==1
+{txt}(4,312 missing values generated)
+
+{com}.                 replace edu2 = edu15v1 if id==2
+{txt}(210 real changes made)
+
+{com}.                 replace edu2 = edu15v4 if id==3
+{txt}(210 real changes made)
+
+{com}.                 replace edu2 = edu15v7 if id==4
+{txt}(210 real changes made)
+
+{com}.                 replace edu2 = edu15v11 if id==5
+{txt}(210 real changes made)
+
+{com}.                 replace edu2 = edu15v14 if id==6
+{txt}(210 real changes made)
+
+{com}.                 replace edu2 = edu15v15 if id==7
+{txt}(210 real changes made)
+
+{com}.                 replace edu2 = edu2 / 6
+{txt}(1,231 real changes made)
+
+{com}.                 gen emp = emp15v0 if id==1
+{txt}(4,311 missing values generated)
+
+{com}.                 replace emp = emp15v1 if id==2
+{txt}(211 real changes made)
+
+{com}.                 replace emp = emp15v4 if id==3
+{txt}(211 real changes made)
+
+{com}.                 replace emp = emp15v7 if id==4
+{txt}(211 real changes made)
+
+{com}.                 replace emp = emp15v11 if id==5
+{txt}(211 real changes made)
+
+{com}.                 replace emp = emp15v14 if id==6
+{txt}(211 real changes made)
+
+{com}.                 replace emp = emp15v15 if id==7
+{txt}(211 real changes made)
+
+{com}.                 replace emp = emp / 6
+{txt}(1,100 real changes made)
+
+{com}.                 
+.                 // run this code for Table A7
+.                 eststo: reg luck i.id if treatment=="luckXX", cluster(connectID)
+
+{txt}Linear regression                               Number of obs     = {res}     1,575
+                                                {txt}F(6, 224)         =  {res}   107.02
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.3882
+                                                {txt}Root MSE          =    {res} .18216
+
+{txt}{ralign 78:(Std. err. adjusted for {res:225} clusters in {res:connectID})}
+{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        luck{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}id {c |}
+{space 10}2  {c |}{col 14}{res}{space 2} .0162963{col 26}{space 2} .0117571{col 37}{space 1}    1.39{col 46}{space 3}0.167{col 54}{space 4}-.0068724{col 67}{space 3}  .039465
+{txt}{space 10}3  {c |}{col 14}{res}{space 2}-.0081481{col 26}{space 2} .0123675{col 37}{space 1}   -0.66{col 46}{space 3}0.511{col 54}{space 4}-.0325196{col 67}{space 3} .0162233
+{txt}{space 10}4  {c |}{col 14}{res}{space 2}-.0096296{col 26}{space 2} .0122729{col 37}{space 1}   -0.78{col 46}{space 3}0.434{col 54}{space 4}-.0338147{col 67}{space 3} .0145554
+{txt}{space 10}5  {c |}{col 14}{res}{space 2}-.2318518{col 26}{space 2} .0169547{col 37}{space 1}  -13.67{col 46}{space 3}0.000{col 54}{space 4} -.265263{col 67}{space 3}-.1984407
+{txt}{space 10}6  {c |}{col 14}{res}{space 2}-.3074074{col 26}{space 2} .0162885{col 37}{space 1}  -18.87{col 46}{space 3}0.000{col 54}{space 4}-.3395058{col 67}{space 3} -.275309
+{txt}{space 10}7  {c |}{col 14}{res}{space 2}-.3237037{col 26}{space 2} .0162663{col 37}{space 1}  -19.90{col 46}{space 3}0.000{col 54}{space 4}-.3557583{col 67}{space 3}-.2916491
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .4355556{col 26}{space 2} .0137023{col 37}{space 1}   31.79{col 46}{space 3}0.000{col 54}{space 4} .4085537{col 67}{space 3} .4625574
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est1{txt} stored)
+
+{com}.                 eststo: reg edu2 i.id if treatment=="eduXX", cluster(connectID)
+
+{txt}Linear regression                               Number of obs     = {res}     1,470
+                                                {txt}F(6, 209)         =  {res}     7.82
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.0235
+                                                {txt}Root MSE          =    {res} .20362
+
+{txt}{ralign 78:(Std. err. adjusted for {res:210} clusters in {res:connectID})}
+{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        edu2{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}id {c |}
+{space 10}2  {c |}{col 14}{res}{space 2}-.0031746{col 26}{space 2} .0082816{col 37}{space 1}   -0.38{col 46}{space 3}0.702{col 54}{space 4}-.0195007{col 67}{space 3} .0131515
+{txt}{space 10}3  {c |}{col 14}{res}{space 2}-.0071429{col 26}{space 2} .0101029{col 37}{space 1}   -0.71{col 46}{space 3}0.480{col 54}{space 4}-.0270595{col 67}{space 3} .0127738
+{txt}{space 10}4  {c |}{col 14}{res}{space 2}  .002381{col 26}{space 2} .0097945{col 37}{space 1}    0.24{col 46}{space 3}0.808{col 54}{space 4}-.0169277{col 67}{space 3} .0216896
+{txt}{space 10}5  {c |}{col 14}{res}{space 2} .0071429{col 26}{space 2} .0146692{col 37}{space 1}    0.49{col 46}{space 3}0.627{col 54}{space 4}-.0217758{col 67}{space 3} .0360615
+{txt}{space 10}6  {c |}{col 14}{res}{space 2}-.0206349{col 26}{space 2} .0178749{col 37}{space 1}   -1.15{col 46}{space 3}0.250{col 54}{space 4}-.0558732{col 67}{space 3} .0146033
+{txt}{space 10}7  {c |}{col 14}{res}{space 2}-.0904762{col 26}{space 2} .0205436{col 37}{space 1}   -4.40{col 46}{space 3}0.000{col 54}{space 4}-.1309754{col 67}{space 3} -.049977
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .3809524{col 26}{space 2} .0144123{col 37}{space 1}   26.43{col 46}{space 3}0.000{col 54}{space 4} .3525402{col 67}{space 3} .4093645
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est2{txt} stored)
+
+{com}.                 eststo: reg emp i.id if treatment=="empXX", cluster(connectID)
+
+{txt}Linear regression                               Number of obs     = {res}     1,477
+                                                {txt}F(6, 210)         =  {res}    13.15
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.0707
+                                                {txt}Root MSE          =    {res} .20069
+
+{txt}{ralign 78:(Std. err. adjusted for {res:211} clusters in {res:connectID})}
+{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}         emp{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}id {c |}
+{space 10}2  {c |}{col 14}{res}{space 2} .0150079{col 26}{space 2} .0080632{col 37}{space 1}    1.86{col 46}{space 3}0.064{col 54}{space 4}-.0008874{col 67}{space 3} .0309032
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} .0758294{col 26}{space 2} .0143758{col 37}{space 1}    5.27{col 46}{space 3}0.000{col 54}{space 4}   .04749{col 67}{space 3} .1041688
+{txt}{space 10}4  {c |}{col 14}{res}{space 2}  .121643{col 26}{space 2} .0151285{col 37}{space 1}    8.04{col 46}{space 3}0.000{col 54}{space 4} .0918198{col 67}{space 3} .1514661
+{txt}{space 10}5  {c |}{col 14}{res}{space 2} .1398104{col 26}{space 2} .0180662{col 37}{space 1}    7.74{col 46}{space 3}0.000{col 54}{space 4} .1041962{col 67}{space 3} .1754247
+{txt}{space 10}6  {c |}{col 14}{res}{space 2} .1413902{col 26}{space 2} .0205844{col 37}{space 1}    6.87{col 46}{space 3}0.000{col 54}{space 4} .1008118{col 67}{space 3} .1819687
+{txt}{space 10}7  {c |}{col 14}{res}{space 2} .1263823{col 26}{space 2} .0233566{col 37}{space 1}    5.41{col 46}{space 3}0.000{col 54}{space 4} .0803388{col 67}{space 3} .1724258
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .1879937{col 26}{space 2}  .015002{col 37}{space 1}   12.53{col 46}{space 3}0.000{col 54}{space 4}   .15842{col 67}{space 3} .2175674
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est3{txt} stored)
+
+{com}.                 esttab, b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) brackets
+{res}
+{txt}{hline 60}
+{txt}                      (1)             (2)             (3)   
+{txt}                     luck            edu2             emp   
+{txt}{hline 60}
+{txt}1.id        {res}        0.000           0.000           0.000   {txt}
+            {res} {ralign 12:{txt:[}.{txt:]}}    {ralign 12:{txt:[}.{txt:]}}    {ralign 12:{txt:[}.{txt:]}}   {txt}
+
+{txt}2.id        {res}        0.016          -0.003           0.015*  {txt}
+            {res} {ralign 12:{txt:[}0.012{txt:]}}    {ralign 12:{txt:[}0.008{txt:]}}    {ralign 12:{txt:[}0.008{txt:]}}   {txt}
+
+{txt}3.id        {res}       -0.008          -0.007           0.076***{txt}
+            {res} {ralign 12:{txt:[}0.012{txt:]}}    {ralign 12:{txt:[}0.010{txt:]}}    {ralign 12:{txt:[}0.014{txt:]}}   {txt}
+
+{txt}4.id        {res}       -0.010           0.002           0.122***{txt}
+            {res} {ralign 12:{txt:[}0.012{txt:]}}    {ralign 12:{txt:[}0.010{txt:]}}    {ralign 12:{txt:[}0.015{txt:]}}   {txt}
+
+{txt}5.id        {res}       -0.232***        0.007           0.140***{txt}
+            {res} {ralign 12:{txt:[}0.017{txt:]}}    {ralign 12:{txt:[}0.015{txt:]}}    {ralign 12:{txt:[}0.018{txt:]}}   {txt}
+
+{txt}6.id        {res}       -0.307***       -0.021           0.141***{txt}
+            {res} {ralign 12:{txt:[}0.016{txt:]}}    {ralign 12:{txt:[}0.018{txt:]}}    {ralign 12:{txt:[}0.021{txt:]}}   {txt}
+
+{txt}7.id        {res}       -0.324***       -0.090***        0.126***{txt}
+            {res} {ralign 12:{txt:[}0.016{txt:]}}    {ralign 12:{txt:[}0.021{txt:]}}    {ralign 12:{txt:[}0.023{txt:]}}   {txt}
+
+{txt}_cons       {res}        0.436***        0.381***        0.188***{txt}
+            {res} {ralign 12:{txt:[}0.014{txt:]}}    {ralign 12:{txt:[}0.014{txt:]}}    {ralign 12:{txt:[}0.015{txt:]}}   {txt}
+{txt}{hline 60}
+{txt}N           {res}         1575            1470            1477   {txt}
+{txt}{hline 60}
+{txt}Standard errors in brackets
+{txt}* p<0.10, ** p<0.05, *** p<0.01
+
+{com}.                 esttab using $folder/output/tables/tableA7.tex, replace b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) booktabs
+{res}{txt}(output written to {browse  `"C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/output/tables/tableA7.tex"'})
+
+{com}.                 eststo clear 
+{txt}
+{com}.                 
+.                 //run this code for Table A8
+.                 eststo: reg luck i.id if treatment=="luckXX" & luck00 < 3, cluster(connectID)
+
+{txt}Linear regression                               Number of obs     = {res}     1,477
+                                                {txt}F(6, 210)         =  {res}   138.13
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.4361
+                                                {txt}Root MSE          =    {res} .17598
+
+{txt}{ralign 78:(Std. err. adjusted for {res:211} clusters in {res:connectID})}
+{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        luck{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}id {c |}
+{space 10}2  {c |}{col 14}{res}{space 2} .0181675{col 26}{space 2} .0122524{col 37}{space 1}    1.48{col 46}{space 3}0.140{col 54}{space 4}-.0059859{col 67}{space 3} .0423209
+{txt}{space 10}3  {c |}{col 14}{res}{space 2}-.0063191{col 26}{space 2} .0129323{col 37}{space 1}   -0.49{col 46}{space 3}0.626{col 54}{space 4}-.0318129{col 67}{space 3} .0191746
+{txt}{space 10}4  {c |}{col 14}{res}{space 2}-.0086888{col 26}{space 2} .0128034{col 37}{space 1}   -0.68{col 46}{space 3}0.498{col 54}{space 4}-.0339284{col 67}{space 3} .0165509
+{txt}{space 10}5  {c |}{col 14}{res}{space 2}-.2464455{col 26}{space 2} .0174301{col 37}{space 1}  -14.14{col 46}{space 3}0.000{col 54}{space 4}-.2808059{col 67}{space 3}-.2120851
+{txt}{space 10}6  {c |}{col 14}{res}{space 2}-.3262243{col 26}{space 2} .0165019{col 37}{space 1}  -19.77{col 46}{space 3}0.000{col 54}{space 4}-.3587549{col 67}{space 3}-.2936937
+{txt}{space 10}7  {c |}{col 14}{res}{space 2}-.3443918{col 26}{space 2} .0161638{col 37}{space 1}  -21.31{col 46}{space 3}0.000{col 54}{space 4}-.3762559{col 67}{space 3}-.3125277
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .4304897{col 26}{space 2} .0143095{col 37}{space 1}   30.08{col 46}{space 3}0.000{col 54}{space 4} .4022811{col 67}{space 3} .4586983
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est1{txt} stored)
+
+{com}.                 eststo: reg edu2 i.id if treatment=="eduXX" & edu15v15 < 3, cluster(connectID)
+
+{txt}Linear regression                               Number of obs     = {res}       735
+                                                {txt}F(6, 104)         =  {res}    36.00
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.2125
+                                                {txt}Root MSE          =    {res} .18438
+
+{txt}{ralign 78:(Std. err. adjusted for {res:105} clusters in {res:connectID})}
+{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}        edu2{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}id {c |}
+{space 10}2  {c |}{col 14}{res}{space 2}-.0063492{col 26}{space 2} .0063753{col 37}{space 1}   -1.00{col 46}{space 3}0.322{col 54}{space 4}-.0189917{col 67}{space 3} .0062933
+{txt}{space 10}3  {c |}{col 14}{res}{space 2}-.0333333{col 26}{space 2} .0122803{col 37}{space 1}   -2.71{col 46}{space 3}0.008{col 54}{space 4}-.0576856{col 67}{space 3}-.0089811
+{txt}{space 10}4  {c |}{col 14}{res}{space 2}-.0285714{col 26}{space 2} .0116495{col 37}{space 1}   -2.45{col 46}{space 3}0.016{col 54}{space 4}-.0516728{col 67}{space 3}-.0054701
+{txt}{space 10}5  {c |}{col 14}{res}{space 2}-.0539683{col 26}{space 2} .0205707{col 37}{space 1}   -2.62{col 46}{space 3}0.010{col 54}{space 4}-.0947607{col 67}{space 3}-.0131758
+{txt}{space 10}6  {c |}{col 14}{res}{space 2} -.131746{col 26}{space 2} .0213297{col 37}{space 1}   -6.18{col 46}{space 3}0.000{col 54}{space 4}-.1740436{col 67}{space 3}-.0894484
+{txt}{space 10}7  {c |}{col 14}{res}{space 2}-.2888889{col 26}{space 2} .0217549{col 37}{space 1}  -13.28{col 46}{space 3}0.000{col 54}{space 4}-.3320297{col 67}{space 3}-.2457481
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .3603175{col 26}{space 2} .0197604{col 37}{space 1}   18.23{col 46}{space 3}0.000{col 54}{space 4} .3211319{col 67}{space 3}  .399503
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est2{txt} stored)
+
+{com}.                 eststo: reg emp i.id if treatment=="empXX" & emp15v15 < 3, cluster(connectID)
+
+{txt}Linear regression                               Number of obs     = {res}       749
+                                                {txt}F(6, 106)         =  {res}    11.50
+                                                {txt}Prob > F          = {res}    0.0000
+                                                {txt}R-squared         = {res}    0.0492
+                                                {txt}Root MSE          =    {res} .18807
+
+{txt}{ralign 78:(Std. err. adjusted for {res:107} clusters in {res:connectID})}
+{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}    Robust
+{col 1}         emp{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}id {c |}
+{space 10}2  {c |}{col 14}{res}{space 2} .0062305{col 26}{space 2}  .009919{col 37}{space 1}    0.63{col 46}{space 3}0.531{col 54}{space 4}-.0134349{col 67}{space 3}  .025896
+{txt}{space 10}3  {c |}{col 14}{res}{space 2}  .029595{col 26}{space 2} .0203434{col 37}{space 1}    1.45{col 46}{space 3}0.149{col 54}{space 4}-.0107378{col 67}{space 3} .0699278
+{txt}{space 10}4  {c |}{col 14}{res}{space 2} .0482866{col 26}{space 2} .0211988{col 37}{space 1}    2.28{col 46}{space 3}0.025{col 54}{space 4}  .006258{col 67}{space 3} .0903152
+{txt}{space 10}5  {c |}{col 14}{res}{space 2} .0327103{col 26}{space 2} .0247883{col 37}{space 1}    1.32{col 46}{space 3}0.190{col 54}{space 4}-.0164349{col 67}{space 3} .0818555
+{txt}{space 10}6  {c |}{col 14}{res}{space 2}-.0155763{col 26}{space 2} .0269906{col 37}{space 1}   -0.58{col 46}{space 3}0.565{col 54}{space 4}-.0690877{col 67}{space 3} .0379351
+{txt}{space 10}7  {c |}{col 14}{res}{space 2}-.0903427{col 26}{space 2} .0269675{col 37}{space 1}   -3.35{col 46}{space 3}0.001{col 54}{space 4}-.1438083{col 67}{space 3} -.036877
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} .2056075{col 26}{space 2} .0218379{col 37}{space 1}    9.42{col 46}{space 3}0.000{col 54}{space 4} .1623118{col 67}{space 3} .2489032
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}({res}est3{txt} stored)
+
+{com}.                 esttab, b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) brackets
+{res}
+{txt}{hline 60}
+{txt}                      (1)             (2)             (3)   
+{txt}                     luck            edu2             emp   
+{txt}{hline 60}
+{txt}1.id        {res}        0.000           0.000           0.000   {txt}
+            {res} {ralign 12:{txt:[}.{txt:]}}    {ralign 12:{txt:[}.{txt:]}}    {ralign 12:{txt:[}.{txt:]}}   {txt}
+
+{txt}2.id        {res}        0.018          -0.006           0.006   {txt}
+            {res} {ralign 12:{txt:[}0.012{txt:]}}    {ralign 12:{txt:[}0.006{txt:]}}    {ralign 12:{txt:[}0.010{txt:]}}   {txt}
+
+{txt}3.id        {res}       -0.006          -0.033***        0.030   {txt}
+            {res} {ralign 12:{txt:[}0.013{txt:]}}    {ralign 12:{txt:[}0.012{txt:]}}    {ralign 12:{txt:[}0.020{txt:]}}   {txt}
+
+{txt}4.id        {res}       -0.009          -0.029**         0.048** {txt}
+            {res} {ralign 12:{txt:[}0.013{txt:]}}    {ralign 12:{txt:[}0.012{txt:]}}    {ralign 12:{txt:[}0.021{txt:]}}   {txt}
+
+{txt}5.id        {res}       -0.246***       -0.054**         0.033   {txt}
+            {res} {ralign 12:{txt:[}0.017{txt:]}}    {ralign 12:{txt:[}0.021{txt:]}}    {ralign 12:{txt:[}0.025{txt:]}}   {txt}
+
+{txt}6.id        {res}       -0.326***       -0.132***       -0.016   {txt}
+            {res} {ralign 12:{txt:[}0.017{txt:]}}    {ralign 12:{txt:[}0.021{txt:]}}    {ralign 12:{txt:[}0.027{txt:]}}   {txt}
+
+{txt}7.id        {res}       -0.344***       -0.289***       -0.090***{txt}
+            {res} {ralign 12:{txt:[}0.016{txt:]}}    {ralign 12:{txt:[}0.022{txt:]}}    {ralign 12:{txt:[}0.027{txt:]}}   {txt}
+
+{txt}_cons       {res}        0.430***        0.360***        0.206***{txt}
+            {res} {ralign 12:{txt:[}0.014{txt:]}}    {ralign 12:{txt:[}0.020{txt:]}}    {ralign 12:{txt:[}0.022{txt:]}}   {txt}
+{txt}{hline 60}
+{txt}N           {res}         1477             735             749   {txt}
+{txt}{hline 60}
+{txt}Standard errors in brackets
+{txt}* p<0.10, ** p<0.05, *** p<0.01
+
+{com}.                 esttab using $folder/output/tables/tableA8.tex, replace b(%6.3f) se star(* 0.10 ** 0.05 *** 0.01) booktabs
+{res}{txt}(output written to {browse  `"C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/output/tables/tableA8.tex"'})
+
+{com}.                 eststo clear 
+{txt}
+{com}.                 
+.                 
+.                 log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\VK\Sync\Research\i4r_amsterdam_2025\RAW_3-replication-package/code/log_2spectator_vary.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}16 Nov 2025, 19:00:11
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

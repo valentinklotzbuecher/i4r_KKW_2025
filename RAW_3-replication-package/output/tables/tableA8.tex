@@ -1,0 +1,37 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+            &\multicolumn{1}{c}{luck}&\multicolumn{1}{c}{edu2}&\multicolumn{1}{c}{emp}\\
+\midrule
+1.id        &       0.000         &       0.000         &       0.000         \\
+            &         (.)         &         (.)         &         (.)         \\
+\addlinespace
+2.id        &       0.018         &      -0.006         &       0.006         \\
+            &     (0.012)         &     (0.006)         &     (0.010)         \\
+\addlinespace
+3.id        &      -0.006         &      -0.033\sym{***}&       0.030         \\
+            &     (0.013)         &     (0.012)         &     (0.020)         \\
+\addlinespace
+4.id        &      -0.009         &      -0.029\sym{**} &       0.048\sym{**} \\
+            &     (0.013)         &     (0.012)         &     (0.021)         \\
+\addlinespace
+5.id        &      -0.246\sym{***}&      -0.054\sym{**} &       0.033         \\
+            &     (0.017)         &     (0.021)         &     (0.025)         \\
+\addlinespace
+6.id        &      -0.326\sym{***}&      -0.132\sym{***}&      -0.016         \\
+            &     (0.017)         &     (0.021)         &     (0.027)         \\
+\addlinespace
+7.id        &      -0.344\sym{***}&      -0.289\sym{***}&      -0.090\sym{***}\\
+            &     (0.016)         &     (0.022)         &     (0.027)         \\
+\addlinespace
+\_cons      &       0.430\sym{***}&       0.360\sym{***}&       0.206\sym{***}\\
+            &     (0.014)         &     (0.020)         &     (0.022)         \\
+\midrule
+\(N\)       &        1477         &         735         &         749         \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}

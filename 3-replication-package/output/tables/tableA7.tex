@@ -1,0 +1,33 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+\midrule
+99\% luck / 15 vs. 1&       0.020         &      -0.006         &       0.013         \\
+            &     (0.013)         &     (0.008)         &     (0.008)         \\
+\addlinespace
+90\% luck / 15 vs. 4&      -0.004         &      -0.008         &       0.072\sym{***}\\
+            &     (0.013)         &     (0.011)         &     (0.015)         \\
+\addlinespace
+50\% luck / 15 vs. 7&      -0.008         &       0.001         &       0.114\sym{***}\\
+            &     (0.013)         &     (0.010)         &     (0.016)         \\
+\addlinespace
+10\% luck / 15 vs. 11&      -0.236\sym{***}&       0.003         &       0.136\sym{***}\\
+            &     (0.018)         &     (0.016)         &     (0.019)         \\
+\addlinespace
+1\% luck / 15 vs. 14&      -0.312\sym{***}&      -0.028         &       0.133\sym{***}\\
+            &     (0.017)         &     (0.019)         &     (0.021)         \\
+\addlinespace
+0\% luck / 15 vs. 15&      -0.329\sym{***}&      -0.101\sym{***}&       0.118\sym{***}\\
+            &     (0.017)         &     (0.022)         &     (0.024)         \\
+\addlinespace
+Constant      &       0.436\sym{***}&       0.386\sym{***}&       0.191\sym{***}\\
+            &     (0.014)         &     (0.015)         &     (0.016)         \\
+\midrule
+\(N\)       &        1449         &        1351         &        1386         \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}
