@@ -18,7 +18,7 @@ The repository is split between the cleaned-up replication package that we are a
   - `output/` where all tables and figures produced by the main do-files end up.
 - `RAW_3-replication-package/` – the untouched download (except adjusted paths), including the original code, data, documentation PDF, and output for auditing.
 - `compare.do` – script to diff our processed data against the raw package.
-- `Report_KKW.xlsx` – spreadsheet where we collect the headline replication statistics. The Excel export included here summarizes all core treatment-effect and scenario-effect estimates (OLS and ordered-logit) needed for cross-study meta-analysis. It intentionally excludes auxiliary analyses such as the gamma GLM, information-treatment models, structural parameter estimates, and non-parametric tests.
+- `Report_KKW.xlsx` – spreadsheet where we collect the headline replication statistics. The Excel export included here summarizes all core treatment-effect and scenario-effect estimates (OLS and ordered-logit) needed for cross-study meta-analysis. It intentionally excludes auxiliary analyses such as the information-treatment models, the structural estimates of the curvature parameter alpha (Table 3, fitted with Stata `menl`), and non-parametric tests.
 - `Report_KKW.*` – LaTeX source, bibliography (`biblio.bib` and `.sav`), and compiled PDF.
 - `Paper/` – folder with DHL paper and SI
 
